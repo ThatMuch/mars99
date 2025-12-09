@@ -1,0 +1,159 @@
+/**
+ * Custom Buttons Block - Frontend Styles
+ * Styles pour l'affichage frontend des boutons personnalisés
+ */
+
+/* Container du bloc */
+.wp-block-mars-custom-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* Alignements */
+.wp-block-mars-custom-buttons.alignment-left {
+    justify-content: flex-start;
+}
+
+.wp-block-mars-custom-buttons.alignment-center {
+    justify-content: center;
+}
+
+.wp-block-mars-custom-buttons.alignment-right {
+    justify-content: flex-end;
+}
+
+/* Espacement */
+.wp-block-mars-custom-buttons.spacing-compact {
+    gap: 0.5rem;
+}
+
+.wp-block-mars-custom-buttons.spacing-normal {
+    gap: 1rem;
+}
+
+.wp-block-mars-custom-buttons.spacing-large {
+    gap: 1.5rem;
+}
+
+
+/* Tailles alternatives */
+.custom-button.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.custom-button.btn-large {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+
+/* États désactivés */
+.custom-button:disabled,
+.custom-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Boutons de téléchargement */
+.custom-button[download] i {
+    animation: downloadPulse 2s infinite;
+}
+
+@keyframes downloadPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .custom-button.btn-outline {
+        border-color: #4a9eff;
+        color: #4a9eff;
+    }
+
+    .custom-button.btn-outline:hover {
+        background-color: #4a9eff;
+        border-color: #4a9eff;
+        color: white;
+    }
+
+    .custom-button.btn-text {
+        color: #4a9eff;
+    }
+
+    .custom-button.btn-text:hover {
+        background-color: rgba(74, 158, 255, 0.1);
+        color: #66b3ff;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wp-block-mars-custom-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .wp-block-mars-custom-buttons.alignment-left,
+    .wp-block-mars-custom-buttons.alignment-center,
+    .wp-block-mars-custom-buttons.alignment-right {
+        justify-content: stretch;
+    }
+
+    .custom-button {
+        justify-content: center;
+        width: 100%;
+        padding: 1rem 1.5rem;
+    }
+
+    .custom-button.btn-text {
+        padding: 0.875rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-button {
+        font-size: 0.875rem;
+        padding: 0.875rem 1rem;
+    }
+
+    .custom-button.btn-small {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .custom-button.btn-large {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Accessibilité - amélioration du focus */
+@media (prefers-reduced-motion: no-preference) {
+    .custom-button {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .custom-button {
+        transition: none;
+    }
+
+    .custom-button::before {
+        display: none;
+    }
+
+    .custom-button:hover {
+        transform: none;
+    }
+
+    .custom-button[download] i {
+        animation: none;
+    }
+}

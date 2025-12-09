@@ -1,0 +1,59 @@
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Sora:wght@100..800&display=swap";
+
+:root {
+  --title-font: "Sora", sans-serif;
+  --main-font: "Manrope", sans-serif;
+  --color-orange: #ff6b01; /* titles and highlights */
+  --color-darkblue: #0d4a77; /* logo blue, main text color */
+  --color-main: #0d4a77; /* duplicate as we often refer to main */
+}
+
+body.login {
+  background-color: #fff;
+  font-family: var(--main-font);
+  font-weight: 600;
+  color: var(--color-darkblue);
+}
+
+.login h1 a {
+background-image: url('../images/logo.svg');
+background-size: contain;
+width: 100%;
+}
+
+#login {
+padding: 30px 0 0;
+}
+
+.login form {
+margin-left:auto;
+margin-right:auto;
+padding:24px;
+background-color: #eef7feff;
+box-shadow: 0 0 13px 3px rgba(0 0 0,50%);
+overflow: hidden;
+}
+
+.login label {
+line-height: 26px;
+}
+
+.login .button-primary {
+background-color:var(--color-main) !important;
+border-color: var(--color-main) !important;
+width: 120px;
+float:right;
+color: #fff;
+}
+
+.login .button-primary:hover {
+background-color:var(--color-main) !important;
+color: #fff;
+}
+
+.login .button-primary:active {
+background-color:var(--color-main) !important;
+color: #fff;
+}
+
+#backtoblog { display:none !important; }

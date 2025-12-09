@@ -1,0 +1,202 @@
+/**
+ * Custom Buttons Block - Editor Styles
+ * Styles pour l'éditeur Gutenberg
+ */
+
+/* Container du bloc */
+.wp-block-mars-custom-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Alignements */
+.wp-block-mars-custom-buttons.alignment-left {
+    justify-content: flex-start;
+}
+
+.wp-block-mars-custom-buttons.alignment-center {
+    justify-content: center;
+}
+
+.wp-block-mars-custom-buttons.alignment-right {
+    justify-content: flex-end;
+}
+
+/* Espacement */
+.wp-block-mars-custom-buttons.spacing-compact {
+    gap: 0.5rem;
+}
+
+.wp-block-mars-custom-buttons.spacing-normal {
+    gap: 1rem;
+}
+
+.wp-block-mars-custom-buttons.spacing-large {
+    gap: 1.5rem;
+}
+
+/* Placeholder */
+.custom-buttons-placeholder {
+    text-align: center;
+    padding: 2rem;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    background: #f9f9f9;
+    width: 100%;
+}
+
+.custom-buttons-placeholder p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* Wrapper des boutons en mode édition */
+.custom-button-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.custom-button-wrapper:hover .custom-button-remove {
+    opacity: 1;
+}
+
+/* Bouton de suppression */
+.custom-button-remove {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: #dc3232 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+}
+
+.custom-button-remove:hover {
+    background: #a00 !important;
+}
+
+/* Bouton d'ajout */
+.custom-button-add {
+    border: 2px dashed #007cba !important;
+    color: #007cba !important;
+    background: transparent !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+.custom-button-add:hover {
+    border-color: #005a87 !important;
+    color: #005a87 !important;
+    background: rgba(0, 124, 186, 0.1) !important;
+}
+
+/* Styles des boutons dans l'éditeur */
+.editor-button {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Styles de base des boutons */
+.custom-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.custom-button i {
+    font-size: 1em;
+}
+
+.custom-button .button-text {
+    font-weight: inherit;
+}
+
+/* Style Primary */
+.custom-button.btn-primary {
+    background-color: #007cba;
+    border-color: #007cba;
+    color: white;
+}
+
+.custom-button.btn-primary:hover {
+    background-color: #005a87;
+    border-color: #005a87;
+    color: white;
+}
+
+/* Style Outline */
+.custom-button.btn-outline {
+    background-color: transparent;
+    border-color: #007cba;
+    color: #007cba;
+}
+
+.custom-button.btn-outline:hover {
+    background-color: #007cba;
+    border-color: #007cba;
+    color: white;
+}
+
+/* Style Secondary */
+.custom-button.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.custom-button.btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #545b62;
+    color: white;
+}
+
+/* Style Text */
+.custom-button.btn-text {
+    background-color: transparent;
+    border-color: transparent;
+    color: #007cba;
+    padding: 0.5rem 0.75rem;
+}
+
+.custom-button.btn-text:hover {
+    background-color: rgba(0, 124, 186, 0.1);
+    color: #005a87;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wp-block-mars-custom-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wp-block-mars-custom-buttons.alignment-left,
+    .wp-block-mars-custom-buttons.alignment-center,
+    .wp-block-mars-custom-buttons.alignment-right {
+        justify-content: stretch;
+    }
+
+    .custom-button {
+        justify-content: center;
+        width: 100%;
+    }
+}

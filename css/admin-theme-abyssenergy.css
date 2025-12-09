@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Sora:wght@100..800&display=swap");
+
+:root {
+  --title-font: "Sora", sans-serif;
+  --main-font: "Manrope", sans-serif;
+  --color-orange: #ff6b01; /*titles and highlights*/
+  --color-darkblue: #0d4a77; /*logo blue, main text colour*/
+  --color-main: #0d4a77; /*duplicate as we often refer to main*/
+  --color-lightgrey: #dcd7d4; /*backgrounds*/
+  --color-grey: #7b7672;
+  --color-lightblue: #007ce0;
+  --color-lightestblue: #e5f2fc;
+  --color-black: #000;
+  --color-white: #fff;
+}
+
+.has-colour-orange-background-color {
+  background-color: var(--color-orange);
+}
+
+.has-colour-darkblue-background-color {
+  background-color: var(--color-darkblue);
+}
+
+.has-colour-lightgrey-background-color {
+  background-color: var(--color-lightgrey);
+}
+
+.has-colour-grey-background-color {
+  background-color: var(--color-grey);
+}
+
+.has-colour-lightblue-background-color {
+  background-color: var(--color-lightblue);
+}
+
+.has-colour-lightestblue-background-color {
+  background-color: var(--color-lightestblue);
+}
+
+.has-colour-black-background-color {
+  background-color: var(--color-black);
+}
+
+.has-colour-white-background-color {
+  background-color: var(--color-white) !important;
+}
+
+.has-colour-orange-color {
+  color: var(--color-orange);
+}
+
+.has-colour-darkblue-color {
+  color: var(--color-darkblue);
+}
+
+.has-colour-lightgrey-color {
+  color: var(--color-lightgrey);
+}
+
+.has-colour-grey-color {
+  color: var(--color-grey);
+}
+
+.has-colour-lightblue-color {
+  color: var(--color-lightblue);
+}
+
+.has-colour-lightestblue-color {
+  color: var(--color-lightestblue);
+}
+
+.has-colour-black-color {
+  color: var(--color-black);
+}
+
+.has-colour-white-color {
+  color: var(--color-white);
+}
+
+body {
+  color: var(--color-main);
+  background-color: var(--color-white);
+  font-family: var(--main-font);
+  font-weight: 500;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--title-font);
+}
+
+a {
+  color: var(--color-main);
+}

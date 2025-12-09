@@ -1,0 +1,252 @@
+/**
+ * Système de grille responsif similaire à Bootstrap
+ * Utilisant le mixin respond-to pour les media queries
+ */
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:math";
+
+// Configuration de la grille
+$grid-columns: 12 !default; // Nombre de colonnes dans la grille
+$grid-gutter-width: 1.5rem !default; // Espacement entre les colonnes (24px)
+$grid-gutter-half: math.div($grid-gutter-width, 2);
+
+// Container
+.container {
+  width: 100%;
+  padding-right: $grid-gutter-half;
+  padding-left: $grid-gutter-half;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+
+  @include respond-to(sm) {
+    max-width: 540px;
+  }
+
+  @include respond-to(md) {
+    max-width: 720px;
+  }
+
+  @include respond-to(lg) {
+    max-width: 960px;
+  }
+
+  @include respond-to(xl) {
+    max-width: 1140px;
+  }
+
+  @include respond-to(xxl) {
+    max-width: 1320px;
+  }
+}
+
+.container-lg {
+  width: 100%;
+  padding-right: $grid-gutter-half;
+  padding-left: $grid-gutter-half;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+
+  @include respond-to(sm) {
+    max-width: 540px;
+  }
+
+  @include respond-to(md) {
+    max-width: 720px;
+  }
+
+  @include respond-to(lg) {
+    max-width: 960px;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: $spacing-xl;
+  padding-left: $spacing-xl;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+// Row
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$grid-gutter-half;
+  margin-left: -$grid-gutter-half;
+  box-sizing: border-box;
+
+  // Modificateurs d'alignement horizontal
+  &.justify-content-start {
+    justify-content: flex-start;
+  }
+  &.justify-content-end {
+    justify-content: flex-end;
+  }
+  &.justify-content-center {
+    justify-content: center;
+  }
+  &.justify-content-between {
+    justify-content: space-between;
+  }
+  &.justify-content-around {
+    justify-content: space-around;
+  }
+  &.justify-content-evenly {
+    justify-content: space-evenly;
+  }
+
+  // Modificateurs d'alignement vertical
+  &.align-items-start {
+    align-items: flex-start;
+  }
+  &.align-items-end {
+    align-items: flex-end;
+  }
+  &.align-items-center {
+    align-items: center;
+  }
+  &.align-items-baseline {
+    align-items: baseline;
+  }
+  &.align-items-stretch {
+    align-items: stretch;
+  }
+
+  // Sans gouttière
+  &.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+// Mixin pour générer les classes de colonnes
+@mixin make-col-classes($breakpoint: "") {
+  $infix: if($breakpoint == "", "", "-#{$breakpoint}");
+
+  @for $i from 1 through $grid-columns {
+    .col#{$infix}-#{$i} {
+      flex: 0 0 auto;
+      width: math.percentage(math.div($i, $grid-columns));
+    }
+  }
+
+  // Classes d'ordre
+  @for $i from 0 through $grid-columns {
+    .order#{$infix}-#{$i} {
+      order: $i;
+    }
+  }
+
+  // Classes d'offset
+  @for $i from 0 through ($grid-columns - 1) {
+    .offset#{$infix}-#{$i} {
+      margin-left: math.percentage(math.div($i, $grid-columns));
+    }
+  }
+
+  // Classes d'alignement automatique
+  .col#{$infix}-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+}
+
+// Classes de base pour les colonnes
+[class*="col-"] {
+  position: relative;
+  width: 100%;
+  padding-right: $grid-gutter-half;
+  padding-left: $grid-gutter-half;
+  box-sizing: border-box;
+}
+
+// Génération des classes de colonnes pour les différents breakpoints
+@include make-col-classes(); // Par défaut (xs)
+
+@include respond-to(sm) {
+  @include make-col-classes("sm");
+}
+
+@include respond-to(md) {
+  @include make-col-classes("md");
+}
+
+@include respond-to(lg) {
+  @include make-col-classes("lg");
+}
+
+@include respond-to(xl) {
+  @include make-col-classes("xl");
+}
+
+@include respond-to(xxl) {
+  @include make-col-classes("xxl");
+}
+
+// Utilitaires d'espacement responsive
+@each $breakpoint-name,
+  $breakpoint-value
+    in (
+      "xs": 0,
+      "sm": $breakpoint-sm,
+      "md": $breakpoint-md,
+      "lg": $breakpoint-lg,
+      "xl": $breakpoint-xl,
+      "xxl": $breakpoint-xxl
+    )
+{
+  $infix: if($breakpoint-name == "xs", "", "-#{$breakpoint-name}");
+
+  @if $breakpoint-name == "xs" {
+    // Classes par défaut sans media query
+    .d#{$infix}-none {
+      display: none !important;
+    }
+    .d#{$infix}-block {
+      display: block !important;
+    }
+    .d#{$infix}-flex {
+      display: flex !important;
+    }
+    .d#{$infix}-inline {
+      display: inline !important;
+    }
+    .d#{$infix}-inline-block {
+      display: inline-block !important;
+    }
+    .d#{$infix}-grid {
+      display: grid !important;
+    }
+  } @else {
+    // Classes avec media query
+    @media (min-width: $breakpoint-value) {
+      .d#{$infix}-none {
+        display: none !important;
+      }
+      .d#{$infix}-block {
+        display: block !important;
+      }
+      .d#{$infix}-flex {
+        display: flex !important;
+      }
+      .d#{$infix}-inline {
+        display: inline !important;
+      }
+      .d#{$infix}-inline-block {
+        display: inline-block !important;
+      }
+      .d#{$infix}-grid {
+        display: grid !important;
+      }
+    }
+  }
+}

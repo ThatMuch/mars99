@@ -1,0 +1,219 @@
+/**
+ * Styles pour les boutons
+ */
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+@use "sass:map";
+
+// Styles de bouton - mixin de base
+@mixin button-base {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  padding: $spacing-sm $spacing-md;
+  font-weight: 500;
+  font-size: $font-size-sm;
+  background-color: $color-primary;
+  color: white;
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+
+  &:hover {
+    background-color: color.adjust($color-primary, $lightness: -5%);
+    text-decoration: none;
+    color: white;
+    .btn__overlay {
+      transform: translateZ(0) scale3d(20, 20, 1) rotateX(0deg) rotateY(0deg) rotate(0deg) skew(0deg, 0deg);
+      transform-style: preserve-3d;
+    }
+  }
+
+  &:disabled {
+    background-color: $neutral-100;
+    cursor: not-allowed;
+    color: $neutral-500;
+  }
+}
+
+
+// Boutons standards (classe .btn)
+.btn {
+  @include button-base;
+    &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__overlay {
+    background-color: $color-primary-light;
+    border-radius: 100%;
+    bottom: -43%;
+    display: block;
+    height: 1rem;
+    left: 50%;
+    position: absolute;
+    transform: translateZ(0) scale3d(0, 0, 1) rotateX(0deg) rotateY(0deg) rotate(0deg) skew(0deg, 0deg);
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+    transition: all .3s ease-in-out;
+    width: 1rem;
+    z-index: 1;
+  }
+
+}
+
+// Boutons standards (classe .button)
+.button {
+  @include button-base;
+}
+
+// Inputs de type submit
+input[type="submit"] {
+  @include button-base;
+}
+
+// Bouton primaire
+.btn--primary {
+  @include button-style($color-primary);
+}
+
+.button--primary {
+  @include button-style($color-primary);
+}
+
+// Bouton secondaire
+.btn--secondary {
+  @include button-style($color-secondary, $color-text-black);
+}
+
+.button--secondary {
+  @include button-style($color-secondary, $color-text-black);
+}
+
+// Bouton contour
+.btn--outline {
+  @include button-style(transparent, $color-text-primary);
+  border: 2px solid $color-primary;
+
+  &:hover {
+    background: rgba($color-primary, 0.3);
+  }
+
+  &:disabled {
+    border: 1px solid $neutral-200;
+  }
+
+  .btn__overlay {
+  background-color: $primary-200;
+  }
+}
+
+.button--outline {
+  @include button-style(transparent, $color-text-primary);
+  border: 2px solid $color-primary;
+
+  &:hover {
+    background: rgba($color-primary, 0.3);
+  }
+
+  &:disabled {
+    border: 1px solid $neutral-200;
+  }
+}
+
+// Bouton grande taille
+.btn--large {
+  padding: $spacing-md $spacing-xl;
+}
+
+.button--large {
+  padding: $spacing-md $spacing-xl;
+}
+
+// Bouton petite taille
+.btn--small {
+  padding: $spacing-xs $spacing-sm;
+}
+
+.button--small {
+  padding: $spacing-xs $spacing-sm;
+}
+
+// Bouton avec icône
+.btn--icon {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius-full;
+
+  i {
+    font-size: $font-size-sm;
+  }
+}
+
+.button--icon {
+  display: flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius-full;
+
+  i {
+    font-size: $font-size-sm;
+  }
+}
+
+// Combinaisons de modificateurs
+.btn--icon.btn--small {
+  width: 2rem;
+  height: 2rem;
+
+  i {
+    font-size: $font-size-xs;
+  }
+}
+
+.button--icon.button--small {
+  width: 2rem;
+  height: 2rem;
+
+  i {
+    font-size: $font-size-xs;
+  }
+}
+
+.btn--icon.btn--large {
+  width: 3.25rem;
+  height: 3.25rem;
+
+  i {
+    font-size: $font-size-base;
+  }
+}
+
+.button--icon.button--large {
+  width: 3.25rem;
+  height: 3.25rem;
+
+  i {
+    font-size: $font-size-base;
+  }
+}
+
+.nav-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: map.get($spacings, "component-xs");
+  margin-bottom: map.get($spacings, "component-lg");
+}

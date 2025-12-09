@@ -1,0 +1,192 @@
+@use "./variables" as *;
+@use "sass:color";
+// Mixins pour le thème Abyss Energy Child
+
+// Mixin pour les media queries responsive
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$breakpoint-xs - 1px}) {
+      @content;
+    }
+  }
+  @if $breakpoint == sm {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+  @if $breakpoint == xxl {
+    @media (min-width: #{$breakpoint-xxl}) {
+      @content;
+    }
+  }
+}
+
+// Mixin pour les transitions
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+// Mixin pour les ombres
+@mixin box-shadow($shadow: $shadow-md) {
+  box-shadow: $shadow;
+}
+
+@mixin flex-container(
+  $direction: row,
+  $wrap: wrap,
+  $justify: flex-start,
+  $align: stretch,
+  $gap: $spacing-lg,
+  $max-width: $breakpoint-xl
+) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  @include respond-to(xs) {
+    flex-direction: column;
+    padding: 0 $spacing-xl;
+  }
+}
+
+// Mixin pour centrer un élément
+@mixin center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Mixin pour les boutons
+@mixin button-style(
+  $bg-color,
+  $text-color: $white-100,
+  $hover-bg: color.adjust($bg-color, $lightness: -10%)
+) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-full;
+  text-decoration: none !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  letter-spacing: 0.04375rem;
+  font-weight: 500;
+  text-align: center;
+  @include transition();
+
+  &:hover {
+    background-color: $hover-bg;
+    color: $text-color;
+  }
+}
+
+// Mixin pour les cartes
+@mixin card-style($padding: $spacing-lg, $shadow: $shadow-lg) {
+  background: $white-100;
+  border-radius: $border-radius-xl;
+  padding: $padding;
+  @include box-shadow($shadow);
+}
+
+// Mixin pour les conteneurs
+@mixin container($max-width: $breakpoint-xl) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include respond-to(sm) {
+    padding: 0 $spacing-xl;
+  }
+
+  @include respond-to(xs) {
+    max-width: $breakpoint-sm;
+  }
+}
+
+// Mixin pour masquer le texte (screen reader only)
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Mixin pour les espacements verticaux
+@mixin vertical-spacing($spacing: $spacing-lg) {
+  margin-top: $spacing;
+  margin-bottom: $spacing;
+}
+
+// Mixin pour les grilles flexibles
+@mixin flex-grid($columns: 1, $gap: $spacing-lg) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+
+  > * {
+    flex: 1 1 calc((100% - #{$gap} * #{$columns - 1}) / #{$columns});
+  }
+}
+
+// Mixin pour les animations de fade
+@mixin fade-in($duration: 0.5s) {
+  opacity: 0;
+  animation: fadeIn $duration ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+// Mixin pour les aspect ratios
+@mixin aspect-ratio($width: 16, $height: 9) {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: calc(#{$height} / #{$width} * 100%);
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

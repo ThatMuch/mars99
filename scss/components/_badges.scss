@@ -1,0 +1,41 @@
+/**
+ * Styles pour les badges
+ */
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Badge/Étiquettes
+.badge {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $border-radius-md;
+  background-color: $neutral-500;
+  color: $white-100;
+
+  &--primary {
+    background-color: $color-secondary;
+  }
+
+  &--secondary {
+    background-color: $color-primary-dark;
+  }
+
+  &--success {
+    background-color: $color-success;
+  }
+
+  &--warning {
+    background-color: $color-warning;
+    color: $black-100;
+  }
+
+  &--danger {
+    background-color: $color-danger;
+  }
+}

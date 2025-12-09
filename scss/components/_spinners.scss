@@ -1,0 +1,23 @@
+/**
+ * Styles pour les spinners/loaders
+ */
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:color";
+
+// Loader/Spinner
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba($color-secondary, 0.3);
+  border-radius: 50%;
+  border-top-color: $color-secondary;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

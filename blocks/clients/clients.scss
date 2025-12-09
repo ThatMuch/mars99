@@ -1,0 +1,76 @@
+@use "../../scss/abstracts/variables" as *;
+@use "../../scss/abstracts/mixins" as *;
+
+.clients-block {
+	.clients-block-wrapper {
+	display: flex;
+	align-items: center;
+	gap: $spacing-md;
+	margin-bottom: $spacing-xl;
+}
+
+  .clients-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section-title {
+    flex: none;
+  }
+
+  .clients-slider-inner {
+    display: grid;
+    animation: move 30s linear infinite;
+    grid-auto-flow: column;
+
+    /* Pause l'animation au survol */
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  .client-logo {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 $spacing-md;
+    @include transition(transform);
+	position: relative;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      max-height: 80px;
+
+      /* Filtre plus subtil - conserve plus l'apparence originale */
+      filter: brightness(0.3) saturate(50%) invert(15%) sepia(23%) saturate(4488%) hue-rotate(183deg) brightness(95%) contrast(100%);
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--slider-width, -50%));
+  }
+}
+
+@include respond-to(md) {
+  .clients-block-wrapper {
+	flex-direction: column;
+	align-items: flex-start;
+	gap: $spacing-md;
+	margin-bottom: $spacing-lg;
+  }
+}

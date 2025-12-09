@@ -1,0 +1,39 @@
+// ==========================================================================
+// CONFIGURATION SCSS
+// ==========================================================================
+// Ce fichier est le point d'entrée principal pour tous les styles SCSS
+// Il importe tous les autres fichiers dans le bon ordre
+
+// 1. Abstracts - Variables, mixins, fonctions
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// 2. Base - Reset, typographie, éléments de base
+@use "base/base";
+@use "base/utilities";
+
+// 3. Layout - Structure générale du site
+@use "layout/layout";
+
+// 4. Components - Composants réutilisables
+@use "components/grid";
+@use "components/cards";
+@use "components/buttons";
+@use "components/inputs";
+@use "components/selects";
+@use "components/badges";
+@use "components/tags";
+@use "components/spinners";
+@use "components/swiper";
+
+// 5. Pages - Styles spécifiques aux pages
+@use "pages/pages";
+@use "pages/frontpage";
+
+// 6. Blocks - Styles des blocs Gutenberg
+@use "../blocks/google-reviews/google-reviews";
+@use "../blocks/card/card";
+@use "../blocks/clients/clients";
+@use "../blocks/features/features";
+@use "../blocks/metrics/metrics";
+@use "../blocks/timeline/timeline";

@@ -1,0 +1,177 @@
+// Variables principales du thème Abyss Energy Child
+// Basées sur les variables CSS du thème parent
+@use "sass:map";
+/* Primitives - default */
+$primary-50: #edeaf6;
+$primary-100: #c6bde2;
+$primary-200: #ab9dd4;
+$primary-300: #6d55b5;
+$primary-400: #482aa2;
+$primary-500: #422693;
+$primary-600: #331e73;
+$primary-700: #281759;
+$primary-800: #281759;
+$primary-900: #1e1244;
+$primary-950: #1e1244;
+$secondary-50: #ecfbfb;
+$secondary-100: #c3f1f4;
+$secondary-200: #a7eaee;
+$secondary-300: #7ee1e7;
+$secondary-400: #65dbe2;
+$secondary-500: #3fd2db;
+$secondary-600: #39bfc7;
+$secondary-700: #2d959b;
+$secondary-800: #237478;
+$secondary-900: #1a585c;
+$secondary-950: #1a585c;
+$neutral-50: #fbfaffff;
+$neutral-100: #ebecffff;
+$neutral-200: #e3e5ffff;
+$neutral-300: #d0d3efff;
+$neutral-400: #babcd6ff;
+$neutral-500: #a4a6bdff;
+$neutral-600: #8e8fa3ff;
+$neutral-700: #78798aff;
+$neutral-800: #616370ff;
+$neutral-900: #4b4c57ff;
+$neutral-950: #35363dff;
+$black-100: #000000ff;
+$white-100: #ffffffff;
+$white-75: rgba(255, 255, 255, 0.75);
+$white-50: rgba(255, 255, 255, 0.5);
+$white-25: rgba(255, 255, 255, 0.25);
+$black-75: rgba(0, 0, 0, 0.75);
+$black-50: rgba(0, 0, 0, 0.5);
+$black-25: rgba(0, 0, 0, 0.25);
+
+// Couleurs principales
+$color-primary: $primary-800;
+$color-primary-light: $primary-400;
+$color-primary-dark: $primary-900;
+$color-secondary: $secondary-400;
+$color-secondary-light: $secondary-300;
+$color-secondary-dark: $secondary-600;
+$color-accent: $secondary-600;
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+$color-disabled: $neutral-300;
+$color-disabled-dark: $neutral-400;
+
+// Colors containers
+$interface-color-surface-container-low: $white-100;
+$interface-color-surface-container: $neutral-50;
+$interface-color-surface-container-high: $neutral-100;
+$interface-color-background-primary: $primary-50;
+$interface-color-background-secondary: $secondary-50;
+
+// Text
+$color-text-default: $neutral-950;
+$color-text-black: $black-100;
+$color-text-grey: $neutral-800;
+$color-text-reverse: $white-100;
+$color-text-primary: $color-primary;
+$color-text-secondary: $color-secondary;
+$color-text-link: $color-primary;
+$color-text-link-hover: $primary-600;
+// Typographie
+$font-title: "Lexend", sans-serif;
+$font-main: "Lexend", sans-serif;
+$font-size-sm: 16px;
+$line-height-base: 1.5;
+
+// Tailles de police
+$font-size-xs: clamp(0.75rem, 0.75vw, 0.75rem); // 12px
+$font-size-sm: clamp(0.875rem, 0.875vw, 0.875rem); // 14px
+$font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem); // 16px
+$font-size-lg: clamp(1.125rem, 0.40vw + 1.1rem, 1.125rem); // 18px
+$font-size-xl: clamp(1.25rem, 0.61vw + 1.31rem, 1.58rem); // 20px
+$font-size-xxl: clamp(1.56rem, 1vw + 1.31rem, 2.11rem); // 24px
+$font-size-3xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem); // 32px
+$font-size-4xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem); // 40px
+$font-size-5xl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem); // 48px
+$font-size-6xl: clamp(3.64rem, 4.38vw + 2.56rem, 6rem); // 56px
+
+// Titres
+$d1-size: $font-size-6xl; // 56px
+$h1-size: $font-size-5xl; // 48px
+$h2-size: $font-size-4xl; // 40px
+$h3-size: $font-size-3xl; // 32px
+$h4-size: $font-size-xl; // 28px
+$h5-size: $font-size-lg; // 20px
+$h6-size: $font-size-base; // 16px
+$b1-size: $font-size-base; // 20px
+// Titres mobiles
+$d1-size-mobile: $font-size-5xl; // 48px
+$h1-size-mobile: $font-size-4xl; // 40px
+$h2-size-mobile: $font-size-3xl; // 32px
+$h3-size-mobile: $font-size-xl; // 28px
+$h4-size-mobile: $font-size-lg; // 24px
+$h5-size-mobile: $font-size-base; // 16px
+$h6-size-mobile: $font-size-base; // 16px
+$b1-size-mobile: $font-size-base; // 16px
+
+// Espacements
+$spacing-xs: clamp(0.25rem, 0.25vw, 0.25rem); // 4px
+$spacing-sm: clamp(0.5rem, 0.5vw, 0.75rem); // 8px
+$spacing-md: clamp(1rem, 1vw, 1.5rem); // 16px
+$spacing-lg: clamp(1.5rem, 1.5vw, 1.5rem); // 24px
+$spacing-xl: clamp(2rem, 2rem, 3rem); // 32px
+$spacing-2xl: clamp(3rem, 3rem, 4rem); // 48px
+$spacing-3xl: clamp(4rem, 4rem, 6rem); // 64px
+$spacing-4xl: clamp(6rem, 6rem, 10rem); // 96px
+$spacing-5xl: clamp(8rem, 8rem, 12rem); // 128px
+
+$spacings: (
+  "component-xs": $spacing-sm,
+  "component-sm": $spacing-md,
+  "component-md": $spacing-lg,
+  "component-lg": $spacing-xl,
+  "section-sm": $spacing-2xl,
+  "section-md": $spacing-3xl,
+  "section-lg": $spacing-4xl,
+  "section-xl": $spacing-5xl,
+);
+
+// Breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1440px;
+
+//Containers
+$container-xs: 100%;
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-2xl: 1320px;
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-fast: all 0.15s ease;
+$transition-slow: all 0.5s ease;
+
+// Border radius
+$border-radius-sm: 0.125rem; // 2px
+$border-radius-md: 0.25rem; // 4px
+$border-radius-lg: 0.5rem; // 8px
+$border-radius-xl: 1rem; // 16px
+$border-radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 6px 16px 0 rgba(44, 93, 133, 0.15);
+$shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+// Z-index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;

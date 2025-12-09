@@ -1,0 +1,38 @@
+{
+	"name": "mars-theme",
+	"version": "1.0.0",
+	"description": "Thème WordPress avec support SCSS pour Mars",
+	"main": "index.php",
+	"scripts": {
+		"watch": "npx sass --watch scss/style.scss:style.min.css --style compressed --source-map",
+		"build": "npx sass scss/style.scss:style.min.css --style compressed",
+		"build:dev": "npx sass scss/style.scss:style.min.css --style compressed",
+		"dev": "npx sass --watch scss/style.scss:style.min.css --style compressed --source-map --poll",
+		"lint": "stylelint scss/**/*.scss",
+		"lint:fix": "stylelint scss/**/*.scss --fix",
+		"compile": "npm run build:dev && echo '✅ SCSS compiled successfully without warnings!'",
+		"clean:css": "node clean_css.py",
+		"browser-sync": "node browsersync.js",
+		"start": "concurrently --names \"SCSS,BS\" --prefix-colors \"blue.bold,green.bold\" --kill-others \"npm run watch\" \"npm run browser-sync\"",
+		"dev-server": "node dev-server.js",
+		"zip": "node build-zip.js",
+		"zip:simple": "npm run build && bestzip mars.zip *.php *.png *.css *.css.map acf-json/ css/ images/ js/ template-parts/ style.css style.min.css style.min.css.map"
+	},
+	"devDependencies": {
+		"bestzip": "^2.2.1",
+		"browser-sync": "^3.0.4",
+		"concurrently": "^9.2.1",
+		"sass": "^1.91.0",
+		"stylelint": "^16.0.0",
+		"stylelint-config-standard-scss": "^13.0.0"
+	},
+	"keywords": [
+		"wordpress",
+		"theme",
+		"scss",
+		"sass",
+		"child-theme"
+	],
+	"author": "THATMUCH",
+	"license": "GPL-2.0+"
+}
