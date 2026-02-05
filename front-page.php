@@ -10,6 +10,8 @@ get_template_part('template-parts/page-header', null, array(
 ?>
 
 <main>
-	<?php the_content(); ?>
+	<div class="container">
+		<?php the_content(); ?>
+	</div>
 </main>
 <?php get_footer(); ?>
