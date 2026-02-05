@@ -10,7 +10,7 @@ get_template_part('template-parts/page-header', null, array(
 ));
 ?>
 
-<main>
+<main class="site-main">
 	<div class="container">
 		<?php the_content(); ?>
 	</div>

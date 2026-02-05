@@ -2,12 +2,28 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 @use "sass:map";
+@use "./footer" as *;
+@use "./header" as *;
+@use "./main" as *;
+
+
+
 // Header
+#site-content-wrapper {
+  position: relative;
+  z-index: 2;
+  background-color: $white-100;
+  min-height: 100vh;
+  // margin-bottom will be handled by JS
+}
+
 .header {
   .side-menu {
     display: none;
   }
+
   @include container();
+
   & {
     border-radius: $border-radius-full;
     border-bottom: 1px solid $color-disabled;
@@ -20,7 +36,10 @@
     padding: map.get($spacings, "component-xs");
     justify-content: space-between;
     align-items: center;
+    // Remove margin-bottom from here to avoid gap inside wrapper?
+    // Actually, margins inside the wrapper are fine as long as the wrapper has background.
     margin-bottom: map.get($spacings, "component-lg");
+
     li {
       display: inline-block;
     }
@@ -30,6 +49,7 @@
     a {
       display: block;
       height: 42px;
+
       img {
         max-height: 42px;
         width: auto;
@@ -41,12 +61,14 @@
     @include respond-to(xs) {
       display: none;
     }
+
     /* Toggle menu icon */
-    &:checked ~ .main-menu {
+    &:checked~.main-menu {
       @include respond-to(xs) {
         max-height: 100vh;
         padding-top: 100px;
         display: block;
+
         .menu {
           display: flex;
           flex-direction: column;
@@ -55,12 +77,14 @@
       }
     }
 
-    &:checked ~ .hamb .hamb-line {
+    &:checked~.hamb .hamb-line {
       background: transparent;
+
       &::before {
         transform: rotate(-45deg);
         top: 0;
       }
+
       &::after {
         transform: rotate(45deg);
         bottom: 0;
@@ -69,37 +93,46 @@
   }
 
   .main-menu {
+
     // Default menu
     & {
       margin: 0;
       position: relative;
       display: inline-block;
-      ul > li {
+
+      ul>li {
         position: relative;
         margin-left: 20px;
+
         &.menu-item-has-children a:hover {
           cursor: default;
         }
-        &:hover > ul {
+
+        &:hover>ul {
           display: flex;
         }
+
         &:last-of-type {
           border-bottom: 0;
+
           ul {
             right: 0;
             left: auto;
           }
         }
+
         a {
           padding: 0;
           color: $color-secondary;
           display: block;
+
           &:hover {
             color: $color-secondary;
             text-decoration: underline;
           }
         }
       }
+
       ul ul {
         display: none;
         position: absolute;
@@ -113,18 +146,22 @@
         border-radius: 10px;
         box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
         width: max-content;
+
         li {
           margin: 0;
         }
+
         ul {
           top: 0;
           left: 100%;
         }
       }
     }
+
     // Mobile menu
     @include respond-to(xs) {
       @include transition(max-height);
+
       & {
         height: 100vh;
         background-color: $white-100;
@@ -136,17 +173,18 @@
         overflow: hidden;
         z-index: -1;
         display: none;
+
         .menu-item {
           margin-bottom: map.get($spacings, "component-md");
         }
       }
 
       // Sur mobile, afficher les sous-menus par défaut
-      ul > li {
+      ul>li {
         margin-left: 0;
 
         // Réinitialiser le hover behavior sur mobile
-        &:hover > ul {
+        &:hover>ul {
           display: flex; // Garde la même règle mais elle ne s'appliquera pas sur mobile
         }
 
@@ -191,6 +229,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+
       .menu-item a {
         color: $color-text-link;
         text-decoration: none;
@@ -214,9 +253,11 @@
       }
     }
   }
+
   /* Menu Icon */
   .hamb {
     display: none;
+
     @include respond-to(xs) {
       display: block;
       cursor: pointer;
@@ -230,6 +271,7 @@
       height: 2px;
       position: relative;
       width: 24px;
+
       &:before,
       &:after {
         background: $color-primary;
@@ -240,9 +282,11 @@
         transition: all 0.2s ease-out;
         width: 100%;
       }
+
       &:before {
         top: -5px;
       }
+
       &:after {
         bottom: -5px;
       }
@@ -253,6 +297,10 @@
 // Main content
 .site-main {
   min-height: 60vh;
+  // position: relative; // Moved to wrapper
+  // z-index: 2; // Moved to wrapper
+  // background-color: $white-100; // Moved to wrapper
+  // margin-bottom: 0px; // Moved to wrapper
 
   .content-area {
     @include container();
@@ -303,6 +351,13 @@
 }
 
 // Footer
+#footer-parallax-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1; // Behind site-main
+}
+
 .footer {
   background: linear-gradient(180deg, #0a3f6a -2.34%, #06508b 100%);
   color: $white-100;
@@ -311,22 +366,10 @@
   flex-direction: column;
   align-items: center;
   gap: map.get($spacings, "section-sm");
-  position: relative;
-  margin-top: 182px;
+  // margin-top: 182px; // Removed for parallax
 
   @include respond-to(xs) {
     padding: 2rem map.get($spacings, "section-sm");
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -100px;
-    left: -1px;
-    width: 101%;
-    height: 144px;
-    background-image: url("./images/waves-footer.svg");
-    z-index: 0;
   }
 
   &-links {
@@ -340,10 +383,13 @@
       flex-direction: column;
     }
   }
+
   .footer-container {
     @include flex-container($max-width: $breakpoint-xxl);
+
     @include respond-to(xs) {
       padding: 0;
+
       .menu {
         margin-bottom: 0;
         margin-top: 0;
@@ -355,21 +401,26 @@
     max-width: 170px;
     list-style: none;
     padding: 0;
+
     @include respond-to(xs) {
       max-width: 100%;
     }
+
     a {
       color: rgba($white-100, 0.9);
       font-family: $font-main;
+
       &:hover {
         color: $color-secondary;
       }
     }
+
     li {
       padding: $spacing-xs 0;
     }
   }
 }
+
 .footer-bottom {
   padding: 0.625rem 0;
   text-align: center;
@@ -377,13 +428,16 @@
   justify-content: center;
   color: $white-100;
   background-color: $primary-950;
+
   p {
     margin: 0;
     font-size: $font-size-sm;
   }
+
   a {
     color: $white-100;
     text-decoration: none;
+
     &:hover {
       color: $color-secondary;
     }
@@ -399,6 +453,7 @@
 
 .section {
   padding: map.get($spacings, "section-sm") 0;
+
   &--small {
     padding: map.get($spacings, "section-sm") 0;
   }
@@ -406,9 +461,11 @@
   &--large {
     padding: map.get($spacings, "section-xl") 0;
   }
+
   &--title {
     margin-top: 0;
   }
+
   &--subtitle {
     color: $secondary-600;
     font-size: 0.875rem;
@@ -418,18 +475,6 @@
     letter-spacing: 0.245rem;
     text-transform: uppercase;
     margin-bottom: 0.5rem !important;
-  }
-}
-
-// Two column layout
-.two-column {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: $spacing-2xl;
-
-  @include respond-to(lg) {
-    grid-template-columns: 1fr;
-    gap: $spacing-xl;
   }
 }
 

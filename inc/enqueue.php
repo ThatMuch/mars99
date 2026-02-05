@@ -160,6 +160,17 @@ function mars_enqueue_scripts()
 		);
 	}
 
+	// Script pour le footer parallax
+	if (file_exists(get_stylesheet_directory() . '/js/footer-parallax.js')) {
+		wp_enqueue_script(
+			'mars-footer-parallax',
+			get_stylesheet_directory_uri() . '/js/footer-parallax.js',
+			array(),
+			mars_get_file_version('/js/footer-parallax.js'),
+			true
+		);
+	}
+
 	// Scripts personnalisés
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');

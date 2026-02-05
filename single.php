@@ -1,7 +1,9 @@
 	<?php get_header(); ?>
 
-	<div class="container">
-		<?php the_content(); ?>
-	</div>
+	<main class="site-main">
+		<div class="container">
+			<?php the_content(); ?>
+		</div>
+	</main>
 
 	<?php get_footer(); ?>

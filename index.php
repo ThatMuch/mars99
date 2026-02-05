@@ -2,7 +2,7 @@
 
 
 
-<section class='content'>
+<main class="site-main">
 
 	<div class="wrapper">
 
@@ -22,6 +22,6 @@
 
 	</div>
 
-</section>
+</main>
 
 <?php get_footer(); ?>
