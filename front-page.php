@@ -3,10 +3,10 @@ get_header();
 ?>
 
 <?php
-get_template_part('template-parts/page-header', null, array(
-	'show_thumbnail' => false,
-	'col_left' => 'col-md-12'
-));
+// get_template_part('template-parts/page-header', null, array(
+// 	'show_thumbnail' => false,
+// 	'col_left' => 'col-md-12'
+// ));
 ?>
 
 <main class="site-main">

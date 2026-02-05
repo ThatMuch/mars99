@@ -12,14 +12,17 @@
   align-items: center;
   gap: $spacing-xs;
   border-radius: $border-radius-lg;
-  background: $primary-100;
+  background: $primary-50;
   margin-right: $spacing-xs;
   margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $color-primary;
 
   &-primary {
     background: $color-primary;
     color: $white-100;
   }
+
   &-secondary {
     background: $color-secondary;
     color: $secondary-950;

@@ -27,6 +27,7 @@
     background-color: color.adjust($color-primary, $lightness: -5%);
     text-decoration: none;
     color: white;
+
     .btn__overlay {
       transform: translateZ(0) scale3d(20, 20, 1) rotateX(0deg) rotateY(0deg) rotate(0deg) skew(0deg, 0deg);
       transform-style: preserve-3d;
@@ -40,11 +41,16 @@
   }
 }
 
+.wp-block-button__link {
+  @include button-base;
+}
+
 
 // Boutons standards (classe .btn)
 .btn {
   @include button-base;
-    &__content {
+
+  &__content {
     position: relative;
     z-index: 2;
   }
@@ -109,7 +115,7 @@ input[type="submit"] {
   }
 
   .btn__overlay {
-  background-color: $primary-200;
+    background-color: $primary-200;
   }
 }
 
