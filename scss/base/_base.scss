@@ -16,6 +16,40 @@ body {
   position: relative;
 }
 
+p,
+h2,
+h3,
+blockquote,
+hr {
+  /* animation-name: text-appear; @keyframes defined below */
+  /* animation-timing-function: ease-in; standard should be linear */
+  /* animation-fill-mode: both; keeps animated values forwards and backwards */
+  animation: text-appear ease-in both;
+  animation-timeline: view();
+  /* applies animation state relative to viewport */
+  animation-range: 0vh 20vh;
+  /* set 0% and 100% positions */
+}
+
+@prefers-reduced-motion {
+
+  p,
+  h2,
+  h3,
+  blockquote,
+  hr,
+  img {
+    animation: none;
+  }
+}
+
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    translate: 0 3rem;
+  }
+}
+
 // Titres
 h1,
 h2,
@@ -24,7 +58,7 @@ h4,
 h5,
 h6 {
   font-family: $font-title;
-  font-weight: 700;
+
   line-height: 150%;
   margin-bottom: map.get($spacings, "component-md");
 }
@@ -122,6 +156,16 @@ ol {
 img {
   max-width: 100%;
   height: auto;
+  animation: image-appear ease-in both;
+  animation-timeline: view();
+  animation-range: 0vh 20vh;
+}
+
+@keyframes image-appear {
+  from {
+    opacity: 0;
+    translate: 0 4rem;
+  }
 }
 
 .wp-block-image img {

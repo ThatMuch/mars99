@@ -3,17 +3,22 @@
 @use "sass:map";
 
 .footer {
-	background: linear-gradient(180deg, #0a3f6a -2.34%, #06508b 100%);
-	color: $white-100;
+	background: $color-primary;
+	color: $white-50;
 	display: flex;
 	padding: map.get($spacings, "section-sm");
 	flex-direction: column;
-	align-items: center;
 	gap: map.get($spacings, "section-sm");
-	// margin-top: 182px; // Removed for parallax
 
 	@include respond-to(xs) {
 		padding: 2rem map.get($spacings, "section-sm");
+	}
+
+	.tagline {
+		font-size: 2.25rem;
+		text-align: right;
+		margin-bottom: 0;
+
 	}
 
 	&-links {
@@ -28,16 +33,21 @@
 		}
 	}
 
-	.footer-container {
-		@include flex-container($max-width: $breakpoint-xxl);
+	.footer-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		border-bottom: 1px solid $white-25;
+		padding-bottom: map.get($spacings, "section-sm");
+	}
 
-		@include respond-to(xs) {
-			padding: 0;
+	.footer-menu {
+		font-size: $font-size-sm;
 
-			.menu {
-				margin-bottom: 0;
-				margin-top: 0;
-			}
+		img {
+			width: 8.52331rem;
+			margin-bottom: map.get($spacings, "component-md");
 		}
 	}
 
@@ -51,15 +61,16 @@
 		}
 
 		a {
-			color: rgba($white-100, 0.9);
-			font-family: $font-main;
+			color: $white-100;
+
 
 			&:hover {
-				color: $color-secondary;
+				text-decoration: underline;
 			}
 		}
 
 		li {
+			list-style: none;
 			padding: $spacing-xs 0;
 		}
 	}
@@ -70,7 +81,7 @@
 	text-align: center;
 	display: flex;
 	justify-content: center;
-	color: $white-100;
+	color: $white-50;
 	background-color: $primary-950;
 
 	p {
@@ -79,7 +90,7 @@
 	}
 
 	a {
-		color: $white-100;
+		color: $white-50;
 		text-decoration: none;
 
 		&:hover {

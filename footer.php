@@ -2,15 +2,37 @@
 </div><!-- #site-content-wrapper -->
 <div id="footer-parallax-wrapper">
     <footer class='footer'>
-        <div class='footer-links'>
+        <div class='footer-top'>
             <div class='footer-logo'>
                 <img src="<?php echo esc_url($footer_logo); ?>" alt="<?php bloginfo('name'); ?>" loading="lazy">
             </div>
-            <div class='footer-container'>
-                <?php wp_nav_menu(array('theme_location' => 'footer-menu1', 'container' => false, 'menu_class' => 'menu', 'menu_id' => '')); ?>
-                <?php wp_nav_menu(array('theme_location' => 'footer-menu2', 'container' => false, 'menu_class' => 'menu', 'menu_id' => '')); ?>
-                <?php wp_nav_menu(array('theme_location' => 'footer-menu3', 'container' => false, 'menu_class' => 'menu', 'menu_id' => '')); ?>
-                <?php wp_nav_menu(array('theme_location' => 'footer-menu4', 'container' => false, 'menu_class' => 'menu', 'menu_id' => '')); ?>
+
+            <?php // the site tagline
+            $footer_tagline = get_bloginfo('description');
+            if ($footer_tagline) {
+                echo '<h2 class="tagline">' . esc_html($footer_tagline) . '</h2>';
+            }
+            ?>
+
+
+        </div>
+        <div class="footer-menu">
+            <div>
+                <img src="<?php echo get_template_directory_uri(); ?>/img/LogoQualiopi-300dpi-Avec-Marianne.webp" alt="Logo Qualiopi" class="img-qualiopi">
+                <p>Organisme de formation privé enregistré sous le numéro 11752167375. Cet enregistrement ne vaut pas  agrément de l’État. La certification qualité a été délivréeau titre de la catégorie d’action suivante : Actions de Formation</p>
+            </div>
+            <div>
+                <?php
+                // Display footer menu if it exists
+                if (has_nav_menu('footer-menu')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-menu',
+                        'container' => false,
+                        'items_wrap' => '%3$s',
+                        'depth' => 1
+                    ));
+                }
+                ?>
             </div>
         </div>
     </footer>
