@@ -276,6 +276,20 @@
 			}
 		}
 	}
+
+	/* Custom Button Header */
+	.custom-btn-header {
+		.btn__content {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			justify-content: center;
+
+			i {
+				font-size: 1em;
+			}
+		}
+	}
 }
 
 // Empêcher le scroll quand le menu mobile est ouvert

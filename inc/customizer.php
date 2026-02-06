@@ -75,7 +75,7 @@ function mars_customize_register($wp_customize)
 				'label'    => __('Sélectionner une page', 'mars'),
 				'section'  => 'mars_header_section_' . $menu_id,
 				'type'     => 'dropdown-pages',
-				'active_callback' => function() use ($menu_id, $wp_customize) {
+				'active_callback' => function () use ($menu_id, $wp_customize) {
 					return 'page' === $wp_customize->get_setting('header_btn_link_type_' . $menu_id)->value();
 				},
 			));
@@ -91,7 +91,7 @@ function mars_customize_register($wp_customize)
 				'section'  => 'mars_header_section_' . $menu_id,
 				'type'     => 'url',
 				'description' => __('Entrez une URL complète (ex: https://example.com)', 'mars'),
-				'active_callback' => function() use ($menu_id, $wp_customize) {
+				'active_callback' => function () use ($menu_id, $wp_customize) {
 					return 'custom' === $wp_customize->get_setting('header_btn_link_type_' . $menu_id)->value();
 				},
 			));
@@ -108,8 +108,21 @@ function mars_customize_register($wp_customize)
 				'choices'  => array(
 					'btn__primary'   => 'Primaire',
 					'btn__secondary' => 'Secondaire',
+					'btn__outline'   => 'Contour',
 					'btn__white'     => 'Blanc',
 				),
+			));
+			// Icon Class
+			$wp_customize->add_setting('header_btn_icon_' . $menu_id, array(
+				'default'   => '',
+				'transport' => 'refresh',
+				'sanitize_callback' => 'sanitize_text_field',
+			));
+			$wp_customize->add_control('header_btn_icon_' . $menu_id, array(
+				'label'    => __('Classe icône Font Awesome', 'mars'),
+				'section'  => 'mars_header_section_' . $menu_id,
+				'type'     => 'text',
+				'description' => __('Ex: fa-solid fa-phone', 'mars'),
 			));
 		}
 	}

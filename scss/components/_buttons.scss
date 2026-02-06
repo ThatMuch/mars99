@@ -223,3 +223,20 @@ input[type="submit"] {
   gap: map.get($spacings, "component-xs");
   margin-bottom: map.get($spacings, "component-lg");
 }
+
+/* Aliases for Customizer classes (btn__*) to match SCSS BEM conventions (btn--*) */
+.btn__primary {
+  @extend .btn--primary;
+}
+
+.btn__secondary {
+  @extend .btn--secondary;
+}
+
+.btn__outline {
+  @extend .btn--outline;
+}
+
+.btn__white {
+  @include button-style($white-100, $color-primary);
+}
