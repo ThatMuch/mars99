@@ -10,15 +10,14 @@
 	@include container();
 
 	& {
-		border-radius: $border-radius-full;
-		border-bottom: 1px solid $color-disabled;
-		background: $white-50;
-		backdrop-filter: blur(2px);
+		border-radius: 3rem;
+		background: $white-75;
+		backdrop-filter: blur(7.5px);
 		position: sticky;
 		top: map.get($spacings, "component-sm");
 		z-index: $z-sticky;
 		display: flex;
-		padding: map.get($spacings, "component-xs");
+		padding: 1rem 4.5625rem;
 		justify-content: space-between;
 		align-items: center;
 		// Remove margin-bottom from here to avoid gap inside wrapper?
