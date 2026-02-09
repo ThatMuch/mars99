@@ -1,158 +1,60 @@
 @use "../../scss/abstracts/variables" as *;
 @use "../../scss/abstracts/mixins" as *;
 
-/* Mobile First - Base styles (576px and below) */
+
 .features-block {
-  margin-top: 0;
-}
-
-.feature-card {
-  position: relative;
-  background: linear-gradient(180deg, $primary-50 -6.96%, $white-100 100%);
-  @include box-shadow($shadow-lg);
-  padding: $spacing-lg;
+  color: $white-100;
   display: flex;
-  flex-direction: column-reverse;
-  gap: $spacing-md;
-  align-items: center;
-  text-align: center;
-  height: auto;
-  margin-bottom: $spacing-lg;
+  padding: 3rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
   border-radius: $border-radius-xl;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: plus-darker, normal;
 
-  &::after,
-  &::before {
-    display: none;
-  }
-
-  .feature-icon {
-    flex-shrink: 0;
-    margin-bottom: 0;
-    width: 64px;
-  }
-
-  .feature-description {
-    margin: 0;
-    font-size: .9375rem;
-  }
-
-  .feature-title {
-    margin-top: 0;
-    margin-bottom: .5rem;
-  }
-}
-
-.features-block .col {
-  transform: translate(0, 0);
-}
-
-.features-block .col:nth-child(even), .features-block .col:last-child  {
-  transform: translate(0, 0);
-}
-
-/* Tablet styles (577px to 768px) */
-@media screen and (width >= 577px) {
-  .feature-card {
-    flex-direction: row;
-    gap: $spacing-xl;
-    align-items: center;
-    text-align: left;
-    height: 272px;
+  .section-header {
     margin-bottom: $spacing-4xl;
-    border-radius: 0;
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 98%;
-      top: 0;
-      width: 117px;
-      height: 100%;
-      background-image: url("./arrow.svg");
-      background-repeat: no-repeat;
-      display: block;
+
+    div:first-child {
+      flex: 1;
     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      right: 100%;
-      top: 0;
-      height: 100%;
-      background: linear-gradient(180deg, $primary-50 -6.96%, $white-100 100%);
-      width: 1000px;
-      box-shadow: -11px 6px 16px rgb(44 93 133 / 15%);
-      display: block;
+    @include respond-to(md) {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: $spacing-lg;
     }
   }
 
-  .features-block .col {
-    transform: translate(-117px, 0);
-  }
+  .feature-card {
+    color: $color-text-default;
+    padding: 2rem;
+    border-radius: $border-radius-lg;
+    background: $white-75;
+    backdrop-filter: blur(7.5px);
+    height: 100%;
 
-  .features-block .col .feature-card {
-    padding-left: 117px;
-  }
-
-  .features-block .col:nth-child(even) {
-    transform: translate(117px, 0);
-  }
-
-    .features-block .col:last-child:not(:nth-child(even)) {
-    transform: translate(-117px, 0);
-  }
-
-  .features-block .col:nth-child(even) .feature-card, .features-block .col:last-child:not(:nth-child(even)) .feature-card {
-    flex-direction: row-reverse;
-    padding-left: $spacing-lg;
-
-    &::after {
-      right: 98%;
-      left: inherit;
-      background-image: url("./arrow-left.svg");
+    .feature-title {
+      color: $color-text-black;
     }
 
-    &::before {
-      left: 100%;
-      top: 0;
-      box-shadow: 13px 6px 16px rgb(44 93 133 / 15%);
+    .feature-icon {
+      margin-bottom: $spacing-md;
+      display: flex;
+      width: 3.25rem;
+      height: 3.2825rem;
+      padding: 0.26rem;
+      justify-content: center;
+      align-items: center;
+      gap: 0.325rem;
+      border-radius: 1.56rem;
+      background: $white-75;
     }
   }
-}
-
-
-/* Desktop styles (1024px and above) */
-@media screen and (width >= 1024px) {
-  .features-block {
-  .row {
-	margin-top: 50px;
-	margin-bottom: -150px;
-  }
-  }
-
-  .features-block .col {
-    transform: translate(0, 0);
-  }
-
-  .features-block .col .feature-card {
-    padding-left: 0;
-	padding-right: 10px;
-  }
-
-  .features-block .col:nth-child(even)  {
-    transform: translate(40%, -50%);
-  }
-
-  .features-block .col:last-child:not(:nth-child(even)) {
-    transform: translate(140%, -50%);
-  }
-
-  .features-block .col:nth-child(even) .feature-card, .features-block .col:last-child .feature-card {
-    padding-left: 10px;
-    padding-right: 0;
-  }
-}
-
-.section-header-button {
-  margin-bottom: $spacing-lg;
 }

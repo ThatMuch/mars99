@@ -45,7 +45,7 @@ wp_enqueue_style('mars-custom-buttons-style');
 		// Préparer les classes CSS du bouton
 		$button_classes = array('custom-button');
 		$button_style = isset($button['style']) ? $button['style'] : 'primary';
-		$button_classes[] = 'btn--' . esc_attr($button_style);
+		$button_classes[] = 'btn btn--' . esc_attr($button_style);
 
 		// Récupérer les propriétés du bouton
 		$url = esc_url($button['url']);

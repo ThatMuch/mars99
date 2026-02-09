@@ -10,7 +10,7 @@ const fs = require('fs');
 
 // Récupérez l'URL locale de votre site WordPress à partir du fichier wp-config.php
 // ou modifiez directement l'URL ci-dessous selon votre environnement local
-const localDomain = "localhost:10006"; // URL de votre site local WordPress
+const localDomain = "localhost:10118"; // URL de votre site local WordPress
 
 // Configuration de BrowserSync
 browserSync.init(
