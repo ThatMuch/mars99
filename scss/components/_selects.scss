@@ -19,12 +19,14 @@ select {
   font-size: $font-size-base;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5rem; /* 150% */
+  line-height: 1.5rem;
+  /* 150% */
   display: block;
   padding: 0.625rem 1rem 0.625rem 1rem;
   position: relative;
   max-width: 100%;
   min-width: 160px;
+
   &:after {
     content: "";
     height: 12px;
@@ -56,6 +58,7 @@ select::picker(select) {
 select::picker(select):popover-open {
   transform: translateY(8px);
   opacity: 1;
+
   @starting-style {
     opacity: 0;
     transform: translateY(-10px);
@@ -65,6 +68,7 @@ select::picker(select):popover-open {
 option {
   padding: 0.5rem;
   color: $color-primary;
+
   &:hover {
     background: $neutral-200;
   }
@@ -90,6 +94,7 @@ selectedcontent {
   position: relative;
   min-width: 200px;
   max-width: 100%;
+
   &__container {
     border-radius: $border-radius-full;
     border: 2px solid $color-primary;
@@ -106,6 +111,7 @@ selectedcontent {
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+
     &:hover {
       border-color: color.adjust($color-primary, $lightness: -10%);
     }
@@ -289,7 +295,7 @@ selectedcontent {
     margin: 0;
     border-bottom: 1px solid $neutral-200;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+
 
     &:not(:first-child) {
       margin-top: 0.5rem;
@@ -314,9 +320,11 @@ select optgroup {
   color: $color-primary;
   background-color: $neutral-100;
   padding: 0.5rem 0 0 0;
+
   option {
     font-weight: 400;
     background-color: #fff;
+
     &:hover {
       background-color: $primary-50;
     }

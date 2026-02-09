@@ -21,23 +21,23 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
   box-sizing: border-box;
 
   @include respond-to(sm) {
-    max-width: 540px;
+    max-width: $container-sm;
   }
 
   @include respond-to(md) {
-    max-width: 720px;
+    max-width: $container-md;
   }
 
   @include respond-to(lg) {
-    max-width: 960px;
+    max-width: $container-lg;
   }
 
   @include respond-to(xl) {
-    max-width: 1140px;
+    max-width: $container-xl;
   }
 
   @include respond-to(xxl) {
-    max-width: 1320px;
+    max-width: $container-2xl;
   }
 }
 
@@ -50,15 +50,15 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
   box-sizing: border-box;
 
   @include respond-to(sm) {
-    max-width: 540px;
+    max-width: $container-sm;
   }
 
   @include respond-to(md) {
-    max-width: 720px;
+    max-width: $container-md;
   }
 
   @include respond-to(lg) {
-    max-width: 960px;
+    max-width: $container-lg;
   }
 }
 
@@ -83,18 +83,23 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
   &.justify-content-start {
     justify-content: flex-start;
   }
+
   &.justify-content-end {
     justify-content: flex-end;
   }
+
   &.justify-content-center {
     justify-content: center;
   }
+
   &.justify-content-between {
     justify-content: space-between;
   }
+
   &.justify-content-around {
     justify-content: space-around;
   }
+
   &.justify-content-evenly {
     justify-content: space-evenly;
   }
@@ -103,15 +108,19 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
   &.align-items-start {
     align-items: flex-start;
   }
+
   &.align-items-end {
     align-items: flex-end;
   }
+
   &.align-items-center {
     align-items: center;
   }
+
   &.align-items-baseline {
     align-items: baseline;
   }
+
   &.align-items-stretch {
     align-items: stretch;
   }
@@ -121,7 +130,7 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
     margin-right: 0;
     margin-left: 0;
 
-    > [class*="col-"] {
+    >[class*="col-"] {
       padding-right: 0;
       padding-left: 0;
     }
@@ -130,7 +139,7 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
 
 // Mixin pour générer les classes de colonnes
 @mixin make-col-classes($breakpoint: "") {
-  $infix: if($breakpoint == "", "", "-#{$breakpoint}");
+  $infix: if($breakpoint =="", "", "-#{$breakpoint}");
 
   @for $i from 1 through $grid-columns {
     .col#{$infix}-#{$i} {
@@ -194,56 +203,66 @@ $grid-gutter-half: math.div($grid-gutter-width, 2);
 
 // Utilitaires d'espacement responsive
 @each $breakpoint-name,
-  $breakpoint-value
-    in (
-      "xs": 0,
-      "sm": $breakpoint-sm,
-      "md": $breakpoint-md,
-      "lg": $breakpoint-lg,
-      "xl": $breakpoint-xl,
-      "xxl": $breakpoint-xxl
-    )
-{
-  $infix: if($breakpoint-name == "xs", "", "-#{$breakpoint-name}");
+$breakpoint-value in ("xs": 0,
+  "sm": $breakpoint-sm,
+  "md": $breakpoint-md,
+  "lg": $breakpoint-lg,
+  "xl": $breakpoint-xl,
+  "xxl": $breakpoint-xxl ) {
+  $infix: if($breakpoint-name =="xs", "", "-#{$breakpoint-name}");
 
-  @if $breakpoint-name == "xs" {
+  @if $breakpoint-name =="xs" {
+
     // Classes par défaut sans media query
     .d#{$infix}-none {
       display: none !important;
     }
+
     .d#{$infix}-block {
       display: block !important;
     }
+
     .d#{$infix}-flex {
       display: flex !important;
     }
+
     .d#{$infix}-inline {
       display: inline !important;
     }
+
     .d#{$infix}-inline-block {
       display: inline-block !important;
     }
+
     .d#{$infix}-grid {
       display: grid !important;
     }
-  } @else {
+  }
+
+  @else {
+
     // Classes avec media query
     @media (min-width: $breakpoint-value) {
       .d#{$infix}-none {
         display: none !important;
       }
+
       .d#{$infix}-block {
         display: block !important;
       }
+
       .d#{$infix}-flex {
         display: flex !important;
       }
+
       .d#{$infix}-inline {
         display: inline !important;
       }
+
       .d#{$infix}-inline-block {
         display: inline-block !important;
       }
+
       .d#{$infix}-grid {
         display: grid !important;
       }

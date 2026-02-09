@@ -19,7 +19,6 @@
   .section-header {
     margin-bottom: $spacing-4xl;
 
-
     div:first-child {
       flex: 1;
     }
@@ -29,6 +28,10 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: $spacing-lg;
+    }
+
+    .section--title {
+      color: $white-100;
     }
   }
 

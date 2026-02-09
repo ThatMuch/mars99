@@ -16,8 +16,9 @@
       font-size: $d1-size;
       font-weight: 800;
       line-height: 150%;
-      letter-spacing: 0.08rem;
+
       margin-bottom: 3.9375rem;
+
       @include respond-to(xs) {
         font-size: $d1-size-mobile;
         margin-bottom: 0;
@@ -33,12 +34,15 @@
         width: 100%;
       }
     }
+
     &.no-thumbnail {
       text-align: center;
+
       p {
         margin-left: auto;
         margin-right: auto;
       }
+
       .page-buttons {
         justify-content: center;
       }

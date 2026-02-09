@@ -22,9 +22,9 @@
 }
 
 .metric-card.unic-metric {
-	flex-direction: row;
-	flex: 0 0 688px;
-	margin: 0 auto;
+  flex-direction: row;
+  flex: 0 0 688px;
+  margin: 0 auto;
 }
 
 /* État étendu de la carte */
@@ -33,7 +33,7 @@
   z-index: 10;
 
   .metric-excerpt {
-	display: none;
+    display: none;
   }
 }
 
@@ -48,7 +48,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: $spacing-md;
-    position: relative;
+  position: relative;
 }
 
 .metric-card-content {
@@ -99,20 +99,21 @@
   font-size: 5rem;
   font-style: normal;
   font-weight: 300;
-  line-height: 100%; /* 5rem */
-  letter-spacing: -0.2rem;
+  line-height: 100%;
+  /* 5rem */
+
   margin: 0;
 }
 
 .metric-label {
- color: $secondary-400;
-font-size: 0.875rem;
-font-style: normal;
-font-weight: 600;
-line-height: 150%;
-letter-spacing: 0.245rem;
-text-transform: uppercase;
-margin: 0;
+  color: $secondary-400;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+
+  text-transform: uppercase;
+  margin: 0;
 }
 
 
@@ -156,13 +157,13 @@ margin: 0;
 }
 
 /* Styles responsifs */
-@media (width <= 768px) {
+@media (width <=768px) {
   .metric-card {
-	flex: 1 1 50%;
+    flex: 1 1 50%;
   }
 
   .metric-card.unic-metric {
-	flex: 1 1 100%;
+    flex: 1 1 100%;
   }
 
   .metric-card.expanded {
@@ -185,8 +186,8 @@ margin: 0;
   }
 }
 
-@media (width <= 480px) {
-   .metrics-grid {
+@media (width <=480px) {
+  .metrics-grid {
     flex-direction: column;
     gap: $spacing-md;
   }

@@ -29,6 +29,7 @@ function mars_load_blocks()
 		'google-reviews',
 		'metrics',
 		'timeline',
+		'cta',
 	);
 
 	foreach ($blocks as $block) {

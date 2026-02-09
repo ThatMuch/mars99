@@ -46,7 +46,7 @@ $button = get_field('main_button');
 			<div class="section-header">
 				<div>
 					<?php if ($title) : ?>
-						<h2 class="section--title"><?php echo esc_html($title); ?></h2>
+						<h2 class="section--title h3"><?php echo esc_html($title); ?></h2>
 					<?php endif; ?>
 					<?php if ($description) : ?>
 						<div class="section--description"><?php echo $description; ?></div>
