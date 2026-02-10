@@ -5,47 +5,19 @@
     'use strict';
 
     /**
-     * Initialise le slider Swiper pour les témoignages
+     * Initialise le carousel pour les témoignages
      */
-    function initTestimonialsSlider() {
-        // Vérifier si Swiper est disponible
-        if (typeof Swiper === 'undefined') {
-            console.warn('Swiper not loaded');
+    function initTestimonialsCarousel() {
+        if (typeof MarsCarousel === 'undefined') {
+            console.warn('MarsCarousel class not found');
             return;
         }
 
-        // Initialiser le slider
-        const reviewsSliders = document.querySelectorAll('.testimonials-slider');
-
-        reviewsSliders.forEach(slider => {
-            new Swiper(slider, {
-                slidesPerView: 1,
-                spaceBetween: 24,
-                loop: false,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.right',
-                    prevEl: '.left',
-                },
-                breakpoints: {
-                    // Quand la largeur de la fenêtre est >= 768px
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 24
-                    },
-                    // Quand la largeur de la fenêtre est >= 992px
-                    992: {
-                        slidesPerView: 3,
-                        spaceBetween: 24
-                    }
-                }
+        const carousels = document.querySelectorAll('.testimonials-carousel');
+        carousels.forEach(container => {
+            new MarsCarousel(container, {
+                autoplay: true,
+                loop: true
             });
         });
     }
@@ -191,7 +163,7 @@
      */
     function initTestimonialsBlocks() {
         // Initialiser les sliders
-        initTestimonialsSlider();
+        initTestimonialsCarousel();
         // Initialiser les modale (attache l'écouteur global une seule fois)
         initTestimonialModals();
     }

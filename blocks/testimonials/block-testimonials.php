@@ -84,13 +84,13 @@ $has_testimonials = $testimonials_query->have_posts();
 
 			<?php if ($has_testimonials) : ?>
 				<div class="testimonials-summary">
-					<div class="testimonials-slider swiper-container">
-						<div class="swiper-wrapper">
+					<div class="mars-carousel testimonials-carousel">
+						<div class="mars-carousel-track">
 							<?php while ($testimonials_query->have_posts()) : $testimonials_query->the_post();
 								$profession = get_field('profession', get_the_ID());
 								$promo = get_field('promo', get_the_ID()) ?: '2026';
 							?>
-								<div class="swiper-slide">
+								<div class="mars-carousel-slide">
 									<div class="testimonial-review-card card">
 										<div class="review-header">
 											<div class="review-author">
@@ -132,9 +132,9 @@ $has_testimonials = $testimonials_query->have_posts();
 							wp_reset_postdata(); ?>
 						</div>
 						<!-- Navigation -->
-						<div class="d-flex justify-content-center align-items-center mt-4 gap-3">
-							<div class="left btn btn--outline btn--icon"><i class="fa fa-chevron-left"></i></div>
-							<div class="right btn btn--outline btn--icon"><i class="fa fa-chevron-right"></i></div>
+						<div class="mars-carousel-controls">
+							<button class="mars-carousel-prev btn btn--outline btn--icon" aria-label="<?php _e('Précédent', 'mars'); ?>"><i class="fa fa-chevron-left"></i></button>
+							<button class="mars-carousel-next btn btn--outline btn--icon" aria-label="<?php _e('Suivant', 'mars'); ?>"><i class="fa fa-chevron-right"></i></button>
 						</div>
 					</div>
 				</div>

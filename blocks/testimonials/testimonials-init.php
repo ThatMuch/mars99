@@ -42,14 +42,10 @@ function register_testimonials_block()
 			)
 		),
 		'enqueue_assets'    => function () {
-			// Enqueue Swiper only if not already enqueued
-			if (!wp_script_is('swiper', 'enqueued')) {
-				wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
-				wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
-			}
-
 			// Enqueue Block Assets
-			wp_enqueue_script('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.js', array('jquery', 'swiper'), time(), true);
+			wp_enqueue_style('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.css', array(), time());
+			// Script depends on mars-carousel which is enqueued in global scripts, but good to ensure order
+			wp_enqueue_script('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.js', array('jquery', 'mars-carousel'), time(), true);
 		},
 	));
 

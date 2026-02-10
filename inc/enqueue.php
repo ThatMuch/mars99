@@ -175,6 +175,16 @@ function mars_enqueue_scripts()
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
+	// Carousel Script (Shared)
+	if (file_exists(get_stylesheet_directory() . '/js/carousel.js')) {
+		wp_enqueue_script(
+			'mars-carousel',
+			get_stylesheet_directory_uri() . '/js/carousel.js',
+			array(),
+			mars_get_file_version('/js/carousel.js'),
+			true
+		);
+	}
 }
 add_action('wp_enqueue_scripts', 'mars_enqueue_scripts');
 

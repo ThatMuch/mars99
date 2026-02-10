@@ -1,0 +1,60 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.mars-carousel {
+	position: relative;
+	width: 100%;
+}
+
+.mars-carousel-track {
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	-webkit-overflow-scrolling: touch;
+
+	// Hide scrollbar
+	scrollbar-width: none; // Firefox
+
+	&::-webkit-scrollbar {
+		display: none; // Chrome/Safari
+	}
+
+	// Gap handling (can be overridden)
+	gap: $spacing-lg;
+	padding-bottom: $spacing-md; // Space for shadow/hover effects
+}
+
+.mars-carousel-slide {
+	flex: 0 0 auto;
+	scroll-snap-align: start;
+	width: 100%; // Default to 1 per view
+
+	// Responsive widths
+	@include respond-to(md) {
+		width: calc(50% - #{$spacing-lg} / 2);
+	}
+
+	@include respond-to(lg) {
+		width: calc(33.333% - #{$spacing-lg} * 2 / 3);
+	}
+}
+
+// Navigation Controls
+.mars-carousel-controls {
+	display: flex;
+	gap: $spacing-md;
+	justify-content: center;
+	margin-top: $spacing-lg;
+
+	.btn {
+		transition: opacity 0.3s ease;
+
+		&.disabled,
+		&[disabled] {
+			opacity: 0.5;
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+}

@@ -115,25 +115,10 @@
 		overflow: hidden;
 	}
 
-	/* Slider Style */
-	.testimonials-block .testimonials-slider {
+	/* Carousel Style handled by MarsCarousel component */
+	.testimonials-block .mars-carousel {
 		margin: 0 auto;
-		overflow: hidden;
-		position: relative;
 		padding: 1rem 1rem 3rem;
-	}
-
-	.testimonials-block .swiper-slide {
-		height: auto;
-	}
-
-	.testimonials-block .swiper-button-next,
-	.testimonials-block .swiper-button-prev {
-		color: var(--primary-color, #0f395c);
-	}
-
-	.testimonials-block .swiper-pagination-bullet-active {
-		background-color: var(--primary-color, #0f395c);
 	}
 
 	/* Responsive */
