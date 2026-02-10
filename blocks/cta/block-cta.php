@@ -53,7 +53,7 @@ $link_target = $link['target'] ?? '_self';
 	<div class="cta-content">
 		<?php if ($icon): ?>
 			<div class="cta-icon">
-				<img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>" loading="lazy">
+				<img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($icon['alt']); ?>" class="no-animation" loading="lazy">
 			</div>
 		<?php endif; ?>
 		<?php if ($title): ?>

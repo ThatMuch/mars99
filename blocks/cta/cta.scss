@@ -9,12 +9,17 @@
 
 
 	&.theme-primary {
-		background: $interface-color-background-primary;
+		background-color: $primary-100;
+		background-image: url("./img/Yoga_Vector_Primary.svg");
+		background-repeat: no-repeat;
+		background-position: 50% 82%;
 	}
 
 	&.theme-secondary {
-		background-color: $interface-color-background-secondary; // Fallback color
-
+		background-color: $secondary-100;
+		background-image: url("./img/Yoga_Vector_Secondary.svg");
+		background-repeat: no-repeat;
+		background-position: 50% 82%;
 	}
 
 	.cta-description {

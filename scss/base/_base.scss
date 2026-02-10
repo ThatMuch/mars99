@@ -156,6 +156,9 @@ ol {
 img {
   max-width: 100%;
   height: auto;
+}
+
+img:not(.no-animation) {
   animation: image-appear ease-in both;
   animation-timeline: view();
   animation-range: 0vh 20vh;
