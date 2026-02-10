@@ -35,6 +35,7 @@ function mars_load_theme_modules()
 		'inc/widgets.php',    // Widgets personnalisés
 		'inc/scss.php',       // Compilation SCSS (si présent)
 		'inc/customizer.php', // Personnalisations du Customizer WordPress
+		'inc/cpt.php',        // Custom Post Types
 	];
 
 	foreach ($modules as $module) {

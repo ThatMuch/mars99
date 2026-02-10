@@ -30,6 +30,7 @@ function mars_load_blocks()
 		'metrics',
 		'timeline',
 		'cta',
+		'testimonials',
 	);
 
 	foreach ($blocks as $block) {
