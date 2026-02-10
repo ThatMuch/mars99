@@ -40,7 +40,6 @@ function register_features_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/features/features.css',
 	));
 	// Créer les champs ACF pour le bloc
 	if (function_exists('acf_add_local_field_group')) {

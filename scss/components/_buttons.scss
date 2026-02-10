@@ -238,5 +238,5 @@ input[type="submit"] {
 }
 
 .btn__white {
-  @include button-style($white-100, $color-primary);
+  @include button-style($white-100, $color-secondary);
 }

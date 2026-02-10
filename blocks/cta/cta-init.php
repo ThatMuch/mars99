@@ -41,7 +41,7 @@ function register_cta_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/cta/cta.css',
+
 		//		'enqueue_script'    => get_template_directory_uri() . '/blocks/cta/cta.js', // No JS needed initially
 	));
 

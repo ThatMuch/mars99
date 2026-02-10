@@ -41,8 +41,16 @@ function register_testimonials_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/testimonials/testimonials.css',
-		'enqueue_script'    => get_template_directory_uri() . '/blocks/testimonials/testimonials.js',
+		'enqueue_assets'    => function () {
+			// Enqueue Swiper only if not already enqueued
+			if (!wp_script_is('swiper', 'enqueued')) {
+				wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
+				wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
+			}
+
+			// Enqueue Block Assets
+			wp_enqueue_script('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.js', array('jquery', 'swiper'), time(), true);
+		},
 	));
 
 	if (function_exists('acf_add_local_field_group')) {

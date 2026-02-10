@@ -79,7 +79,7 @@ $has_testimonials = $testimonials_query->have_posts();
 						</div>
 					</div>
 				</div>
-				<!-- Optional: Summary rating could go here if we calculated average of all testimonials -->
+
 			</div>
 
 			<?php if ($has_testimonials) : ?>
@@ -103,6 +103,7 @@ $has_testimonials = $testimonials_query->have_posts();
 												<!-- Optional Icon -->
 												<!-- <span class="rating-icon"><i class="dashicons dashicons-format-quote"></i></span> -->
 											</div>
+											<button class="btn btn__white btn--icon testimonial-modal-trigger" aria-label="<?php _e('Lire le témoignage complet', 'mars'); ?>"><i class="fa fa-plus"></i></button>
 										</div>
 										<div class="review-text">
 											<?php
@@ -114,6 +115,16 @@ $has_testimonials = $testimonials_query->have_posts();
 											<?php if ($promo) : ?>
 												Promo <span class="author-promo"><?php echo esc_html($promo); ?></span>
 											<?php endif; ?>
+										</div>
+
+										<!-- Hidden Full Content for Modal -->
+										<div class="testimonial-full-content" style="display: none;" aria-hidden="true">
+											<div class="modal-author"><?php the_title(); ?></div>
+											<div class="modal-profession"><?php echo $profession ? esc_html($profession) : ''; ?></div>
+											<div class="modal-date"><?php echo get_the_date(); ?></div>
+											<div class="modal-rating"><?php echo esc_html($note); ?></div>
+											<div class="modal-text"><?php the_content(); ?></div>
+											<div class="modal-promo"><?php echo $promo ? esc_html($promo) : ''; ?></div>
 										</div>
 									</div>
 								</div>

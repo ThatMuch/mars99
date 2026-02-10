@@ -7,12 +7,12 @@
 
 /* Message informatif pour l'admin */
 .block-preview-info {
-	background-color: #e3f2fd;
-	border: 1px solid #2196f3;
+	background-color: $primary-50;
+	border: 1px solid $primary-500;
 	border-radius: 4px;
 	padding: 8px 12px;
 	margin-bottom: 1rem;
-	color: #1976d2;
+	color: $primary-700;
 }
 
 .testimonials-block {
@@ -31,13 +31,13 @@
 	/* Review Card */
 	.testimonial-review-card {
 		padding: 0;
-		background-color: #fff;
+		background-color: $white-100;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
-		box-shadow: 0 1.404px 4.212px 0 rgba(39, 41, 45, 0.04), 0 5.616px 5.616px 0 rgba(18, 18, 18, 0.08);
+		@include box-shadow($shadow-sm);
 		border-radius: 1rem;
 	}
 
@@ -99,14 +99,14 @@
 	}
 
 	.review-footer {
-		border-bottom: 1px solid #FBFAFF;
-		background: #FBFAFF;
+		border-bottom: 1px solid $neutral-50;
+		background: $neutral-50;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		align-self: stretch;
 		padding: 1rem 1.5rem;
-		color: #888;
+		color: $neutral-500;
 		font-size: 0.8rem;
 	}
 
@@ -140,4 +140,99 @@
 	@media (width <=992px) {
 		/* Adjust if needed */
 	}
+}
+
+/* Modal Styles */
+.testimonial-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	/* Ensure it's on top */
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.testimonial-modal.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.testimonial-modal-content {
+	background: $white-100;
+	border-radius: 1rem;
+	max-width: 600px;
+	width: 90%;
+	max-height: 90vh;
+	overflow-y: auto;
+	position: relative;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	transform: scale(0.8);
+	transition: transform 0.3s ease;
+	padding: 2.5rem;
+}
+
+.testimonial-modal.active .testimonial-modal-content {
+	transform: scale(1);
+}
+
+.testimonial-modal .modal-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	color: $neutral-700;
+	z-index: 10;
+	width: 2.5rem;
+	height: 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.testimonial-modal .modal-close:hover {
+	background-color: $neutral-100;
+	color: $neutral-900;
+}
+
+.testimonial-modal-body {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.modal-author-name {
+	margin-bottom: 0.5rem;
+	color: $primary-900;
+}
+
+.modal-author-details {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+	color: $neutral-600;
+}
+
+.modal-author-profession {
+	font-weight: 500;
+}
+
+.modal-review-text {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	color: $neutral-800;
+
 }
