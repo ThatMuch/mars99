@@ -52,32 +52,6 @@ function register_metrics_block()
 			'title' => 'Paramètres du bloc Métriques',
 			'fields' => array(
 				array(
-					'key' => 'field_metrics_title',
-					'label' => 'Titre de la section',
-					'name' => 'title',
-					'type' => 'text',
-					'instructions' => 'Entrez le titre de la section des métriques.',
-					'default_value' => 'Nos métriques clés',
-					'placeholder' => '',
-					'required' => 0,
-					'wrapper' => array(
-						'class' => 'metrics-title-field'
-					),
-				),
-				array(
-					'key' => 'field_metrics_subtitle',
-					'label' => 'Sous-titre de la section',
-					'name' => 'subtitle',
-					'type' => 'text',
-					'instructions' => 'Entrez le sous-titre de la section des métriques.',
-					'default_value' => 'Analyse des performances',
-					'placeholder' => '',
-					'required' => 0,
-					'wrapper' => array(
-						'class' => 'metrics-title-field'
-					),
-				),
-				array(
 					'key' => 'field_metrics_items',
 					'label' => 'Métriques',
 					'name' => 'metrics',
@@ -87,6 +61,17 @@ function register_metrics_block()
 					'layout' => 'row',
 					'button_label' => 'Ajouter une métrique',
 					'sub_fields' => array(
+						array(
+							'key' => 'field_metric_value',
+							'label' => 'Valeur',
+							'name' => 'value',
+							'type' => 'text',
+							'instructions' => 'Entrez la valeur de la métrique.',
+							'required' => 1,
+							'wrapper' => array(
+								'class' => 'metric-value-field'
+							),
+						),
 						array(
 							'key' => 'field_metric_label',
 							'label' => 'Libellé',
@@ -100,50 +85,15 @@ function register_metrics_block()
 						),
 						array(
 							'key' => 'field_metric_excerpt',
-							'label' => 'Extrait',
+							'label' => 'Texte',
 							'name' => 'excerpt',
 							'type' => 'textarea',
-							'instructions' => 'Entrez l\'extrait de la métrique.',
+							'instructions' => 'Entrez le texte de la métrique.',
 							'required' => 1,
 							'wrapper' => array(
 								'class' => 'metric-label-field'
 							),
 						),
-						array(
-							'key' => 'field_metric_value',
-							'label' => 'Valeur',
-							'name' => 'value',
-							'type' => 'number',
-							'instructions' => 'Entrez la valeur de la métrique.',
-							'required' => 1,
-							'wrapper' => array(
-								'class' => 'metric-value-field'
-							),
-						),
-						array(
-							'key' => 'field_metric_icon',
-							'label' => 'Icône',
-							'name' => 'icon',
-							'type' => 'image',
-							'instructions' => 'Téléchargez une icône pour la métrique.',
-							'required' => 0,
-							'return_format' => 'array',
-							'preview_size' => 'medium',
-							'library' => 'all',
-						),
-						array(
-							'key' => 'field_metric_content',
-							'label' => 'Contenu',
-							'name' => 'content',
-							'type' => 'wysiwyg',
-							'instructions' => 'Entrez le contenu de la métrique.',
-							'required' => 0,
-							'wrapper' => array(
-								'class' => 'metric-content-field'
-							),
-						)
-
-
 					),
 				),
 			),

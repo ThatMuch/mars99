@@ -23,11 +23,7 @@ if (!empty($block['align'])) {
 }
 
 // Récupération des paramètres du bloc
-$title = get_field('title');
-$subtitle = get_field('subtitle');
 $metrics = get_field('metrics') ?: array();
-$content = get_field('content');
-$icon = get_field('icon');
 $excerpt = get_field('excerpt');
 
 ?>
@@ -40,50 +36,33 @@ $excerpt = get_field('excerpt');
 			<p><em><?php _e('Aucune métrique ajoutée. Cliquez sur "Ajouter un élément" pour commencer.', 'abyssenergy'); ?></em></p>
 		<?php endif; ?>
 	</div>
-<?php endif; ?>
+<?php else : ?>
 
-<!-- Metrics Block -->
-<section <?php echo $anchor; ?>class="section <?php echo esc_attr($class_name); ?>" data-block-id="<?php echo esc_attr($block_id); ?>">
-	<div class="container">
-		<?php if ($title || $subtitle) : ?>
-			<div class="section-header mb-5">
-				<?php if ($subtitle) : ?>
-					<p class="section--subtitle"><?php echo esc_html($subtitle); ?></p>
-				<?php endif; ?>
-				<?php if ($title) : ?>
-					<h2 class="section--title"><?php echo esc_html($title); ?></h2>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
-		<?php if ($metrics) : ?>
-			<div class="metrics-grid">
-				<?php foreach ($metrics as $metric) : ?>
-					<div class="metric-card <?php echo count($metrics) === 1 ? 'unic-metric' : ''; ?>">
-						<div class="metric-card-header">
-							<?php if (!empty($metric['icon'])) :  ?>
-								<div class="metric-icon">
-									<img src="<?php echo esc_url($metric['icon']['url']); ?>" alt="<?php echo esc_attr($metric['icon']['alt']); ?>" class="img-fluid" loading="lazy">
-								</div>
-							<?php endif; ?>
+	<!-- Metrics Block -->
+	<section <?php echo $anchor; ?>class="section <?php echo esc_attr($class_name); ?>" data-block-id="<?php echo esc_attr($block_id); ?>">
+		<div class="container">
+			<?php if ($metrics) : ?>
+				<div class="metrics-grid">
+					<?php foreach ($metrics as $index => $metric) : ?>
+						<div class="metric-card <?php echo
+												$index === 0 ? 'first-child' : '';
+												?>">
 							<?php if (!empty($metric['value'])) : ?>
 								<h3 class="metric-value"><?php echo esc_html($metric['value']); ?></h3>
 							<?php endif; ?>
-							<?php if (!empty($metric['label'])) : ?>
-								<p class="metric-label"><?php echo esc_html($metric['label']); ?></p>
-							<?php endif; ?>
+							<div class="metric-content">
+								<?php if (!empty($metric['label'])) : ?>
+									<p class="metric-label"><?php echo esc_html($metric['label']); ?></p>
+								<?php endif; ?>
+								<?php if (!empty($metric['excerpt'])) : ?>
+									<div class="metric-excerpt"><?php echo wp_kses_post($metric['excerpt']); ?></div>
+								<?php endif; ?>
+							</div>
 						</div>
-						<div class="metric-card-content">
-							<?php if (!empty($metric['excerpt'])) : ?>
-								<div class="metric-excerpt"><?php echo wp_kses_post($metric['excerpt']); ?></div>
-							<?php endif; ?>
-							<?php if (!empty($metric['content'])) : ?>
-								<div class="metric-content"><?php echo wp_kses_post($metric['content']); ?></div>
-								<button class="metric-button" aria-label="Expand content"><i class="fa fa-plus"></i></button>
-							<?php endif; ?>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		<?php endif; ?>
-	</div>
-</section>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+
+<?php endif; ?>

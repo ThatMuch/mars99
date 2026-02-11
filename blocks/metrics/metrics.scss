@@ -2,203 +2,69 @@
 @use "../../scss/abstracts/mixins" as *;
 
 .metrics-grid {
-  display: flex;
-  gap: $spacing-xl;
   @include transition();
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
 .metric-card {
-  border-radius: $border-radius-xl;
-  @include box-shadow($shadow-lg);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1 0 0;
-  @include transition();
-  transform: translateX(0);
-  opacity: 1;
-  height: -webkit-fill-available;
-}
-
-.metric-card.unic-metric {
-  flex-direction: row;
-  flex: 0 0 688px;
-  margin: 0 auto;
-}
-
-/* État étendu de la carte */
-.metric-card.expanded {
-  flex: 1 1 100%;
-  z-index: 10;
-
-  .metric-excerpt {
-    display: none;
-  }
-}
-
-.metric-card-header,
-.metric-card-content {
   padding: $spacing-lg;
-  @include transition(opacity);
-}
-
-.metric-card-header {
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: $spacing-md;
-  position: relative;
-}
-
-.metric-card-content {
-  background-color: $primary-50;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.625rem;
+  justify-content: flex-end;
+  align-items: flex-end;
   flex: 1 0 0;
-}
+  border-radius: 1rem;
+  background-color: $primary-100;
+  text-align: right;
+  color: $color-primary;
+  z-index: 0;
+  position: relative;
+  transition: all .3s ease;
+  min-height: 445px;
 
-/* Cartes cachées */
-.metric-card.hidden {
-  flex: 0 0 0;
-  width: 0;
-  min-width: 0;
-  opacity: 0;
-  transform: translateX(-100%);
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-/* Animation du contenu des cartes cachées */
-.metric-card.hidden .metric-card-header,
-.metric-card.hidden .metric-card-content {
-  opacity: 0;
-  transition-delay: 0s;
-}
-
-/* Contenu des cartes normales */
-.metric-card:not(.hidden) .metric-card-header,
-.metric-card:not(.hidden) .metric-card-content {
-  opacity: 1;
-  transition-delay: 0.1s;
-}
-
-.metric-icon {
-  position: absolute;
-  top: $spacing-lg;
-  right: $spacing-lg;
-  width: $spacing-lg;
-  height: $spacing-lg;
-}
-
-.metric-value {
-  font-size: 5rem;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 100%;
-  /* 5rem */
-
-  margin: 0;
-}
-
-.metric-label {
-  color: $secondary-400;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%;
-
-  text-transform: uppercase;
-  margin: 0;
-}
-
-
-.metric-button {
-  margin-left: auto;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  @include transition(transform);
-
-  i {
-    color: $secondary-400;
-    font-size: 2rem;
-    @include transition(transform);
+  &:before {
+    content: "";
+    background-image: url("./img/Yoga_Vector_White.svg");
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: -200px -300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .5;
   }
 
-  &:hover i {
-    transform: scale(1.1);
-  }
-}
+  &:hover,
+  .metrics-grid:not(:hover) &.first-child {
+    background-color: $color-primary;
+    color: $white-100;
+    flex: 2 0 0;
 
-/* Animation du bouton quand la carte est étendue */
-.metric-card.expanded .metric-button i {
-  transform: rotate(45deg);
-}
+    .metric-value {
+      color: $white-100;
+      font-size: $font-size-6xl;
+    }
 
-.metric-content {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(-20px);
-}
-
-/* Contenu visible quand la carte est étendue */
-.metric-card.expanded .metric-content {
-  opacity: 1;
-  max-height: fit-content;
-  transform: translateY(0);
-
-}
-
-/* Styles responsifs */
-@media (width <=768px) {
-  .metric-card {
-    flex: 1 1 50%;
+    &:before {
+      opacity: .20;
+    }
   }
 
-  .metric-card.unic-metric {
-    flex: 1 1 100%;
+  .metric-value {
+    color: $color-primary;
+    font-size: $font-size-4xl;
   }
 
-  .metric-card.expanded {
-    flex: 1 1 auto;
+  .metric-content {
+    min-height: 110px;
   }
 
-  .metric-card.hidden {
-    transform: translateY(-100%);
-    height: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  .metric-label {
+    font-size: $font-size-xl;
   }
-
-  /* Animation du contenu mobile */
-  .metric-card.hidden .metric-card-header,
-  .metric-card.hidden .metric-card-content {
-    opacity: 0;
-    transition-delay: 0s;
-  }
-}
-
-@media (width <=480px) {
-  .metrics-grid {
-    flex-direction: column;
-    gap: $spacing-md;
-  }
-}
-
-/* États de survol améliorés */
-.metric-card:not(.hidden):hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px 0 color-mix(in srgb, rgb(44 93 133) 20%, transparent);
-}
-
-.metric-card.expanded:hover {
-  transform: none;
 }
