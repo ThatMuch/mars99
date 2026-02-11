@@ -30,7 +30,6 @@ $excerpt = get_field('excerpt');
 
 <?php if ($is_preview) : ?>
 	<div class="block-preview-message">
-		<h3><?php echo esc_html($title); ?></h3>
 		<p><?php _e('Aperçu du bloc des métriques. Configurez les champs dans le panneau de droite.', 'abyssenergy'); ?></p>
 		<?php if (empty($metrics)) : ?>
 			<p><em><?php _e('Aucune métrique ajoutée. Cliquez sur "Ajouter un élément" pour commencer.', 'abyssenergy'); ?></em></p>

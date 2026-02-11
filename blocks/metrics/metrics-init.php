@@ -89,7 +89,7 @@ function register_metrics_block()
 							'name' => 'excerpt',
 							'type' => 'textarea',
 							'instructions' => 'Entrez le texte de la métrique.',
-							'required' => 1,
+							'required' => 0,
 							'wrapper' => array(
 								'class' => 'metric-label-field'
 							),
