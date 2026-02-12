@@ -1,0 +1,40 @@
+// Sidebar
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.sidebar {
+  background: $interface-color-surface-container-high;
+  padding: $spacing-xl;
+
+  .widget {
+    @include vertical-spacing($spacing-xl);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .widget-title {
+    color: $color-primary-dark;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $color-secondary;
+  }
+
+  .widget-content {
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: $spacing-xs 0;
+        border-bottom: 1px solid $neutral-200;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

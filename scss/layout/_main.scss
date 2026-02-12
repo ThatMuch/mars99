@@ -1,0 +1,16 @@
+// Main content area
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.site-main {
+  min-height: 60vh;
+
+  .content-area {
+    @include container();
+
+    & {
+      padding-top: $spacing-2xl;
+      padding-bottom: $spacing-2xl;
+    }
+  }
+}

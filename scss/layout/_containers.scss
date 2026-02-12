@@ -1,0 +1,66 @@
+// Layout containers and utilities
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:map";
+
+// Layout containers
+.container-wide {
+  max-width: $breakpoint-xxl;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+.section {
+  padding: map.get($spacings, "section-sm") 0;
+  &--small {
+    padding: map.get($spacings, "section-sm") 0;
+  }
+
+  &--large {
+    padding: map.get($spacings, "section-xl") 0;
+  }
+  &--title {
+    margin-top: 0;
+  }
+  &--subtitle {
+    color: $secondary-600;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    letter-spacing: 0.245rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+// Two column layout
+.two-column {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-2xl;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+}
+
+// Empêcher le scroll quand le menu mobile est ouvert
+body.mobile-menu-open {
+  @include respond-to(xs) {
+    overflow: hidden;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+// Empêcher le scroll quand une modale est ouverte (tous écrans)
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+}

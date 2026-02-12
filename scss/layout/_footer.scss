@@ -1,0 +1,92 @@
+// Footer
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+@use "sass:map";
+
+.footer {
+  background: $primary-950;
+  color: $white-100;
+  display: flex;
+  padding: map.get($spacings, "section-sm");
+  flex-direction: column;
+  align-items: center;
+  gap: map.get($spacings, "section-sm");
+  position: relative;
+  margin-top: 182px;
+
+  @include respond-to(xs) {
+    padding: 2rem map.get($spacings, "section-sm");
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: -1px;
+    width: 101%;
+    height: 144px;
+    background-image: url("./images/waves-footer.svg");
+    z-index: 0;
+  }
+
+  &-links {
+    background-color: initial;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include respond-to(xs) {
+      flex-direction: column;
+    }
+  }
+  .footer-container {
+    @include flex-container($max-width: $breakpoint-xxl);
+    @include respond-to(xs) {
+      padding: 0;
+      .menu {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+    }
+  }
+
+  .menu {
+    max-width: 170px;
+    list-style: none;
+    padding: 0;
+    @include respond-to(xs) {
+      max-width: 100%;
+    }
+    a {
+      color: rgba($white-100, 0.9);
+      font-family: $font-main;
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+    li {
+      padding: $spacing-xs 0;
+    }
+  }
+}
+
+.footer-bottom {
+  padding: 0.625rem 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: $white-100;
+  background-color: $primary-950;
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
+  a {
+    color: $white-100;
+    text-decoration: none;
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+}
