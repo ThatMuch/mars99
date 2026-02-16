@@ -61,6 +61,7 @@ h6 {
   line-height: 150%;
   margin-bottom: map.get($spacings, "component-md");
   color: $color-text-black;
+  letter-spacing: 0.08rem;
 }
 
 h1,

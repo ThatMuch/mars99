@@ -6,42 +6,28 @@
 
 // Cartes - style de base
 .card {
-  @include card-style();
+  @include card-style($shadow: none);
 
-  &__header {
-    border-bottom: 1px solid $neutral-200;
-    padding-bottom: $spacing-sm;
-    margin-bottom: $spacing-md;
-  }
-
-  &__title {
-    margin: 0;
-    font-size: $font-size-xl;
-    color: $color-primary-dark;
-  }
-
-  &__content {
-    flex: 1;
-  }
-
-  &__footer {
-    border-top: 1px solid $neutral-200;
-    padding-top: $spacing-sm;
-    margin-top: $spacing-md;
-  }
-
-  .border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 8px;
-    border-radius: 8px 0 0 8px;
-    pointer-events: none;
-    z-index: 2;
-  }
 }
 
+.card-primary {
+  @include card-style(1.5rem, $color-primary, $shadow: none);
+  color: $color-text-reverse;
+}
+
+.card-secondary {
+  @include card-style(1.5rem, $secondary-50, $shadow: none);
+  color: $color-text-reverse;
+}
+
+.card-neutral {
+  @include card-style(1.5rem, $neutral-50, $shadow: none);
+}
+
+.card-outline {
+  @include card-style(1.5rem, $white-100, $shadow: none);
+  border: 1px solid $color-disabled;
+}
 
 .card-pink {
   @include card-style(3rem, $primary-50, $shadow: none);

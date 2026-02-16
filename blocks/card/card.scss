@@ -7,57 +7,43 @@
  */
 
 .card-block {
-  margin: 0 auto;
-  max-width: 100%;
-  height: 100%;
-}
-
-.card-wrapper {
-  border-radius: $border-radius-xl;
-  @include box-shadow($shadow-lg);
   display: flex;
+  width: 100%;
   height: 100%;
+  padding: 1.5rem;
   flex-direction: column;
-  @include transition();
-  overflow: hidden;
-  background: $white-100;
-  position: relative;
+  align-items: flex-start;
+  gap: 1rem;
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  border-radius: 0.75rem;
+  background: $neutral-50;
+
+  &.card-block-primary {
+    background-color: $primary-50;
+  }
+
+  &.card-block-secondary {
+    background-color: $secondary-50;
+  }
 }
 
-.card-wrapper:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px 0 color-mix(in srgb, rgb(44 93 133) 20%, transparent);
-}
 
-.card-header {
-	padding: $spacing-lg;
-	position: relative;
-
-		&.has-image {
-			height: 150px;
-		}
-}
-
-.card-wrapper:hover .card-image img {
-  transform: scale(1.05);
-}
-
-.card-content {
-  padding: $spacing-lg;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-md;
-  flex: 1;
-  background-color: $primary-50;
-}
 
 .card-image {
-	width: 24px;
-	margin-bottom: 1rem;
+  background-color: $white-75;
+  display: flex;
+  width: 3.25rem;
+  height: 3.2825rem;
+  padding: 0.26rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.325rem;
+  border-radius: 100%;
 }
 
 .card-title {
-  line-height: 120%;
+  font-size: 1.25rem;
   margin: 0;
 }
 
@@ -75,23 +61,17 @@
 }
 
 /* Responsive Design */
-@media (width <= 768px) {
-.card-block {
-	  margin: 0 auto ;
-}
-
-.card-wrapper {
-	min-height: auto;
-	height: 100%;
+@media (width <=768px) {
+  .card-block {
+    margin: 0 auto;
   }
 
-  .card-header {
-	height: auto;
+  .card-wrapper {
+    min-height: auto;
+    height: 100%;
   }
 
-  .card-content {
-    padding: 1rem;
-  }
+
 
   .card-title {
     font-size: 1.25rem;
@@ -102,100 +82,9 @@
   }
 }
 
-@media (width <= 480px) {
-  .card-content {
-    padding: 1rem;
-    gap: 0.75rem;
-  }
+@media (width <=480px) {
 
   .card-title {
     font-size: 1.125rem;
   }
-
-
-
-}
-
-.card-button {
-	position: absolute;
-	bottom: $spacing-md;
-	right: $spacing-md;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  @include transition(transform);
-
-  i {
-    color: $secondary-400;
-    font-size: 2rem;
-    @include transition(transform);
-  }
-
-  &:hover i {
-    transform: scale(1.1);
-  }
-}
-
-  .card-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $black-75;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: $z-modal;
-  opacity: 0;
-  visibility: hidden;
-  @include transition(visibility);
-
-	&.active {
-	opacity: 1;
-  visibility: visible;
-	}
-  }
-
-  .card-modal-content {
-  background: $white-100;
-  border-radius: $border-radius-xl;
-  max-width: 800px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  @include box-shadow($shadow-xl);
-  transform: scale(0.8);
-  @include transition(transform);
-}
-
-.card-modal.active .card-modal-content {
-  transform: scale(1);
-}
-
-
-.modal-close {
-  position: absolute;
-  top: $spacing-md;
-  right: $spacing-md;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: $neutral-700;
-  z-index: 10;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: $border-radius-full;
-  @include transition(background-color, color);
-}
-
-
-.modal-close:hover {
-  background-color: $neutral-100;
-  color: $neutral-900;
 }
