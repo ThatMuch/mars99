@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as *;
+
+// Génération des classes de couleurs pour Primary
+@each $shade, $color in $primary-palette {
+	.has-primary-#{$shade}-color {
+		color: $color !important;
+	}
+
+	.has-primary-#{$shade}-background-color {
+		background-color: $color !important;
+	}
+}
+
+// Génération des classes de couleurs pour Secondary
+@each $shade, $color in $secondary-palette {
+	.has-secondary-#{$shade}-color {
+		color: $color !important;
+	}
+
+	.has-secondary-#{$shade}-background-color {
+		background-color: $color !important;
+	}
+}
+
+// Génération des classes de couleurs pour Neutral
+@each $shade, $color in $neutral-palette {
+	.has-neutral-#{$shade}-color {
+		color: $color !important;
+	}
+
+	.has-neutral-#{$shade}-background-color {
+		background-color: $color !important;
+	}
+}
+
+// Base Colors
+.has-white-color {
+	color: $white-100 !important;
+}
+
+.has-white-background-color {
+	background-color: $white-100 !important;
+}
+
+.has-black-color {
+	color: $black-100 !important;
+}
+
+.has-black-background-color {
+	background-color: $black-100 !important;
+}

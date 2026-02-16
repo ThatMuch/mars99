@@ -44,6 +44,52 @@ function mars_theme_setup()
 	// Support pour les blocs larges et pleine largeur
 	add_theme_support('align-wide');
 
+	// Palette de couleurs personnalisée pour l'éditeur
+	add_theme_support('editor-color-palette', array(
+		// Primary
+		array('name' => 'Primary 50', 'slug' => 'primary-50', 'color' => '#FFF7FB'),
+		array('name' => 'Primary 100', 'slug' => 'primary-100', 'color' => '#FFE7F6'),
+		array('name' => 'Primary 200', 'slug' => 'primary-200', 'color' => '#FFD8EF'),
+		array('name' => 'Primary 300', 'slug' => 'primary-300', 'color' => '#FFCAE6'),
+		array('name' => 'Primary 400', 'slug' => 'primary-400', 'color' => '#FFB9DE'),
+		array('name' => 'Primary 500', 'slug' => 'primary-500', 'color' => '#FAA4D1'),
+		array('name' => 'Primary 600', 'slug' => 'primary-600', 'color' => '#F489C2'),
+		array('name' => 'Primary 700', 'slug' => 'primary-700', 'color' => '#BC408B'),
+		array('name' => 'Primary 800', 'slug' => 'primary-800', 'color' => '#911264'),
+		array('name' => 'Primary 900', 'slug' => 'primary-900', 'color' => '#700550'),
+		array('name' => 'Primary 950', 'slug' => 'primary-950', 'color' => '#53053C'),
+
+		// Secondary
+		array('name' => 'Secondary 50', 'slug' => 'secondary-50', 'color' => '#DEF8F7'),
+		array('name' => 'Secondary 100', 'slug' => 'secondary-100', 'color' => '#CDF1F4'),
+		array('name' => 'Secondary 200', 'slug' => 'secondary-200', 'color' => '#B9E7EB'),
+		array('name' => 'Secondary 300', 'slug' => 'secondary-300', 'color' => '#A1DBDF'),
+		array('name' => 'Secondary 400', 'slug' => 'secondary-400', 'color' => '#84CCCF'),
+		array('name' => 'Secondary 500', 'slug' => 'secondary-500', 'color' => '#50B6BD'),
+		array('name' => 'Secondary 600', 'slug' => 'secondary-600', 'color' => '#1EA1A9'),
+		array('name' => 'Secondary 700', 'slug' => 'secondary-700', 'color' => '#16949A'),
+		array('name' => 'Secondary 800', 'slug' => 'secondary-800', 'color' => '#007C84'),
+		array('name' => 'Secondary 900', 'slug' => 'secondary-900', 'color' => '#175559'),
+		array('name' => 'Secondary 950', 'slug' => 'secondary-950', 'color' => '#103C3F'),
+
+		// Neutral
+		array('name' => 'Neutral 50', 'slug' => 'neutral-50', 'color' => '#F6F6F7'),
+		array('name' => 'Neutral 100', 'slug' => 'neutral-100', 'color' => '#EBEBEE'),
+		array('name' => 'Neutral 200', 'slug' => 'neutral-200', 'color' => '#D5D5D8'),
+		array('name' => 'Neutral 300', 'slug' => 'neutral-300', 'color' => '#D5D5D8'),
+		array('name' => 'Neutral 400', 'slug' => 'neutral-400', 'color' => '#898A91'),
+		array('name' => 'Neutral 500', 'slug' => 'neutral-500', 'color' => '#6B6B75'),
+		array('name' => 'Neutral 600', 'slug' => 'neutral-600', 'color' => '#56565E'),
+		array('name' => 'Neutral 700', 'slug' => 'neutral-700', 'color' => '#45454C'),
+		array('name' => 'Neutral 800', 'slug' => 'neutral-800', 'color' => '#3B3B40'),
+		array('name' => 'Neutral 900', 'slug' => 'neutral-900', 'color' => '#343537'),
+		array('name' => 'Neutral 950', 'slug' => 'neutral-950', 'color' => '#232325'),
+
+		// Base
+		array('name' => 'White', 'slug' => 'white', 'color' => '#ffffff'),
+		array('name' => 'Black', 'slug' => 'black', 'color' => '#000000'),
+	));
+
 	// Support pour les styles d'éditeur
 	add_theme_support('editor-styles');
 
