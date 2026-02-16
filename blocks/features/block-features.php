@@ -64,23 +64,23 @@ $button = get_field('main_button');
 		<?php endif; ?>
 
 		<?php if ($features) : ?>
-			<div class="row">
+			<div class="feature__grid">
 				<?php foreach ($features as $feature) : ?>
-					<div class="col col-lg-4 ">
-						<div class="feature-card h-100">
-							<?php if (!empty($feature['icon'])) : ?>
-								<div class="feature-icon">
-									<img src="<?php echo esc_url(wp_get_attachment_image_url($feature['icon'], 'full')); ?>" alt="<?php echo esc_attr(get_post_meta($feature['icon'], '_wp_attachment_image_alt', true)); ?>" class="img-fluid no-animation" loading="lazy" />
-								</div>
-							<?php endif; ?>
-							<?php if (!empty($feature['title'])) : ?>
-								<h3 class="feature-title h4 mb-2"><?php echo esc_html($feature['title']); ?></h3>
-							<?php endif; ?>
-							<?php if (!empty($feature['description'])) : ?>
-								<div class="feature-description"><?php echo $feature['description']; ?></div>
-							<?php endif; ?>
-						</div>
+
+					<div class="feature-card h-100">
+						<?php if (!empty($feature['icon'])) : ?>
+							<div class="feature-icon">
+								<img src="<?php echo esc_url(wp_get_attachment_image_url($feature['icon'], 'full')); ?>" alt="<?php echo esc_attr(get_post_meta($feature['icon'], '_wp_attachment_image_alt', true)); ?>" class="img-fluid no-animation" loading="lazy" />
+							</div>
+						<?php endif; ?>
+						<?php if (!empty($feature['title'])) : ?>
+							<h3 class="feature-title h4 mb-2"><?php echo esc_html($feature['title']); ?></h3>
+						<?php endif; ?>
+						<?php if (!empty($feature['description'])) : ?>
+							<div class="feature-description"><?php echo $feature['description']; ?></div>
+						<?php endif; ?>
 					</div>
+
 				<?php endforeach; ?>
 			</div>
 		<?php else : ?>

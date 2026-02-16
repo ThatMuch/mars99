@@ -36,6 +36,16 @@
     }
   }
 
+  .feature__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+
+    @include respond-to(xs) {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .feature-card {
     color: $color-text-default;
     padding: 2rem;

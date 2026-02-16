@@ -6,6 +6,10 @@
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
+
+  @include respond-to(xs) {
+    flex-direction: column;
+  }
 }
 
 .metric-card {
@@ -23,6 +27,10 @@
   position: relative;
   transition: all .3s ease;
   min-height: 445px;
+
+  @include respond-to(xs) {
+    min-height: auto;
+  }
 
   &:before {
     content: "";
@@ -44,6 +52,11 @@
     background-color: $color-primary;
     color: $white-100;
     flex: 2 0 0;
+
+    @include respond-to(xs) {
+      flex: 1 0 0;
+      width: 100%;
+    }
 
     .metric-value {
       color: $white-100;

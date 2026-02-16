@@ -9,6 +9,7 @@
 	padding: map.get($spacings, "section-sm");
 	flex-direction: column;
 	gap: map.get($spacings, "section-sm");
+	width: 100vw;
 
 	@include respond-to(xs) {
 		padding: 2rem map.get($spacings, "section-sm");
@@ -104,6 +105,6 @@
 #footer-parallax-wrapper {
 	position: fixed;
 	bottom: 0;
-	width: 100%;
+	width: 100vw;
 	z-index: 1; // Behind site-main
 }
