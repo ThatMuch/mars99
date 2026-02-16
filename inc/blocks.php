@@ -32,6 +32,7 @@ function mars_load_blocks()
 		'cta',
 		'testimonials',
 		'stacked-cards',
+		'faq',
 	);
 
 	foreach ($blocks as $block) {
