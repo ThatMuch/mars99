@@ -13,6 +13,17 @@
 .card-primary {
   @include card-style(1.5rem, $color-primary, $shadow: none);
   color: $color-text-reverse;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $color-text-reverse;
+    line-height: 1;
+
+  }
 }
 
 .card-secondary {

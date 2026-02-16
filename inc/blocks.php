@@ -31,6 +31,7 @@ function mars_load_blocks()
 		'timeline',
 		'cta',
 		'testimonials',
+		'stacked-cards',
 	);
 
 	foreach ($blocks as $block) {
