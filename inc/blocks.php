@@ -34,6 +34,7 @@ function mars_load_blocks()
 		'stacked-cards',
 		'faq',
 		'ouvrage-grid',
+		'cards-slider',
 	);
 
 	foreach ($blocks as $block) {
