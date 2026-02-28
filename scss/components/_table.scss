@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.wp-block-table {
+
+
+	table {
+		border-collapse: collapse;
+
+		thead {
+			border-bottom: none;
+		}
+
+		th,
+		td {
+			border: 1px solid $neutral-300;
+		}
+
+
+	}
+}
+
+.page-yogatherapie {
+	.wp-block-table {
+		background-color: $neutral-50;
+		padding: 1rem;
+		border-radius: $border-radius-lg;
+	}
+
+	table {
+		td:not(:first-child) {
+			background-color: #fff;
+		}
+
+		th {
+			color: #fff;
+		}
+
+		th:not(:first-child) {
+			background-color: $color-primary;
+			width: 50%;
+		}
+
+		th:last-child {
+			background-color: $color-secondary;
+			width: 50%;
+		}
+	}
+}
