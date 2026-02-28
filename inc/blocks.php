@@ -33,6 +33,7 @@ function mars_load_blocks()
 		'testimonials',
 		'stacked-cards',
 		'faq',
+		'ouvrage-grid',
 	);
 
 	foreach ($blocks as $block) {

@@ -1,0 +1,113 @@
+.ouvrage-grid-block {
+	margin: 2rem 0;
+
+	.ouvrage-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 2rem;
+
+		.ouvrage-card {
+			display: flex;
+			flex-direction: column;
+			border-radius: 12px;
+			overflow: hidden;
+			background-color: #ffffff;
+			border: 1px solid rgba(0, 0, 0, 0.05);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			position: relative;
+
+			&:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+			}
+
+			&__image-wrapper {
+				background-color: #e6f4f1;
+				padding: 2.5rem 2rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				aspect-ratio: 4/3;
+				position: relative;
+
+				img {
+					max-width: 100%;
+					max-height: 250px;
+					width: auto;
+					height: auto;
+					object-fit: contain;
+					box-shadow: -15px 15px 25px rgba(0, 0, 0, 0.15); // subtle 3d book shadow
+				}
+			}
+
+			&__content {
+				padding: 1.5rem;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				position: relative;
+			}
+
+			&__auteur {
+				font-size: 0.8rem;
+				color: #666;
+				margin-bottom: 0.5rem;
+				font-weight: 500;
+			}
+
+			&__title {
+				font-size: 1.25rem;
+				font-weight: 800; // Extra bold to match screenshot red bold feeling
+				color: #000;
+				margin-top: 0;
+				margin-bottom: 1rem;
+				line-height: 1.2;
+			}
+
+			&__description {
+				font-size: 0.9rem;
+				color: #333;
+				line-height: 1.5;
+				margin-bottom: 0;
+				flex-grow: 1;
+
+				p {
+					margin-bottom: 0.5rem;
+
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			&__cart-btn {
+				position: absolute;
+				bottom: 1rem;
+				right: 1.5rem;
+				background-color: #6e0e45; // Dark maroon/purple from screenshot
+				color: #ffffff;
+				width: 44px;
+				height: 44px;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: background-color 0.2s ease, transform 0.2s ease;
+				z-index: 2;
+				box-shadow: 0 4px 10px rgba(110, 14, 69, 0.3);
+
+				svg {
+					width: 20px;
+					height: 20px;
+				}
+
+				&:hover,
+				&:focus {
+					background-color: #550b35;
+					transform: scale(1.05);
+					color: #ffffff;
+				}
+			}
+		}
+	}
+}
