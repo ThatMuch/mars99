@@ -31,6 +31,7 @@
 // 5. Pages - Styles spécifiques aux pages
 @use "pages/pages";
 @use "pages/frontpage";
+@use "pages/annuaire";
 
 // 6. Blocks - Styles des blocs Gutenberg
 @use "../blocks/google-reviews/google-reviews";

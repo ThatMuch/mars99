@@ -1,0 +1,66 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.page-annuaire {
+
+	p,
+	h2,
+	h3,
+	blockquote,
+	hr,
+	img {
+		animation: none;
+	}
+
+	.asl-cont .sl-container {
+		padding-right: 0;
+		padding-left: 0;
+		margin-right: 0;
+		margin-left: 0;
+		max-width: inherit;
+	}
+
+	.asl-cont#asl-storelocator .sl-row {
+		margin-right: 0;
+		margin-left: 0;
+
+		.pol-12 {
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+
+	.card-pink {
+		border-radius: $border-radius-lg $border-radius-lg 0 0;
+		padding-bottom: 0;
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	#asl-storelocator.asl-cont.asl-template-0 .asl-wrapper .Filter_section {
+		width: 100%;
+		background-color: $primary-50;
+		margin-bottom: $spacing-lg;
+		border-radius: 0 0 $border-radius-lg $border-radius-lg;
+		padding: $spacing-md $spacing-lg;
+
+	}
+
+	.asl-map.pol-lg-12 {
+		@include respond-to(xs) {
+			padding-left: 0 !important;
+		}
+
+	}
+
+	#asl-storelocator.asl-cont .sl-main-cont .asl-panel-inner {
+		@include respond-to(xs) {
+			position: relative;
+			width: 100%;
+		}
+	}
+
+
+}
