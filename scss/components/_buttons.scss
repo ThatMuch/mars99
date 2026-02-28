@@ -95,11 +95,19 @@ input[type="submit"] {
 
 // Bouton secondaire
 .btn--secondary {
-  @include button-style($color-secondary, $color-text-black);
+  @include button-style($color-secondary);
+
+  .btn__overlay {
+    background-color: $color-secondary-dark;
+  }
 }
 
 .button--secondary {
-  @include button-style($color-secondary, $color-text-black);
+  @include button-style($color-secondary);
+
+  .btn__overlay {
+    background-color: $color-secondary-dark;
+  }
 }
 
 // Bouton contour

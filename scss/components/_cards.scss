@@ -44,6 +44,10 @@
   @include card-style(3rem, $primary-50, $shadow: none);
 }
 
+.card-blue {
+  @include card-style(3rem, $secondary-50, $shadow: none);
+}
+
 .card-grey {
   @include card-style(1.5rem, $neutral-50, $shadow: none);
 }

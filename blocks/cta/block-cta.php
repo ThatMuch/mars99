@@ -67,10 +67,9 @@ $link_target = $link['target'] ?? '_self';
 		<?php endif; ?>
 
 		<?php if ($link_url): ?>
-			<a href="<?php echo esc_url($link_url); ?>" class="btn btn-<?php echo esc_attr($theme); ?>" target="<?php echo esc_attr($link_target); ?>">
+			<a href="<?php echo esc_url($link_url); ?>" class="btn btn--<?php echo esc_attr($theme); ?>" target="<?php echo esc_attr($link_target); ?>">
 				<span class="btn__content"><?php echo esc_html($link_title); ?></span>
 				<span class="btn__overlay"></span>
-
 			</a>
 		<?php endif; ?>
 	</div>
