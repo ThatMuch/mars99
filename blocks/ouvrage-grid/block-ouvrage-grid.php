@@ -36,13 +36,23 @@ $ouvrages_query = new WP_Query($args);
 
 ?>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<?php if ($ouvrages_query->have_posts()): ?>
+<?php if ($is_preview): ?>
+	<div class="block-preview-message">
+		<h3><?php _e('Grille d\'ouvrages', 'mars'); ?></h3>
+		<p><?php _e('Ceci est un bloc de grille d\'ouvrages.', 'mars'); ?></p>
+		<?php if ($ouvrages_query->have_posts()): ?>
+			<p><?php _e('Nombre d\'ouvrages affichés : ', 'mars'); ?> <?php echo esc_attr($ouvrages_query->post_count); ?></p>
+		<?php else: ?>
+			<p><?php _e('Aucun ouvrage trouvé.', 'mars'); ?></p>
+		<?php endif; ?>
+	</div>
+<?php else: ?>
+	<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
 		<div class="ouvrage-grid">
 			<?php while ($ouvrages_query->have_posts()): $ouvrages_query->the_post();
-				$auteur = get_field('auteur');
-				$description = get_field('description');
-				$lien = get_field('lien');
+				$auteur = get_field('auteur', get_the_ID());
+				$description = get_field('description', get_the_ID());
+				$lien = get_field('lien', get_the_ID());
 			?>
 				<div class="ouvrage-card">
 					<div class="ouvrage-card__image-wrapper">
@@ -65,11 +75,11 @@ $ouvrages_query = new WP_Query($args);
 							<div class="ouvrage-card__auteur"><?php echo esc_html($auteur); ?></div>
 						<?php endif; ?>
 
-						<h3 class="ouvrage-card__title"><?php the_title(); ?></h3>
+						<h3 class="ouvrage-card__title no-animation"><?php the_title(); ?></h3>
 
 						<?php if ($description): ?>
 							<div class="ouvrage-card__description">
-								<?php echo wp_kses_post($description); ?>
+								<p class="no-animation"><?php echo wp_kses_post($description); ?></p>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -77,9 +87,4 @@ $ouvrages_query = new WP_Query($args);
 			<?php endwhile;
 			wp_reset_postdata(); ?>
 		</div>
-	<?php elseif ($is_preview): ?>
-		<p class="ouvrage-grid__empty"><?php _e('Mode aperçu : Aucun ouvrage trouvé.', 'mars'); ?></p>
-	<?php else: ?>
-		<p class="ouvrage-grid__empty"><?php _e('Aucun ouvrage trouvé.', 'mars'); ?></p>
 	<?php endif; ?>
-</div>

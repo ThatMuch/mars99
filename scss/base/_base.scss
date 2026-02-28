@@ -44,6 +44,10 @@ hr:not(.no-animation) {
   }
 }
 
+.no-animation {
+  animation: none !important;
+}
+
 @keyframes text-appear {
   from {
     opacity: 0;
