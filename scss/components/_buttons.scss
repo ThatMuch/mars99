@@ -81,6 +81,7 @@
 // Inputs de type submit
 input[type="submit"] {
   @include button-base;
+  border: none;
 }
 
 // Bouton primaire

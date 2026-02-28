@@ -109,3 +109,30 @@ input[type="checkbox"] {
 input[type="file"] {
   display: none;
 }
+
+.wpcf7-form {
+  select {
+    @extend .input-base;
+    display: inline-flex;
+    line-height: initial;
+    color: $neutral-500;
+
+    &:after {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  .wpcf7-select:invalid,
+  .wpcf7-select[value=""] {
+    color: $neutral-500;
+  }
+
+  span.wpcf7-form-control-wrap select option:first-child {
+    color: $neutral-500;
+  }
+
+  span.wpcf7-form-control-wrap select option:first-child::checkmark {
+    display: none;
+  }
+}
