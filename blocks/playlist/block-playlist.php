@@ -102,7 +102,7 @@ if ($is_preview && empty($tracks)) {
 						<input type="range" class="audio-player__volume-slider" min="0" max="1" step="0.01" value="1" aria-label="Volume">
 					</div>
 
-					<button class="audio-player__btn audio-player__btn--toggle-list" aria-expanded="false" aria-controls="playlist-tracks-<?php echo esc_attr($id); ?>" aria-label="Afficher/Masquer la playlist">
+					<button class="audio-player__btn audio-player__btn--toggle-list is-active" aria-expanded="true" aria-controls="playlist-tracks-<?php echo esc_attr($id); ?>" aria-label="Afficher/Masquer la playlist">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<line x1="8" y1="6" x2="21" y2="6"></line>
 							<line x1="8" y1="12" x2="21" y2="12"></line>
@@ -116,7 +116,7 @@ if ($is_preview && empty($tracks)) {
 			</div>
 
 			<!-- Tracklist -->
-			<div id="playlist-tracks-<?php echo esc_attr($id); ?>" class="audio-player__tracklist" style="display: none;">
+			<div id="playlist-tracks-<?php echo esc_attr($id); ?>" class="audio-player__tracklist">
 				<ul class="audio-player__tracks">
 					<?php foreach ($tracks as $index => $track):
 						$titre = $track['titre'] ?? '';

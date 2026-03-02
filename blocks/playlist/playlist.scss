@@ -4,17 +4,21 @@
 .playlist-block {
 	margin: 3rem 0;
 
+	* {
+		animation: none !important;
+	}
+
 	.audio-player {
 		background-color: $white-100;
 		border-radius: $border-radius-lg;
 		box-shadow: $shadow-md;
 		overflow: hidden;
-		border: 1px solid $neutral-200;
 
 		&__ui {
 			padding: 1.5rem;
 			display: flex;
 			align-items: center;
+			justify-content: center;
 			gap: 2rem;
 			background-color: $primary-50;
 			flex-wrap: wrap;
@@ -61,6 +65,10 @@
 					background-color: $color-primary-dark;
 					transform: scale(1.05);
 				}
+
+				.icon-play {
+					transform: translateX(3px);
+				}
 			}
 
 			&--toggle-list {
@@ -78,6 +86,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
+			width: 100%;
 		}
 
 		&__now-playing {

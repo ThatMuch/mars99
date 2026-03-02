@@ -132,9 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // Toggle tracklist
         toggleListBtn.addEventListener("click", () => {
             const isHidden = tracklistContainer.style.display === "none";
-            tracklistContainer.style.display = isHidden ? "block" : "none";
-            toggleListBtn.classList.toggle("is-active");
-            toggleListBtn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+
+            if (isHidden || tracklistContainer.style.display === "") {
+                // If it was hidden, or if no inline style is set (open by default)
+                // wait, if it's "" it is open, so we want to close it:
+            }
+
+            // A simpler toggle logic that handles the empty initial style correctly:
+            if (tracklistContainer.style.display === "none") {
+                tracklistContainer.style.display = "block";
+                toggleListBtn.classList.add("is-active");
+                toggleListBtn.setAttribute("aria-expanded", "true");
+            } else {
+                tracklistContainer.style.display = "none";
+                toggleListBtn.classList.remove("is-active");
+                toggleListBtn.setAttribute("aria-expanded", "false");
+            }
         });
 
         // Click on individual tracks
