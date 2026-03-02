@@ -1,0 +1,257 @@
+@use "../../scss/abstracts/variables" as *;
+@use "../../scss/abstracts/mixins" as *;
+
+.playlist-block {
+	margin: 3rem 0;
+
+	.audio-player {
+		background-color: $white-100;
+		border-radius: $border-radius-lg;
+		box-shadow: $shadow-md;
+		overflow: hidden;
+		border: 1px solid $neutral-200;
+
+		&__ui {
+			padding: 1.5rem;
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+			background-color: $primary-50;
+			flex-wrap: wrap;
+
+			@media (max-width: $breakpoint-md) {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 1.5rem;
+			}
+		}
+
+		&__controls {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			justify-content: center;
+		}
+
+		&__btn {
+			background: none;
+			border: none;
+			color: $color-primary;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.5rem;
+			border-radius: 50%;
+			transition: $transition-fast;
+
+			&:hover,
+			&:focus-visible {
+				background-color: rgba($color-primary, 0.1);
+				outline: none;
+			}
+
+			&--play {
+				background-color: $color-primary;
+				color: $white-100;
+				padding: 1rem;
+
+				&:hover,
+				&:focus-visible {
+					background-color: $color-primary-dark;
+					transform: scale(1.05);
+				}
+			}
+
+			&--toggle-list {
+				color: $neutral-600;
+
+				&.is-active {
+					background-color: rgba($color-primary, 0.1);
+					color: $color-primary;
+				}
+			}
+		}
+
+		&__info {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		&__now-playing {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__title {
+			margin: 0;
+			font-size: $font-size-lg;
+			font-weight: 700;
+			color: $color-primary-dark;
+		}
+
+		&__desc {
+			margin: 0;
+			font-size: $font-size-sm;
+			color: $neutral-600;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&__progress {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		&__time {
+			font-size: 0.75rem;
+			color: $neutral-500;
+			font-variant-numeric: tabular-nums;
+			min-width: 40px;
+		}
+
+		&__seek-bar,
+		&__volume-slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 6px;
+			background: $neutral-300;
+			border-radius: 3px;
+			outline: none;
+			cursor: pointer;
+
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				background: $color-primary;
+				cursor: pointer;
+			}
+
+			&::-moz-range-thumb {
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				background: $color-primary;
+				cursor: pointer;
+				border: none;
+			}
+
+			&:focus-visible {
+				box-shadow: 0 0 0 2px rgba($color-primary, 0.3);
+			}
+		}
+
+		&__options {
+			display: flex;
+			align-items: center;
+			gap: 1.5rem;
+
+			@media (max-width: $breakpoint-md) {
+				justify-content: space-between;
+			}
+		}
+
+		&__volume {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			color: $neutral-600;
+			width: 120px;
+		}
+
+		&__tracklist {
+			border-top: 1px solid $neutral-200;
+			max-height: 400px;
+			overflow-y: auto;
+			background-color: $white-100;
+
+			/* Sytle scrollbar */
+			&::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			&::-webkit-scrollbar-track {
+				background: $neutral-100;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background: $neutral-300;
+				border-radius: 3px;
+			}
+		}
+
+		&__tracks {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		&__track-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1rem 1.5rem;
+			border-bottom: 1px solid $neutral-100;
+			cursor: pointer;
+			transition: $transition-fast;
+
+			&:last-child {
+				border-bottom: none;
+			}
+
+			&:hover {
+				background-color: $neutral-50;
+			}
+
+			&.is-playing {
+				background-color: $primary-50;
+
+				.track-title {
+					color: $color-primary;
+				}
+
+				.track-number {
+					color: $color-primary;
+				}
+
+				.icon-playing {
+					display: block !important;
+					color: $color-primary;
+				}
+			}
+
+			.track-info {
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+			}
+
+			.track-number {
+				font-weight: 700;
+				color: $neutral-400;
+				font-size: 1.1rem;
+				min-width: 20px;
+				text-align: right;
+			}
+
+			.track-title {
+				margin: 0 0 0.25rem 0;
+				font-size: 1rem;
+				font-weight: 600;
+			}
+
+			.track-description {
+				margin: 0;
+				font-size: 0.85rem;
+				color: $neutral-600;
+			}
+		}
+	}
+}

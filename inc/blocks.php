@@ -35,6 +35,7 @@ function mars_load_blocks()
 		'faq',
 		'ouvrage-grid',
 		'cards-slider',
+		'playlist',
 	);
 
 	foreach ($blocks as $block) {
