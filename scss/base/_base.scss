@@ -136,6 +136,7 @@ h6,
 // Liens
 a {
   color: $color-text-link;
+  cursor: pointer;
   text-decoration: none;
   @include transition(color);
 
