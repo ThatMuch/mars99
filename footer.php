@@ -22,13 +22,64 @@
                 <p>Organisme de formation privé enregistré sous le numéro 11752167375. Cet enregistrement ne vaut pas  agrément de l’État. La certification qualité a été délivréeau titre de la catégorie d’action suivante : Actions de Formation</p>
             </div>
             <div>
+                <p> <?php // afficher le titre du nav_menu footer-menu1
+                    echo wp_get_nav_menu_name('footer-menu1');
+                    ?> </p>
                 <?php
                 // Display footer menu if it exists
-                if (has_nav_menu('footer-menu')) {
+                if (has_nav_menu('footer-menu1')) {
                     wp_nav_menu(array(
-                        'theme_location' => 'footer-menu',
+                        'theme_location' => 'footer-menu1',
                         'container' => false,
-                        'items_wrap' => '%3$s',
+                        'items_wrap' => '<ul class="menu">%3$s</ul>',
+                        'depth' => 1
+                    ));
+                }
+                ?>
+            </div>
+            <div>
+                <p> <?php // afficher le titre du nav_menu footer-menu2
+                    echo wp_get_nav_menu_name('footer-menu2');
+                    ?> </p>
+                <?php
+                // Display footer menu if it exists
+                if (has_nav_menu('footer-menu2')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-menu2',
+                        'container' => false,
+                        'items_wrap' => '<ul class="menu">%3$s</ul>',
+                        'depth' => 1
+                    ));
+                }
+                ?>
+            </div>
+            <div>
+                <p> <?php // afficher le titre du nav_menu footer-menu3
+                    echo wp_get_nav_menu_name('footer-menu3');
+                    ?> </p>
+                <?php
+                // Display footer menu if it exists
+                if (has_nav_menu('footer-menu3')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-menu3',
+                        'container' => false,
+                        'items_wrap' => '<ul class="menu">%3$s</ul>',
+                        'depth' => 1
+                    ));
+                }
+                ?>
+            </div>
+            <div>
+                <p> <?php // afficher le titre du nav_menu footer-menu4
+                    echo wp_get_nav_menu_name('footer-menu4');
+                    ?> </p>
+                <?php
+                // Display footer menu if it exists
+                if (has_nav_menu('footer-menu4')) {
+                    wp_nav_menu(array(
+                        'theme_location' => 'footer-menu4',
+                        'container' => false,
+                        'items_wrap' => '<ul class="menu">%3$s</ul>',
                         'depth' => 1
                     ));
                 }
