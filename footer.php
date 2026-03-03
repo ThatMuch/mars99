@@ -89,7 +89,7 @@
     </footer>
 
     <div class='footer-bottom'>
-        <div class='container d-flex justify-content-center align-items-center'>
+        <div class=' d-flex justify-content-between align-items-center w-100'>
             <p>
                 Copyright &copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?>. All Rights Reserved.
                 <?php
@@ -104,6 +104,9 @@
                 }
                 ?>
             </p>
+            <a class="link-thatmuch" href="https://thatmuch.fr" target="_blank" rel="noopener noreferrer" aria-label="Logo THATMUCH">
+                <img loading="lazy" class="img-thatmuch" src="<?php echo get_template_directory_uri(); ?>/img/LogoTHATMUCH_Footer.webp" alt="Logo THATMUCH">
+            </a>
         </div>
     </div>
 </div>
