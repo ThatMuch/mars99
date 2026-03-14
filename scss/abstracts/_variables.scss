@@ -94,19 +94,19 @@ $font-size-6xl: clamp(3.64rem, 4.38vw + 2.56rem, 6rem); // 56px
 
 // Titres
 $d1-size: $font-size-6xl; // 56px
-$h1-size: $font-size-5xl; // 48px
-$h2-size: $font-size-4xl; // 40px
-$h3-size: $font-size-3xl; // 32px
-$h4-size: $font-size-xl; // 28px
-$h5-size: $font-size-lg; // 20px
+$h1-size: $font-size-3xl; // 48px
+$h2-size: $font-size-xxl; // 40px
+$h3-size: $font-size-xl; // 32px
+$h4-size: $font-size-lg; // 28px
+$h5-size: $font-size-base; // 20px
 $h6-size: $font-size-base; // 16px
 $b1-size: $font-size-base; // 20px
 // Titres mobiles
 $d1-size-mobile: $font-size-5xl; // 48px
-$h1-size-mobile: $font-size-4xl; // 40px
-$h2-size-mobile: $font-size-3xl; // 32px
-$h3-size-mobile: $font-size-xl; // 28px
-$h4-size-mobile: $font-size-lg; // 24px
+$h1-size-mobile: $font-size-xxl; // 32px
+$h2-size-mobile: $font-size-xl; // 24px
+$h3-size-mobile: $font-size-lg; // 20px
+$h4-size-mobile: $font-size-lg; // 18px
 $h5-size-mobile: $font-size-base; // 16px
 $h6-size-mobile: $font-size-base; // 16px
 $b1-size-mobile: $font-size-base; // 16px
