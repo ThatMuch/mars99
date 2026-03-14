@@ -88,9 +88,7 @@
 				position: relative;
 				margin-left: 20px;
 
-				&.menu-item-has-children a:hover {
-					cursor: default;
-				}
+
 
 				&:hover>ul {
 					display: flex;
@@ -109,6 +107,7 @@
 					padding: 0;
 					color: $color-secondary;
 					display: block;
+					cursor: pointer;
 
 					&:hover {
 						color: $color-secondary;

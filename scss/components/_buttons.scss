@@ -24,7 +24,7 @@
   position: relative;
 
   &:hover {
-    background-color: color.adjust($color-primary, $lightness: -5%);
+    background-color: color.adjust($color-primary, $lightness: +5%);
     text-decoration: none;
     color: white;
 
@@ -41,8 +41,67 @@
   }
 }
 
+.wp-block-button.is-style-outline .wp-block-button__link {
+
+  &:hover {
+    color: $color-primary !important;
+  }
+
+  &::before {
+    background-color: transparent;
+  }
+
+  &::after {
+    background-color: $primary-200;
+  }
+}
+
 .wp-block-button__link {
   @include button-base;
+
+  // Render background via ::before to keep `::after` overlay behind the text
+  background-color: transparent !important;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: $color-primary;
+    border-radius: inherit;
+    z-index: -2;
+    transition: background-color .3s ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    background-color: $color-primary-dark;
+    border-radius: 100%;
+    bottom: -43%;
+    display: block;
+    height: 1rem;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%) scale3d(0, 0, 1) translateZ(0);
+    transform-style: preserve-3d;
+    transition: transform .3s ease-in-out;
+    width: 1rem;
+    z-index: -1;
+  }
+
+  &:hover {
+    background-color: transparent !important;
+    text-decoration: none;
+    color: white !important;
+
+    &::before {
+      background-color: color.adjust($color-primary, $lightness: +5%);
+    }
+
+    &::after {
+      transform: translateX(-50%) scale3d(20, 20, 1) translateZ(0);
+    }
+  }
 }
 
 
