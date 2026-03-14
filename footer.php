@@ -90,20 +90,25 @@
 
     <div class='footer-bottom'>
         <div class=' d-flex justify-content-between align-items-center w-100'>
-            <p>
-                Copyright &copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?>. All Rights Reserved.
-                <?php
-                // Display footer menu if it exists
-                if (has_nav_menu('footer-bottom-menu')) {
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer-bottom-menu',
-                        'container' => false,
-                        'items_wrap' => ' | %3$s',
-                        'depth' => 1
-                    ));
-                }
-                ?>
-            </p>
+            <div class='d-flex gap-2'>
+                <p>
+                    Copyright &copy; <?php echo date("Y"); ?> <?php bloginfo('name'); ?>. Tous droits réservés.
+                    <?php
+                    // Display footer menu if it exists
+                    if (has_nav_menu('footer-bottom-menu')) {
+                        wp_nav_menu(array(
+                            'theme_location' => 'footer-bottom-menu',
+                            'container' => false,
+                            'items_wrap' => ' | %3$s',
+                            'depth' => 1
+                        ));
+                    }
+                    ?>
+                </p>
+                <a href="<?php echo get_permalink(get_page_by_path('politique-de-confidentialite')); ?>">Politique de confidentialité</a>
+                <a href="<?php echo get_permalink(get_page_by_path('mentions-legales')); ?>">Mentions légales</a>
+                <a href="<?php echo get_permalink(get_page_by_path('conditions-generales')); ?>">Conditions générales de vente</a>
+            </div>
             <a class="link-thatmuch" href="https://thatmuch.fr" target="_blank" rel="noopener noreferrer" aria-label="Logo THATMUCH">
                 <img loading="lazy" class="img-thatmuch" src="<?php echo get_template_directory_uri(); ?>/img/LogoTHATMUCH_Footer.webp" alt="Logo THATMUCH">
             </a>

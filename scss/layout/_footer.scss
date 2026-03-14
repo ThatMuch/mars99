@@ -112,9 +112,10 @@
 	a {
 		color: $white-50;
 		text-decoration: none;
+		font-size: $font-size-sm;
 
 		&:hover {
-			color: $color-secondary;
+			color: $white-100;
 		}
 	}
 
