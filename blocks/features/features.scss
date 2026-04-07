@@ -62,6 +62,12 @@
     gap: $spacing-md;
     width: 100%;
 
+    &--count-4 {
+      @include respond-to(md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @include respond-to(xs) {
       grid-template-columns: 1fr;
     }

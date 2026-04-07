@@ -63,8 +63,13 @@ $button = get_field('main_button');
 			</div>
 		<?php endif; ?>
 
-		<?php if ($features) : ?>
-			<div class="feature__grid">
+		<?php if ($features) : 
+			$grid_class = 'feature__grid';
+			if (count($features) === 4) {
+				$grid_class .= ' feature__grid--count-4';
+			}
+			?>
+			<div class="<?php echo esc_attr($grid_class); ?>">
 				<?php foreach ($features as $feature) : ?>
 
 					<div class="feature-card h-100">
