@@ -10,36 +10,57 @@
   justify-content: space-between;
   align-items: flex-start;
 
-  border-radius: $border-radius-xl;
+  overflow: hidden; // Ensures background image respects border-radius and no scrollbars appear
+  border-radius: 24px;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: plus-darker, normal;
+  background-size: 100% auto;
+  background-position-x: center;
+  background-position-y: 100%;
+  background-attachment: scroll; // Ensures it moves with the content
+  min-height: 80rem;
 
+  @include respond-to(xxl) {
+    background-position-y: -300%;
+  }
+
+  @include respond-to(xs) {
+    min-height: inherit;
+    background-size: contain;
+    padding-bottom: 400px;
+  }
+
+  // New centered header
   .section-header {
-    margin-bottom: $spacing-4xl;
+    margin-bottom: $spacing-3xl;
     width: 100%;
+    display: flex;
+    justify-content: center;
 
-    div:first-child {
-      flex: 1;
-    }
-
-    @include respond-to(md) {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: $spacing-lg;
+    .section-header-content {
+      max-width: 800px;
+      text-align: center;
     }
 
     .section--title {
-      color: $white-100;
+      color: $color-text-black;
+      font-size: $font-size-4xl;
+      margin-bottom: $spacing-md;
+    }
+
+    .section--description {
+      color: $color-text-black;
+      font-size: $font-size-xl;
+      line-height: $line-height-base;
+      margin-bottom: $spacing-xl;
     }
   }
 
   .feature__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: $spacing-lg;
+    // Adapt to 3 or 4 features
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: $spacing-md;
+    width: 100%;
 
     @include respond-to(xs) {
       grid-template-columns: 1fr;
@@ -48,14 +69,30 @@
 
   .feature-card {
     color: $color-text-default;
-    padding: 2rem;
+    padding: $spacing-xl; // 32px
     border-radius: $border-radius-lg;
     background: $white-75;
     backdrop-filter: blur(7.5px);
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    min-height: 190px;
 
     .feature-title {
       color: $color-text-black;
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-sm;
+      line-height: 1.5;
+    }
+
+    .feature-description {
+      color: $color-text-grey;
+      font-size: $font-size-lg;
+      line-height: 1.5;
+
+      p {
+        margin-bottom: 0;
+      }
     }
 
     .feature-icon {
@@ -66,9 +103,13 @@
       padding: 0.26rem;
       justify-content: center;
       align-items: center;
-      gap: 0.325rem;
       border-radius: 1.56rem;
       background: $white-75;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 }

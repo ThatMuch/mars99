@@ -42,24 +42,24 @@ $button = get_field('main_button');
 	<!-- Features Block -->
 	<section <?php echo $anchor; ?>class="section <?php echo esc_attr($class_name); ?>" data-block-id="<?php echo esc_attr($block_id); ?>" style="background-image: url('<?php echo esc_url($background_image['url']); ?>');">
 
-		<?php if ($title || $subtitle) : ?>
-			<div class="section-header">
-				<div>
+		<?php if ($title || $subtitle || $description) : ?>
+			<div class="section-header text-center">
+				<div class="section-header-content mx-auto">
 					<?php if ($title) : ?>
-						<h2 class="section--title h3"><?php echo esc_html($title); ?></h2>
+						<h2 class="section--title h3 mb-4"><?php echo esc_html($title); ?></h2>
 					<?php endif; ?>
 					<?php if ($description) : ?>
-						<div class="section--description"><?php echo $description; ?></div>
+						<div class="section--description mb-5"><?php echo $description; ?></div>
+					<?php endif; ?>
+					<?php if ($button && !empty($button['url']) && !empty($button['title'])) : ?>
+						<div class="section-header-button">
+							<a href="<?php echo esc_url($button['url']); ?>" class="btn btn-primary btn-pill">
+								<span class="btn__content"><?php echo esc_html($button['title']); ?></span>
+								<div class="btn__overlay"></div>
+							</a>
+						</div>
 					<?php endif; ?>
 				</div>
-				<?php if ($button && !empty($button['url']) && !empty($button['title'])) : ?>
-					<div class="section-header-button">
-						<a href="<?php echo esc_url($button['url']); ?>" class="btn btn-primary">
-							<div class="btn__content"><?php echo esc_html($button['title']); ?></div>
-							<div class="btn__overlay"></div>
-						</a>
-					</div>
-				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
