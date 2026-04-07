@@ -26,7 +26,7 @@ $page_slug = get_post_field('post_name', get_post());
 					</a>
 				<?php } ?>
 			</div>
-			<div>
+			<div class="burger">
 				<input class="side-menu" type="checkbox" id="side-menu" />
 				<label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
 				<nav class='main-menu'>
@@ -69,7 +69,7 @@ $page_slug = get_post_field('post_name', get_post());
 						<?php if ($btn_icon) : ?>
 							<i class="fa <?php echo esc_attr($btn_icon); ?>"></i>
 						<?php endif; ?>
-						<?php echo esc_html($btn_text); ?>
+						<span class="btn__text"><?php echo esc_html($btn_text); ?></span>
 					</div>
 					<div class="btn__overlay"></div>
 				</a>

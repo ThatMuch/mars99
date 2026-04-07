@@ -24,8 +24,18 @@
 		// Actually, margins inside the wrapper are fine as long as the wrapper has background.
 		margin-bottom: map.get($spacings, "component-lg");
 
+		@include respond-to(xs) {
+			padding: 1rem;
+		}
+
 		li {
 			display: inline-block;
+		}
+	}
+
+	.burger {
+		@include respond-to(xs) {
+			margin-left: auto;
 		}
 	}
 
@@ -34,6 +44,10 @@
 			display: block;
 			height: 42px;
 			width: 200px;
+
+			@include respond-to(xs) {
+				width: 100px;
+			}
 
 			img {
 				height: 100%;
@@ -288,6 +302,12 @@
 
 			i {
 				font-size: 1em;
+			}
+
+			@include respond-to(xs) {
+				.btn__text {
+					display: none;
+				}
 			}
 		}
 	}
