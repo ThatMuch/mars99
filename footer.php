@@ -18,7 +18,9 @@
         </div>
         <div class="footer-menu">
             <div>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/LogoQualiopi-300dpi-Avec-Marianne.webp" alt="Logo Qualiopi" class="img-qualiopi">
+                <a href="https://lavenderblush-butterfly-927765.hostingersite.com/wp-content/uploads/Certification-Qualianor-IDYT-2.pdf" target="_blank" rel="noopener noreferrer" aria-label="Logo Qualiopi">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/LogoQualiopi-300dpi-Avec-Marianne.webp" alt="Logo Qualiopi" class="img-qualiopi">
+                </a>
                 <p>Organisme de formation privé enregistré sous le numéro 11752167375. Cet enregistrement ne vaut pas  agrément de l’État. La certification qualité a été délivréeau titre de la catégorie d’action suivante : Actions de Formation</p>
             </div>
             <div>
