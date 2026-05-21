@@ -25,12 +25,13 @@ define('MARS_URI', get_template_directory_uri());
 function mars_load_theme_modules()
 {
 	$modules = [
-		'acf-safe-helpers.php', // Helpers sécurisés pour ACF
-		'inc/setup.php',      // Configuration principale du thème
-		'inc/utils.php',      // Fonctions utilitaires
-		'inc/enqueue.php',    // Enregistrement des scripts et styles
-		'inc/admin.php',      // Personnalisation de l'interface d'administration
-		'inc/blocks.php',     // Blocs Gutenberg personnalisés
+		'acf-safe-helpers.php',        // Helpers sécurisés pour ACF
+		'inc/setup.php',               // Configuration principale du thème
+		'inc/utils.php',               // Fonctions utilitaires
+		'inc/google-reviews-api.php',  // API Google Reviews (partagée par plusieurs blocs)
+		'inc/enqueue.php',             // Enregistrement des scripts et styles
+		'inc/admin.php',               // Personnalisation de l'interface d'administration
+		'inc/blocks.php',              // Blocs Gutenberg personnalisés
 		'inc/acf.php',        // Intégration avec Advanced Custom Fields
 		'inc/widgets.php',    // Widgets personnalisés
 		'inc/scss.php',       // Compilation SCSS (si présent)
