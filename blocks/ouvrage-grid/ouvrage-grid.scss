@@ -2,121 +2,122 @@
 @use "../../scss/abstracts/mixins" as *;
 
 .ouvrage-grid-block {
-	margin: 2rem 0;
+  margin: 2rem 0;
 
-	.ouvrage-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 2rem;
+  .ouvrage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
 
-		.ouvrage-card {
-			display: flex;
-			flex-direction: column;
-			border-radius: $border-radius-xl;
-			overflow: hidden;
-			background-color: #ffffff;
-			box-shadow: 0 1.404px 4.212px 0 rgba(39, 41, 45, 0.04), 0 5.616px 5.616px 0 rgba(18, 18, 18, 0.08);
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			position: relative;
+    .ouvrage-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: $border-radius-xl;
+      overflow: hidden;
+      background-color: #ffffff;
+      box-shadow:
+        0 1.404px 4.212px 0 rgba(39, 41, 45, 0.04),
+        0 5.616px 5.616px 0 rgba(18, 18, 18, 0.08);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+      position: relative;
 
-			&:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-			}
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
 
-			&__image-wrapper {
-				background-color: $secondary-50;
-				padding: 2.5rem 2rem;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				aspect-ratio: 4/3;
-				position: relative;
-				margin: 1rem 1rem 1.5rem;
-				border-radius: $border-radius-lg;
+      &__image-wrapper {
+        background-color: $secondary-50;
+        padding: 2.5rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 4/3;
+        position: relative;
+        margin: 1rem 1rem 1.5rem;
+        border-radius: $border-radius-lg;
 
-				img {
-					max-width: 100%;
-					max-height: 250px;
-					width: auto;
-					height: auto;
-					object-fit: contain;
-					box-shadow: -15px 15px 25px rgba(0, 0, 0, 0.15); // subtle 3d book shadow
-				}
-			}
+        img {
+          max-height: 250px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+        }
+      }
 
-			&__content {
-				padding: 0 1.5rem 1.5rem;
-				display: flex;
-				flex-direction: column;
-				flex-grow: 1;
-				position: relative;
-			}
+      &__content {
+        padding: 0 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative;
+      }
 
-			&__auteur {
-				font-size: $font-size-sm;
-				color: $neutral-400;
-				margin-bottom: 0.5rem;
-				font-weight: 500;
-			}
+      &__auteur {
+        font-size: $font-size-sm;
+        color: $neutral-400;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
 
-			&__title {
-				font-size: 1.5rem;
-				font-weight: 800;
-				margin-top: 0;
-				margin-bottom: 1rem;
-				overflow: hidden;
-				display: -webkit-box;
-				-webkit-box-orient: vertical;
-				-webkit-line-clamp: 2;
-				align-self: stretch;
-			}
+      &__title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        align-self: stretch;
+      }
 
-			&__description {
-				line-height: 1.5;
-				margin-bottom: 0;
-				flex-grow: 1;
+      &__description {
+        line-height: 1.5;
+        margin-bottom: 0;
+        flex-grow: 1;
 
+        p {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          align-self: stretch;
+        }
+      }
 
-				p {
-					overflow: hidden;
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
-					align-self: stretch;
-				}
+      &__cart-btn {
+        position: absolute;
+        bottom: -1rem;
+        right: 1rem;
+        background-color: $color-primary; // Dark maroon/purple from screenshot
+        color: #ffffff;
+        width: 3.31rem;
+        height: 3.31rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
+        z-index: 2;
+        box-shadow: 0 4px 10px rgba(110, 14, 69, 0.3);
 
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
 
-			}
-
-			&__cart-btn {
-				position: absolute;
-				bottom: -1rem;
-				right: 1rem;
-				background-color: $color-primary; // Dark maroon/purple from screenshot
-				color: #ffffff;
-				width: 3.31rem;
-				height: 3.31rem;
-				border-radius: 50%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				transition: background-color 0.2s ease, transform 0.2s ease;
-				z-index: 2;
-				box-shadow: 0 4px 10px rgba(110, 14, 69, 0.3);
-
-				svg {
-					width: 1.5rem;
-					height: 1.5rem;
-				}
-
-				&:hover,
-				&:focus {
-					background-color: $color-primary-dark;
-					transform: scale(1.05);
-					color: #ffffff;
-				}
-			}
-		}
-	}
+        &:hover,
+        &:focus {
+          background-color: $color-primary-dark;
+          transform: scale(1.05);
+          color: #ffffff;
+        }
+      }
+    }
+  }
 }
