@@ -201,20 +201,23 @@ if ($source_type === 'google_reviews') {
 									$note       = get_field('note', get_the_ID());
 								?>
 									<div class="mars-carousel-slide">
-										<div class="testimonial-review-card card">
-											<div class="review-header">
-												<div class="review-author">
-													<div>
-														<h3 class="author-name h4"><?php the_title(); ?></h3>
-														<?php if ($profession) : ?>
-															<span class="author-profession"><?php echo esc_html($profession); ?></span>
-														<?php endif; ?>
+										<div class="testimonial-review-card card testimonial-modal-trigger">
+											<div class="review-content">
+
+												<div class="review-header">
+													<div class="review-author">
+														<div>
+															<h3 class="author-name h4"><?php the_title(); ?></h3>
+															<?php if ($profession) : ?>
+																<span class="author-profession"><?php echo esc_html($profession); ?></span>
+															<?php endif; ?>
+														</div>
 													</div>
+
 												</div>
-												<button class="btn btn__white btn--icon testimonial-modal-trigger" aria-label="<?php _e('Lire le témoignage complet', 'mars'); ?>"><i class="fa fa-plus"></i></button>
-											</div>
-											<div class="review-text">
-												<?php echo get_the_excerpt(); ?>
+												<div class="review-text">
+													<?php echo get_the_excerpt(); ?>
+												</div>
 											</div>
 											<div class="review-footer">
 												<?php if ($promo) : ?>
