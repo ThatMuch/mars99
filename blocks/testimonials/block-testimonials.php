@@ -163,9 +163,7 @@ if ($source_type === 'google_reviews') {
 															<img src="<?php echo get_stylesheet_directory_uri(); ?>/blocks/google-reviews/icon-google.svg" alt="Logo Google" loading="lazy">
 														</span>
 													</div>
-													<!-- <?php if ($long_text) : ?>
-														<button class="btn btn__white btn--icon testimonial-modal-trigger" aria-label="<?php _e('Lire l\'avis complet', 'mars'); ?>"><i class="fa fa-plus"></i></button>
-													<?php endif; ?> -->
+
 												</div>
 												<div class="review-text">
 													<?php echo esc_html($long_text ? mb_substr($review['text'], 0, 200) . '…' : $review['text']); ?>
@@ -181,16 +179,16 @@ if ($source_type === 'google_reviews') {
 												<span class="review-date"><?php echo esc_html($review['relative_time']); ?></span>
 											</div>
 
-											<?php if ($long_text) : ?>
-												<div class="testimonial-full-content" style="display:none;" aria-hidden="true">
-													<div class="modal-author"><?php echo esc_html($review['author']); ?></div>
-													<div class="modal-profession"></div>
-													<div class="modal-date"><?php echo esc_html($review['relative_time']); ?></div>
-													<div class="modal-rating"><?php echo intval($review['rating']); ?></div>
-													<div class="modal-text"><?php echo nl2br(esc_html($review['text'])); ?></div>
-													<div class="modal-promo"></div>
-												</div>
-											<?php endif; ?>
+
+											<div class="testimonial-full-content" style="display:none;" aria-hidden="true">
+												<div class="modal-author"><?php echo esc_html($review['author']); ?></div>
+												<div class="modal-profession"></div>
+												<div class="modal-date"><?php echo esc_html($review['relative_time']); ?></div>
+												<div class="modal-rating"><?php echo intval($review['rating']); ?></div>
+												<div class="modal-text"><?php echo nl2br(esc_html($review['text'])); ?></div>
+												<div class="modal-promo"></div>
+											</div>
+
 										</div>
 									</div>
 								<?php endforeach; ?>

@@ -32,7 +32,7 @@ function mars_get_google_reviews($place_id, $api_key, $count = null, $min_rating
 	$limit_reviews = (!empty($count) && is_numeric($count) && $count > 0);
 	$max_reviews   = $limit_reviews ? intval($count) : 50;
 
-	$cache_key      = 'mars_google_reviews_' . md5($place_id . $api_key . $max_reviews . $min_rating . 'notranslate');
+	$cache_key      = 'mars_google_reviews_' . md5($place_id . $api_key . $max_reviews . $min_rating . 'notranslate_fr');
 	$cached_reviews = get_transient($cache_key);
 
 	if (false !== $cached_reviews) {
@@ -43,11 +43,12 @@ function mars_get_google_reviews($place_id, $api_key, $count = null, $min_rating
 	}
 
 	$request_url = add_query_arg(array(
-		'place_id'              => $place_id,
-		'fields'                => 'name,rating,reviews,url,user_ratings_total',
-		'reviews_sort'          => 'newest',
+		'place_id'                => $place_id,
+		'fields'                  => 'name,rating,reviews,url,user_ratings_total',
+		'reviews_sort'            => 'newest',
 		'reviews_no_translations' => 'true',
-		'key'                   => $api_key,
+		'language'                => 'fr',
+		'key'                     => $api_key,
 	), 'https://maps.googleapis.com/maps/api/place/details/json');
 
 	$response = wp_remote_get($request_url);
@@ -158,7 +159,7 @@ function mars_update_all_google_reviews()
 				if ($place_id && $api_key) {
 					$limit        = (!empty($count) && is_numeric($count) && $count > 0);
 					$max          = $limit ? intval($count) : 50;
-					$cache_key    = 'mars_google_reviews_' . md5($place_id . $api_key . $max . $min_rating . 'notranslate');
+					$cache_key    = 'mars_google_reviews_' . md5($place_id . $api_key . $max . $min_rating . 'notranslate_fr');
 					delete_transient($cache_key);
 				}
 			}
