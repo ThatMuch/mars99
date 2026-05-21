@@ -50,6 +50,26 @@
     box-shadow: 0 5px 15px rgb(0 0 0 / 12%);
   }
 
+  .average-rating {
+    text-align: center;
+    background-color: $secondary-50;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+    .rating-value {
+      font-size: 2rem;
+    }
+    .rating-stars i {
+      color: $secondary-500;
+    }
+
+    .based-on {
+      color: $secondary-900;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
   .review-content {
     padding: 1.5rem;
   }

@@ -104,9 +104,41 @@ if ($source_type === 'google_reviews') {
 					</div>
 				</div>
 
-				<div class="col col-md-4 d-flex align-items-end justify-content-end">
+				<?php if (!empty($reviews_data) && !$reviews_data['error']) : ?>
+					<div class="rating-summary col col-md-3">
+						<div class="average-rating">
+							<span class="rating-value"><?php echo number_format($reviews_data['rating'], 1); ?></span>
+							<div class="rating-stars">
+								<?php
+								$rating = $reviews_data['rating'];
+								for ($i = 1; $i <= 5; $i++) {
+									if ($i <= $rating) {
+										echo '<i class="fas fa-star"></i>';
+									} elseif ($i - 0.5 <= $rating) {
+										echo '<i class="fas fa-star-half-alt"></i>';
+									} else {
+										echo '<i class="far fa-star"></i>';
+									}
+								}
+								?>
+							</div>
+							<a href="<?php echo esc_url($reviews_data['url'] ?? '#'); ?>" target="_blank" class="based-on">
+								<?php
+								$user_ratings_total = 0;
+								if (isset($reviews_data['user_ratings_total']) && $reviews_data['user_ratings_total'] > 0) {
+									$user_ratings_total = $reviews_data['user_ratings_total'];
+								} else {
+									// Fallback: utiliser le nombre d'avis récupérés
+									$user_ratings_total = count($reviews_data['reviews']);
+								}
 
-				</div>
+								echo $user_ratings_total;
+								?>
+								avis Google <i class="ml-1 fa-solid fa-arrow-up-right-from-square"></i>
+							</a>
+						</div>
+					</div>
+				<?php endif; ?>
 			</div>
 
 			<?php if ($has_items) : ?>
