@@ -4,37 +4,48 @@
 $header-height: 80px; // Default fallback if not defined globally
 
 .mars-stacked-cards {
-	position: relative;
-	padding: $spacing-xl 0;
+  position: relative;
+  padding: $spacing-xl 0;
 
-	&__inner {
-		display: flex;
-		flex-direction: column;
-		gap: $spacing-xl; // Space between cards when not stacked or initial gap
-		position: relative;
-	}
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl; // Space between cards when not stacked or initial gap
+    position: relative;
+  }
 
-	.card {
-		padding: 48px;
-	}
+  .card {
+    padding: 48px;
+    h3 {
+      @include respond-to(xs) {
+        font-size: 3rem !important;
+      }
+      @include respond-to(md) {
+        font-size: 4rem !important;
+      }
+      @include respond-to(xl) {
+        font-size: 6rem !important;
+      }
+    }
+  }
 
-	// Target direct children which will be the blocks inside
-	:where(.block-editor-inner-blocks > .block-editor-block-list__layout)>*,
+  // Target direct children which will be the blocks inside
+  :where(.block-editor-inner-blocks > .block-editor-block-list__layout)>*,
 	// Editor specific selector
 	&__inner>* {
-		position: sticky;
-		top: calc($header-height + $spacing-lg); // Start sticking below header
-		border-radius: $border-radius-lg;
-		transform-origin: center top;
-		margin-bottom: $spacing-xl; // Essential for the scroll space to allow stacking
+    position: sticky;
+    top: calc($header-height + $spacing-lg); // Start sticking below header
+    border-radius: $border-radius-lg;
+    transform-origin: center top;
+    margin-bottom: $spacing-xl; // Essential for the scroll space to allow stacking
 
-		// Stacking Logic Loop
-		// We create a loop to offset each subsequent card slightly
-		@for $i from 1 through 10 {
-			&:nth-child(#{$i}) {
-				top: calc(#{$header-height} + #{$spacing-lg} + (#{$i - 1} * 2rem));
-				z-index: $i;
-			}
-		}
-	}
+    // Stacking Logic Loop
+    // We create a loop to offset each subsequent card slightly
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        top: calc(#{$header-height} + #{$spacing-lg} + (#{$i - 1} * 2rem));
+        z-index: $i;
+      }
+    }
+  }
 }
