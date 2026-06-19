@@ -3,13 +3,13 @@
 @use "../abstracts/mixins" as *;
 @use "sass:map";
 // Styles de base pour le thème enfant
-@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
 
 // Typographie de base
 body {
   font-family: $font-main;
   font-size: $font-size-base;
-  font-weight: 500;
+  font-weight: 400;
   line-height: $line-height-base;
   color: $color-text-default;
   overflow-x: hidden;
@@ -33,7 +33,6 @@ hr:not(.no-animation) {
 }
 
 @prefers-reduced-motion {
-
   p,
   h2,
   h3,
@@ -103,7 +102,6 @@ h6,
   font-size: $b1-size;
   font-weight: 500;
   line-height: 150%;
-
 }
 
 h3,
@@ -130,7 +128,6 @@ h6,
   font-size: $b1-size;
   font-weight: 500;
   line-height: 150%;
-
 }
 
 // Liens

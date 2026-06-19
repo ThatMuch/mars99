@@ -2,39 +2,39 @@
 // Basées sur les variables CSS du thème parent
 @use "sass:map";
 /* Primitives - default */
-$primary-50: #FFF7FBFF;
-$primary-100: #FFE7F6FF;
-$primary-200: #FFD8EFFF;
-$primary-300: #FFCAE6FF;
-$primary-400: #FFB9DEFF;
-$primary-500: #FAA4D1FF;
-$primary-600: #F489C2FF;
-$primary-700: #BC408BFF;
-$primary-800: #911264FF;
-$primary-900: #700550FF;
-$primary-950: #53053CFF;
-$secondary-50: #DEF8F7FF;
-$secondary-100: #CDF1F4FF;
-$secondary-200: #B9E7EBFF;
-$secondary-300: #A1DBDFFF;
-$secondary-400: #84CCCFFF;
-$secondary-500: #50B6BDFF;
-$secondary-600: #1EA1A9FF;
-$secondary-700: #16949AFF;
-$secondary-800: #007C84FF;
-$secondary-900: #175559FF;
-$secondary-950: #103C3FFF;
-$neutral-50: #F6F6F7FF;
-$neutral-100: #EBEBEEFF;
-$neutral-200: #D5D5D8FF;
-$neutral-300: #D5D5D8FF;
-$neutral-400: #898A91FF;
-$neutral-500: #6B6B75FF;
-$neutral-600: #56565EFF;
-$neutral-700: #45454CFF;
-$neutral-800: #3B3B40FF;
-$neutral-900: #343537FF;
-$neutral-950: #232325FF;
+$primary-50: #fff7fbff;
+$primary-100: #ffe7f6ff;
+$primary-200: #ffd8efff;
+$primary-300: #ffcae6ff;
+$primary-400: #ffb9deff;
+$primary-500: #faa4d1ff;
+$primary-600: #f489c2ff;
+$primary-700: #bc408bff;
+$primary-800: #911264ff;
+$primary-900: #700550ff;
+$primary-950: #53053cff;
+$secondary-50: #def8f7ff;
+$secondary-100: #cdf1f4ff;
+$secondary-200: #b9e7ebff;
+$secondary-300: #a1dbdfff;
+$secondary-400: #84cccfff;
+$secondary-500: #50b6bdff;
+$secondary-600: #1ea1a9ff;
+$secondary-700: #16949aff;
+$secondary-800: #007c84ff;
+$secondary-900: #175559ff;
+$secondary-950: #103c3fff;
+$neutral-50: #f6f6f7ff;
+$neutral-100: #ebebeeff;
+$neutral-200: #d5d5d8ff;
+$neutral-300: #d5d5d8ff;
+$neutral-400: #898a91ff;
+$neutral-500: #6b6b75ff;
+$neutral-600: #56565eff;
+$neutral-700: #45454cff;
+$neutral-800: #3b3b40ff;
+$neutral-900: #343537ff;
+$neutral-950: #232325ff;
 $black-100: #000000ff;
 $white-100: #ffffffff;
 $white-75: rgba(255, 255, 255, 0.75);
@@ -66,7 +66,7 @@ $interface-color-background-primary: $primary-50;
 $interface-color-background-secondary: $secondary-50;
 
 // Text
-$color-text-default: $neutral-700;
+$color-text-default: $neutral-500;
 $color-text-black: $neutral-950;
 $color-text-grey: $neutral-700;
 $color-text-reverse: $white-100;
@@ -84,7 +84,7 @@ $line-height-base: 1.5;
 $font-size-xs: clamp(0.75rem, 0.75vw, 0.75rem); // 12px
 $font-size-sm: clamp(0.875rem, 0.875vw, 0.875rem); // 14px
 $font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem); // 16px
-$font-size-lg: clamp(1.125rem, 0.40vw + 1.1rem, 1.125rem); // 18px
+$font-size-lg: clamp(1.125rem, 0.4vw + 1.1rem, 1.125rem); // 18px
 $font-size-xl: clamp(1.25rem, 0.61vw + 1.31rem, 1.58rem); // 20px
 $font-size-xxl: clamp(1.56rem, 1vw + 1.31rem, 2.11rem); // 24px
 $font-size-3xl: clamp(1.95rem, 1.56vw + 1.56rem, 2.81rem); // 32px
