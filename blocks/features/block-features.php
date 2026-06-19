@@ -63,12 +63,12 @@ $button = get_field('main_button');
 			</div>
 		<?php endif; ?>
 
-		<?php if ($features) : 
+		<?php if ($features) :
 			$grid_class = 'feature__grid';
 			if (count($features) === 4) {
 				$grid_class .= ' feature__grid--count-4';
 			}
-			?>
+		?>
 			<div class="<?php echo esc_attr($grid_class); ?>">
 				<?php foreach ($features as $feature) : ?>
 
@@ -79,10 +79,10 @@ $button = get_field('main_button');
 							</div>
 						<?php endif; ?>
 						<?php if (!empty($feature['title'])) : ?>
-							<h3 class="feature-title h4 mb-2"><?php echo esc_html($feature['title']); ?></h3>
+							<h3 class="feature-title h4 mb-2 no-animation"><?php echo esc_html($feature['title']); ?></h3>
 						<?php endif; ?>
 						<?php if (!empty($feature['description'])) : ?>
-							<div class="feature-description"><?php echo $feature['description']; ?></div>
+							<div class="feature-description no-animation"><?php echo $feature['description']; ?></div>
 						<?php endif; ?>
 					</div>
 
