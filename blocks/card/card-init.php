@@ -66,6 +66,19 @@ function register_card_block()
 					'return_format' => 'value',
 				),
 				array(
+					'key' => 'field_card_format',
+					'label' => 'Format',
+					'name' => 'format',
+					'type' => 'select',
+					'choices' => array(
+						'card' => 'Carte',
+						'list' => 'Liste',
+					),
+					'default_value' => 'card',
+					'ui' => 1,
+					'return_format' => 'value',
+				),
+				array(
 					'key' => 'field_card_icon',
 					'label' => 'Icône',
 					'name' => 'icon',

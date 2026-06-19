@@ -27,6 +27,7 @@ $title = get_field('title');
 $description = get_field('description');
 $excerpt = get_field('excerpt');
 $style = get_field('style');
+$format = get_field('format');
 // Mode preview avec données factices
 if ($is_preview && empty($title)) {
 	$title = 'Titre de la carte';
@@ -35,7 +36,7 @@ if ($is_preview && empty($title)) {
 }
 ?>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> card-block-<?php echo esc_attr($style); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> card-block-<?php echo esc_attr($style); ?> <?php echo ($format === 'list') ? 'list' : ''; ?>">
 
 	<?php if ($icon): ?>
 		<div class="card-icon">
