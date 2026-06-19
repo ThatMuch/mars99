@@ -51,10 +51,6 @@
       font-size: $font-size-xl;
       line-height: $line-height-base;
       margin-bottom: $spacing-xl;
-      p,
-      span {
-        animation: none !important;
-      }
     }
   }
 
@@ -101,6 +97,10 @@
 
       p {
         margin-bottom: 0;
+      }
+      p,
+      span {
+        animation: none !important;
       }
     }
 
