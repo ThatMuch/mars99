@@ -19,14 +19,23 @@
   border-radius: 0.75rem;
   background: rgba($neutral-50, 0.3);
   border: 1px solid $neutral-100;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: $shadow-lg;
+  }
 
   &.card-block-primary {
     background: rgba($primary-50, 0.3);
     border: 1px solid $primary-100;
+    &:hover {
+      box-shadow: $shadow-lg-primary;
+    }
 
     .card-icon {
       background-color: $primary-100;
-      color: $primary-500;
+      color: $primary-800;
     }
   }
 
@@ -34,16 +43,20 @@
     background: rgba($secondary-50, 0.3);
     border: 1px solid $secondary-100;
 
+    &:hover {
+      box-shadow: $shadow-lg-secondary;
+    }
+
     .card-icon {
       background-color: $secondary-100;
-      color: $secondary-500;
+      color: $secondary-800;
     }
   }
 }
 
 .card-icon {
   background-color: $neutral-100;
-  color: $neutral-500;
+  color: $neutral-700;
   display: flex;
   width: 3.25rem;
   height: 3.25rem;

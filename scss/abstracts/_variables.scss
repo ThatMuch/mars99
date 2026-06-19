@@ -166,6 +166,15 @@ $shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
 $shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 6px 16px 0 rgba(44, 93, 133, 0.15);
 $shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+$shadow-sm-primary: 0 1px 3px rgba($color-primary, 0.12);
+$shadow-md-primary: 0 4px 6px rgba($color-primary, 0.1);
+$shadow-lg-primary: 0 6px 16px 0 rgba($color-primary, 0.15);
+$shadow-xl-primary: 0 20px 40px rgba($color-primary, 0.2);
+
+$shadow-sm-secondary: 0 1px 3px rgba($color-secondary, 0.12);
+$shadow-md-secondary: 0 4px 6px rgba($color-secondary, 0.1);
+$shadow-lg-secondary: 0 6px 16px 0 rgba($color-secondary, 0.15);
+$shadow-xl-secondary: 0 20px 40px rgba($color-secondary, 0.2);
 
 // Z-index
 $z-dropdown: 1000;
