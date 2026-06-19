@@ -1,7 +1,6 @@
 @use "../../scss/abstracts/variables" as *;
 @use "../../scss/abstracts/mixins" as *;
 
-
 .features-block {
   color: $white-100;
   display: flex;
@@ -52,6 +51,10 @@
       font-size: $font-size-xl;
       line-height: $line-height-base;
       margin-bottom: $spacing-xl;
+      p,
+      span {
+        animation: none !important;
+      }
     }
   }
 
