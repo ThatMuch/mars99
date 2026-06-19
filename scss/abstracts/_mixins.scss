@@ -51,12 +51,14 @@
   box-shadow: $shadow;
 }
 
-@mixin flex-container($direction: row,
+@mixin flex-container(
+  $direction: row,
   $wrap: wrap,
   $justify: flex-start,
   $align: stretch,
   $gap: $spacing-lg,
-  $max-width: $breakpoint-xl) {
+  $max-width: $breakpoint-xl
+) {
   max-width: $max-width;
   margin: 0 auto;
   padding: 0 $spacing-lg;
@@ -81,9 +83,11 @@
 }
 
 // Mixin pour les boutons
-@mixin button-style($bg-color,
+@mixin button-style(
+  $bg-color,
   $text-color: $white-100,
-  $hover-bg: color.adjust($bg-color, $lightness: -10%)) {
+  $hover-bg: color.adjust($bg-color, $lightness: -10%)
+) {
   background-color: $bg-color;
   color: $text-color;
   border: none;
@@ -108,7 +112,11 @@
 }
 
 // Mixin pour les cartes
-@mixin card-style($padding: $spacing-lg, $background: $white-100, $shadow: $shadow-lg) {
+@mixin card-style(
+  $padding: $spacing-lg,
+  $background: $white-100,
+  $shadow: $shadow-lg
+) {
   background: $background;
   border-radius: $border-radius-xl;
   padding: $padding;
@@ -158,7 +166,7 @@
   flex-wrap: wrap;
   gap: $gap;
 
-  >* {
+  > * {
     flex: 1 1 calc((100% - #{$gap} * #{$columns - 1}) / #{$columns});
   }
 }
@@ -186,7 +194,7 @@
     padding-top: calc(#{$height} / #{$width} * 100%);
   }
 
-  >* {
+  > * {
     position: absolute;
     top: 0;
     left: 0;

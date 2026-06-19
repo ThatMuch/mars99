@@ -31,6 +31,7 @@ function mars_load_blocks()
 		'timeline',
 		'cta',
 		'testimonials',
+		'testimonials-slider',
 		'stacked-cards',
 		'faq',
 		'ouvrage-grid',

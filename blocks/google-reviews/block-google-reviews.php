@@ -47,7 +47,7 @@ $limit_count = (!empty($reviews_count) && is_numeric($reviews_count) && $reviews
 // Récupérer les avis
 $reviews_data = array();
 if ($place_id && $api_key) {
-	$reviews_data = abyssenergy_get_google_reviews($place_id, $api_key, $limit_count, $min_rating, $cache_time);
+	$reviews_data = mars_get_google_reviews($place_id, $api_key, $limit_count, $min_rating, $cache_time);
 }
 
 // Filtrer les avis pour ne garder que ceux qui ont du texte

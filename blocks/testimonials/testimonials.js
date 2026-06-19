@@ -43,7 +43,6 @@
                          <h3 class="modal-author-name h3"></h3>
                          <div class="modal-author-details">
                             <span class="modal-author-profession"></span>
-                        <span class="tag">Promo <span class="modal-author-promo"></span> </span>
                          </div>
                     </div>
                     <div class="modal-review-text no-animation"></div>
@@ -119,19 +118,11 @@
         const author = fullContent.querySelector('.modal-author').innerHTML;
         const profession = fullContent.querySelector('.modal-profession').innerHTML;
         const text = fullContent.querySelector('.modal-text').innerHTML;
-        const promo = fullContent.querySelector('.modal-promo').innerHTML;
+
 
         modal.querySelector('.modal-author-name').innerHTML = author;
         modal.querySelector('.modal-author-profession').innerHTML = profession;
         modal.querySelector('.modal-review-text').innerHTML = text;
-
-        const promoEl = modal.querySelector('.modal-author-promo');
-        if (promo) {
-            promoEl.innerHTML = promo;
-            promoEl.style.display = 'inline-block';
-        } else {
-            promoEl.style.display = 'none';
-        }
 
         showTestimonialModal(modal);
     }
