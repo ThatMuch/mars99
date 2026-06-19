@@ -17,29 +17,41 @@
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
   border-radius: 0.75rem;
-  background: $neutral-50;
+  background: rgba($neutral-50, 0.3);
+  border: 1px solid $neutral-100;
 
   &.card-block-primary {
-    background-color: $primary-50;
+    background: rgba($primary-50, 0.3);
+    border: 1px solid $primary-100;
+
+    .card-icon {
+      background-color: $primary-100;
+      color: $primary-500;
+    }
   }
 
   &.card-block-secondary {
-    background-color: $secondary-50;
+    background: rgba($secondary-50, 0.3);
+    border: 1px solid $secondary-100;
+
+    .card-icon {
+      background-color: $secondary-100;
+      color: $secondary-500;
+    }
   }
 }
 
-
-
-.card-image {
-  background-color: $white-75;
+.card-icon {
+  background-color: $neutral-100;
+  color: $neutral-500;
   display: flex;
   width: 3.25rem;
-  height: 3.2825rem;
-  padding: 0.26rem;
+  height: 3.25rem;
   justify-content: center;
   align-items: center;
-  gap: 0.325rem;
   border-radius: 100%;
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .card-title {
@@ -71,8 +83,6 @@
     height: 100%;
   }
 
-
-
   .card-title {
     font-size: 1.25rem;
   }
@@ -83,7 +93,6 @@
 }
 
 @media (width <=480px) {
-
   .card-title {
     font-size: 1.125rem;
   }

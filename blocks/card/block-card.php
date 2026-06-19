@@ -22,7 +22,7 @@ if (!empty($block['align'])) {
 }
 
 // Récupérer les champs
-$image = get_field('image');
+$icon = get_field('icon');
 $title = get_field('title');
 $description = get_field('description');
 $excerpt = get_field('excerpt');
@@ -31,30 +31,25 @@ $style = get_field('style');
 if ($is_preview && empty($title)) {
 	$title = 'Titre de la carte';
 	$description = 'Description de la carte avec du contenu d\'exemple pour montrer le rendu final.';
-	$image = array(
-		'alt' => 'Image d\'exemple',
-		'url' => get_template_directory_uri() . '/images/abyss-energy-logo.webp'
-	);
+	$icon = 'fas fa-star';
 }
 ?>
 
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> card-block-<?php echo esc_attr($style); ?>">
 
-	<?php if ($image): ?>
-		<div class="card-image">
-			<img src="<?php echo esc_url($image['url']); ?>"
-				alt="<?php echo esc_attr($image['alt']); ?>"
-				class="no-animate"
-				loading="lazy">
+	<?php if ($icon): ?>
+		<div class="card-icon">
+			<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
 		</div>
 	<?php endif; ?>
-	<?php if ($title): ?>
-		<h4 class="card-title"><?php echo wp_kses_post($title); ?></h4>
-	<?php endif; ?>
-	<?php if ($description): ?>
-		<div class="card-description">
-			<?php echo wp_kses_post($description); ?>
-		</div>
-	<?php endif; ?>
-
+	<div>
+		<?php if ($title): ?>
+			<h4 class="card-title"><?php echo wp_kses_post($title); ?></h4>
+		<?php endif; ?>
+		<?php if ($description): ?>
+			<div class="card-description">
+				<?php echo wp_kses_post($description); ?>
+			</div>
+		<?php endif; ?>
+	</div>
 </div>
