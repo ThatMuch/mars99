@@ -217,7 +217,7 @@ add_action('enqueue_block_editor_assets', 'mars_enqueue_block_editor_assets');
  */
 function mars_add_editor_styles()
 {
-	add_editor_style('css/admin-theme-mars.css');
+	add_editor_style('css/admin-editor-styles.css');
 }
 add_action('admin_init', 'mars_add_editor_styles');
 

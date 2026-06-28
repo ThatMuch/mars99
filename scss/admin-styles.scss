@@ -1,8 +1,8 @@
-/* ==========================================================================
-   STYLES POUR L'ÉDITEUR DE BLOCS GUBENBERG (ADMINISTRATION)
-   ========================================================================== */
+// ==========================================================================
+// STYLES POUR L'ÉDITEUR DE BLOCS GUBENBERG (ADMINISTRATION)
+// ==========================================================================
 
-/* Rétablir la police système (-apple-system) par défaut pour éviter le serif (Georgia/Times New Roman) introduit par WordPress 6.7+ */
+// Rétablir la police système (-apple-system) par défaut pour éviter le serif (Georgia/Times New Roman) introduit par WordPress 6.7+
 body.editor-styles-wrapper,
 .editor-styles-wrapper,
 .editor-styles-wrapper p,
@@ -15,7 +15,7 @@ body.editor-styles-wrapper,
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 }
 
-/* Styles de prévisualisation des blocs personnalisés (ex: placeholders) */
+// Styles de prévisualisation des blocs personnalisés (ex: placeholders)
 .block-preview-message {
   background-color: #eef7feff;
   border: 1px dashed #cce4ff;
