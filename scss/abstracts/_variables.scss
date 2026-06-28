@@ -37,6 +37,8 @@ $neutral-900: #343537ff;
 $neutral-950: #232325ff;
 $black-100: #000000ff;
 $white-100: #ffffffff;
+$white-90: rgba(255, 255, 255, 0.9);
+$white-80: rgba(255, 255, 255, 0.8);
 $white-75: rgba(255, 255, 255, 0.75);
 $white-50: rgba(255, 255, 255, 0.5);
 $white-25: rgba(255, 255, 255, 0.25);
@@ -79,6 +81,7 @@ $font-title: "Cal Sans", sans-serif;
 $font-main: "Cal Sans", sans-serif;
 $font-size-sm: 16px;
 $line-height-base: 1.5;
+$letterspacing-base: 1px;
 
 // Tailles de police
 $font-size-xs: clamp(0.75rem, 0.75vw, 0.75rem); // 12px

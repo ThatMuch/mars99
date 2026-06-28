@@ -69,20 +69,23 @@ if ($is_preview && empty($cards)) {
 						$titre = $card['titre'] ?? '';
 						$description = $card['description'] ?? '';
 						$number = $index + 1;
+						$icon = $card['icon'] ?? '';
 
 						// Determine SVG background to use based on style
-						$baground_class = ($style === 'primary') ? 'is-primary' : 'is-light';
+						$style_classes = [
+							'primary'         => 'is-primary',
+							'secondary'       => 'is-secondary',
+							'secondary-light' => 'is-secondary-light',
+						];
+						$background_class = $style_classes[$style] ?? 'is-light';
 					?>
-						<div class="cards-slider__card <?php echo esc_attr($baground_class); ?>">
-							<div class="cards-slider__card-bg">
-								<?php if ($style === 'primary'): ?>
-									<img src="<?php echo esc_url(get_template_directory_uri() . '/img/Yoga_Vector_Primary.svg'); ?>" alt="" aria-hidden="true" loading="lazy">
-								<?php else: ?>
-									<img src="<?php echo esc_url(get_template_directory_uri() . '/img/Yoga_Vector_White.svg'); ?>" alt="" aria-hidden="true" loading="lazy">
-								<?php endif; ?>
-							</div>
+						<div class="cards-slider__card <?php echo esc_attr($background_class); ?>">
 							<div class="cards-slider__card-content">
-								<span class="cards-slider__number"><?php echo esc_html($number); ?></span>
+								<?php if ($icon): ?>
+									<div class="card-icon">
+										<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
+									</div>
+								<?php endif; ?>
 								<h3 class="cards-slider__title"><?php echo esc_html($titre); ?></h3>
 								<div class="cards-slider__description">
 									<?php echo wp_kses_post($description); ?>
