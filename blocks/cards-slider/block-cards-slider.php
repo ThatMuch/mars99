@@ -55,8 +55,36 @@ if ($is_preview && empty($cards)) {
 ?>
 
 <?php if ($is_preview): ?>
-	<div class="cards-slider-block">
-		<p class="cards-slider__empty"><?php _e('Aucune carte à afficher. Veuillez en ajouter dans les paramètres du bloc.', 'mars'); ?></p>
+	<div>
+		<?php if (empty($cards)): ?>
+			<p class="block-preview-message"><?php _e('Aucune carte à afficher. Veuillez en ajouter dans les paramètres du bloc.', 'mars'); ?></p>
+		<?php else: ?>
+			<div class="cards-slider__container">
+				<div class="cards-slider__track preview-cards-slider">
+					<?php foreach ($cards as $index => $card):
+						$style = $card['style'] ?? 'light';
+						$titre = $card['titre'] ?? '';
+						$description = $card['description'] ?? '';
+						$number = $index + 1;
+						$icon = $card['icon'] ?? '';
+					?>
+						<div class="cards-slider__card is-light block-preview-message">
+							<div class="cards-slider__card-content">
+								<?php if ($icon): ?>
+									<div class="card-icon">
+										<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
+									</div>
+								<?php endif; ?>
+								<h3 class="cards-slider__title"><?php echo esc_html($titre); ?></h3>
+								<div class="cards-slider__description">
+									<?php echo wp_kses_post($description); ?>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 <?php else: ?>
 

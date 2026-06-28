@@ -33,3 +33,29 @@ body.editor-styles-wrapper,
   border-radius: 8px;
   border: 2px solid #f70;
 }
+
+.preview-faq-item {
+  background-color: #eef7feff;
+  border: 1px dashed #cce4ff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 1rem;
+}
+
+.preview-cards-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  gap: 20px;
+  -webkit-overflow-scrolling: touch;
+
+  .cards-slider__card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    margin-bottom: 0;
+  }
+}
+
