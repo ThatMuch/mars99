@@ -24,12 +24,12 @@ body.editor-styles-wrapper,
   border-radius: 1rem;
 }
 
-.preview-map-placeholder {
-  background-color: #ddedfb;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  border: 2px solid #f70;
+.preview-faq-item {
+  background-color: #eef7feff;
+  border: 1px dashed #cce4ff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 1rem;
 }
+
+

@@ -29,28 +29,38 @@ $excerpt = get_field('excerpt');
 $style = get_field('style');
 $format = get_field('format');
 // Mode preview avec données factices
-if ($is_preview && empty($title)) {
-	$title = 'Titre de la carte';
-	$description = 'Description de la carte avec du contenu d\'exemple pour montrer le rendu final.';
-	$icon = 'fas fa-star';
-}
+
 ?>
+<?php if ($is_preview) : ?>
+	<div id="<?php echo esc_attr($id); ?>" class="block-preview-message">
+		<div class="cta-content">
+			<?php if ($icon): ?>
+				<div class="card-icon">
+					<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
+				</div>
+			<?php endif; ?>
 
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> card-block-<?php echo esc_attr($style); ?> <?php echo ($format === 'list') ? 'list' : ''; ?>">
-
-	<?php if ($icon): ?>
-		<div class="card-icon">
-			<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
+			<h2 class="cta-title h1"><?php echo esc_html($title); ?></h2>
+			<p class="cta-description"><?php echo wp_kses_post($description); ?></p>
 		</div>
-	<?php endif; ?>
-	<div>
-		<?php if ($title): ?>
-			<h4 class="card-title"><?php echo wp_kses_post($title); ?></h4>
-		<?php endif; ?>
-		<?php if ($description): ?>
-			<div class="card-description">
-				<?php echo wp_kses_post($description); ?>
+	</div>
+<?php elseif (!empty($title) || !empty($description) || !empty($link_url)) : ?>
+	<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?> card-block-<?php echo esc_attr($style); ?> <?php echo ($format === 'list') ? 'list' : ''; ?>">
+
+		<?php if ($icon): ?>
+			<div class="card-icon">
+				<i class="<?php echo esc_attr($icon); ?>" aria-hidden="true"></i>
 			</div>
 		<?php endif; ?>
+		<div>
+			<?php if ($title): ?>
+				<h4 class="card-title"><?php echo wp_kses_post($title); ?></h4>
+			<?php endif; ?>
+			<?php if ($description): ?>
+				<div class="card-description">
+					<?php echo wp_kses_post($description); ?>
+				</div>
+			<?php endif; ?>
+		</div>
 	</div>
-</div>
+<?php endif; ?>

@@ -29,7 +29,14 @@ $faq_items = get_field('faq_items');
 ?>
 
 <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<?php if ($faq_items) : ?>
+	<?php if ($is_preview) : ?>
+		<?php foreach ($faq_items as $index => $item) : ?>
+			<div class="preview-faq-item">
+				<h3 class="preview-faq-question"><?php echo esc_html($item['question']); ?></h3>
+				<p class="preview-faq-answer"><?php echo wp_kses_post($item['answer']); ?></p>
+			</div>
+		<?php endforeach; ?>
+	<?php elseif (!empty($faq_items)) : ?>
 		<div class="faq-accordion">
 			<?php foreach ($faq_items as $index => $item) : ?>
 				<div class="faq-item">
@@ -45,7 +52,5 @@ $faq_items = get_field('faq_items');
 				</div>
 			<?php endforeach; ?>
 		</div>
-	<?php elseif ($is_preview) : ?>
-		<p><em><?php _e('Ajoutez des questions/réponses via l\'éditeur.', 'mars'); ?></em></p>
 	<?php endif; ?>
 </div>
