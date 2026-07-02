@@ -109,3 +109,31 @@ function mars_remove_width_and_height_attribute($html)
 add_filter('get_image_tag', 'mars_remove_width_and_height_attribute', 10);
 add_filter('post_thumbnail_html', 'mars_remove_width_and_height_attribute', 10);
 add_filter('image_send_to_editor', 'mars_remove_width_and_height_attribute', 10);
+
+/**
+ * Compter les pistes d'un article "playlist" (CPT palytlist)
+ *
+ * Le champ ACF "tracks" (repeater) est rattaché au bloc acf/playlist et
+ * ses valeurs sont sérialisées directement dans l'attribut "data" du bloc,
+ * au sein de post_content, plutôt que dans wp_postmeta. Ce "data" contient
+ * le nombre de lignes du repeater sous la clé "tracks" (même convention
+ * que la meta ACF standard d'un repeater).
+ *
+ * @param int $post_id ID de l'article playlist
+ * @return int Nombre de pistes
+ */
+function mars_get_playlist_track_count($post_id)
+{
+	$post = get_post($post_id);
+	if (!$post) {
+		return 0;
+	}
+
+	foreach (parse_blocks($post->post_content) as $block) {
+		if ($block['blockName'] === 'acf/playlist') {
+			return (int) ($block['attrs']['data']['tracks'] ?? 0);
+		}
+	}
+
+	return 0;
+}

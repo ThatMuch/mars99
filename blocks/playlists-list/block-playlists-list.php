@@ -57,6 +57,11 @@ if (!empty($block['className'])) {
 								}
 								?>
 							</div>
+							<span class="playlists-list__count mt-2">
+								<?php
+								echo mars_get_playlist_track_count(get_the_ID()) . ' ' . __('exercices', 'mars');
+								?>
+							</span>
 						</div>
 						<div class="playlists-list__action">
 							<span class="playlists-list__icon-btn">
