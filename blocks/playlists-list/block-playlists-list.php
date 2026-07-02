@@ -29,44 +29,49 @@ if (!empty($block['className'])) {
 	$className .= ' ' . $block['className'];
 }
 ?>
-
-<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
-	<div class="playlists-list__grid">
-		<?php if ($playlists->have_posts()) : ?>
-			<?php while ($playlists->have_posts()) : $playlists->the_post(); ?>
-				<a href="<?php the_permalink(); ?>" class="playlists-list__card">
-					<div class="playlists-list__thumbnail">
-						<?php if (has_post_thumbnail()) : ?>
-							<?php the_post_thumbnail('medium'); ?>
-						<?php else : ?>
-							<div class="playlists-list__thumbnail-placeholder"></div>
-						<?php endif; ?>
-					</div>
-					<div class="playlists-list__content">
-						<h3 class="playlists-list__title"><?php the_title(); ?></h3>
-						<div class="playlists-list__excerpt">
-							<?php
-							if (has_excerpt()) {
-								echo wp_trim_words(get_the_excerpt(), 20);
-							} else {
-								echo wp_trim_words(get_the_content(), 20);
-							}
-							?>
-						</div>
-					</div>
-					<div class="playlists-list__action">
-						<span class="playlists-list__icon-btn">
-							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M4 6H20M4 12H20M4 18H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M18 15L21 18L18 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-							</svg>
-						</span>
-					</div>
-				</a>
-			<?php endwhile; ?>
-			<?php wp_reset_postdata(); ?>
-		<?php else : ?>
-			<p><?php _e('Aucune playlist trouvée.', 'mars'); ?></p>
-		<?php endif; ?>
+<?php if ($is_preview) : ?>
+	<div class="block-preview-message">
+		<p><?php _e('Liste des Playlists', 'mars'); ?></p>
 	</div>
-</div>
+<?php else : ?>
+	<div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
+		<div class="playlists-list__grid">
+			<?php if ($playlists->have_posts()) : ?>
+				<?php while ($playlists->have_posts()) : $playlists->the_post(); ?>
+					<a href="<?php the_permalink(); ?>" class="playlists-list__card">
+						<div class="playlists-list__thumbnail">
+							<?php if (has_post_thumbnail()) : ?>
+								<?php the_post_thumbnail('medium'); ?>
+							<?php else : ?>
+								<div class="playlists-list__thumbnail-placeholder"></div>
+							<?php endif; ?>
+						</div>
+						<div class="playlists-list__content">
+							<h3 class="playlists-list__title"><?php the_title(); ?></h3>
+							<div class="playlists-list__excerpt">
+								<?php
+								if (has_excerpt()) {
+									echo wp_trim_words(get_the_excerpt(), 20);
+								} else {
+									echo wp_trim_words(get_the_content(), 20);
+								}
+								?>
+							</div>
+						</div>
+						<div class="playlists-list__action">
+							<span class="playlists-list__icon-btn">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4 6H20M4 12H20M4 18H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									<path d="M18 15L21 18L18 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</span>
+						</div>
+					</a>
+				<?php endwhile; ?>
+				<?php wp_reset_postdata(); ?>
+			<?php else : ?>
+				<p><?php _e('Aucune playlist trouvée.', 'mars'); ?></p>
+			<?php endif; ?>
+		</div>
+	</div>
+<?php endif; ?>
