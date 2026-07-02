@@ -22,6 +22,8 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/img/LogoQualiopi-300dpi-Avec-Marianne.webp" alt="Logo Qualiopi" class="img-qualiopi">
                 </a>
                 <p>Organisme de formation privé enregistré sous le numéro 11752167375. Cet enregistrement ne vaut pas  agrément de l’État. La certification qualité a été délivréeau titre de la catégorie d’action suivante : Actions de Formation</p>
+                <p>Derniere mise à jour: <?php $last_mod = get_lastpostmodified('blog');
+                                            echo $last_mod ? date('d/m/Y', strtotime($last_mod)) : date('d/m/Y'); ?></p>
             </div>
             <div>
                 <p> <?php // afficher le titre du nav_menu footer-menu1
