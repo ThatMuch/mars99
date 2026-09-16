@@ -38,6 +38,7 @@ function mars_load_blocks()
 		'cards-slider',
 		'playlist',
 		'playlists-list',
+		'recent-posts',
 	);
 
 	foreach ($blocks as $block) {
