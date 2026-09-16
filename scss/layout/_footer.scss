@@ -3,137 +3,181 @@
 @use "sass:map";
 
 .footer {
-	background: $color-primary;
-	color: $white-50;
-	display: flex;
-	padding: map.get($spacings, "section-sm");
-	flex-direction: column;
-	gap: map.get($spacings, "section-sm");
-	width: 100vw;
+  background: $color-primary;
+  color: $white-50;
+  display: flex;
+  padding: map.get($spacings, "section-sm");
+  flex-direction: column;
+  gap: map.get($spacings, "section-sm");
+  width: 100vw;
 
-	@include respond-to(xs) {
-		padding: 2rem map.get($spacings, "section-sm");
-	}
+  @include respond-to(xs) {
+    padding: 2rem map.get($spacings, "section-sm");
+  }
 
-	li {
-		list-style: none;
-	}
+  li {
+    list-style: none;
+  }
 
-	a {
-		color: $white-100;
-		font-size: 1rem;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 150%;
-		letter-spacing: 0.05rem;
-	}
+  a {
+    color: $white-100;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.05rem;
+  }
 
-	.tagline {
-		font-size: 2.25rem;
-		text-align: right;
-		margin-bottom: 0;
-		color: $white-50;
+  .tagline {
+    font-size: 2.25rem;
+    text-align: right;
+    margin-bottom: 0;
+    color: $white-50;
+    @include respond-to(xs) {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
 
-	}
+  &-links {
+    background-color: initial;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
 
-	&-links {
-		background-color: initial;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		width: 100%;
+    @include respond-to(xs) {
+      flex-direction: column;
+    }
+  }
 
-		@include respond-to(xs) {
-			flex-direction: column;
-		}
-	}
+  &-logo {
+    @include respond-to(xs) {
+      margin: 0 auto;
+    }
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid $white-25;
+    padding-bottom: map.get($spacings, "section-sm");
 
-	.footer-top {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		border-bottom: 1px solid $white-25;
-		padding-bottom: map.get($spacings, "section-sm");
-	}
+    @include respond-to(xs) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 
-	.footer-menu {
-		font-size: $font-size-sm;
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		gap: map.get($spacings, "section-sm");
+  .footer-menu {
+    font-size: $font-size-sm;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: map.get($spacings, "section-sm");
 
-		@include respond-to(xs) {
-			display: block;
-		}
+    @include respond-to(xs) {
+      display: block;
+    }
 
-		img {
-			width: 8.52331rem;
-			margin-bottom: map.get($spacings, "component-md");
-		}
-	}
+    img {
+      width: 8.52331rem;
+      margin-bottom: map.get($spacings, "component-md");
+    }
+  }
 
-	.menu {
-		list-style: none;
-		padding: 0;
+  .menu {
+    list-style: none;
+    padding: 0;
 
-		@include respond-to(xs) {
-			max-width: 100%;
-		}
+    @include respond-to(xs) {
+      max-width: 100%;
+    }
 
-		a {
-			color: $white-100;
+    a {
+      color: $white-100;
 
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-
-		li {
-			padding: $spacing-xs 0;
-		}
-	}
+    li {
+      padding: $spacing-xs 0;
+    }
+  }
 }
 
 .footer-bottom {
-	padding: 0.625rem 3rem;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	color: $white-50;
-	background-color: $primary-950;
+  padding: 0.625rem 3rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  color: $white-50;
+  background-color: $primary-950;
 
-	p {
-		margin: 0;
-		font-size: $font-size-sm;
-	}
+  @include respond-to(xs) {
+    flex-direction: column;
+    padding: map.get($spacings, "section-sm") map.get($spacings, "section-xs");
+    justify-content: start;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+  }
 
-	a {
-		color: $white-50;
-		text-decoration: none;
-		font-size: $font-size-sm;
+  &__menu {
+    display: flex;
+    gap: map.get($spacings, "section-sm");
 
-		&:hover {
-			color: $white-100;
-		}
-	}
+    @include respond-to(xs) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
 
-	.link-thatmuch {
-		margin-left: auto;
-		opacity: 0.5;
-		width: 8.52331rem;
+  p {
+    margin: 0;
+    font-size: $font-size-sm;
+  }
 
-		&:hover {
-			opacity: 1;
-		}
-	}
+  a {
+    color: $white-50;
+    text-decoration: none;
+    font-size: $font-size-sm;
+
+    &:hover {
+      color: $white-100;
+    }
+  }
+
+  .link-thatmuch {
+    margin-left: auto;
+    opacity: 0.5;
+    width: 8.52331rem;
+
+    @include respond-to(xs) {
+      width: 150px;
+      margin-left: 0;
+      display: block;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 // Footer
 #footer-parallax-wrapper {
-	position: fixed;
-	bottom: 0;
-	width: 100vw;
-	z-index: 1; // Behind site-main
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  z-index: 1; // Behind site-main
+
+  // Désactive l'effet parallaxe sur mobile
+  @media (max-width: $breakpoint-md) {
+    position: static;
+  }
 }
