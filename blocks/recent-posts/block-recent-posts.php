@@ -64,6 +64,13 @@ $posts_query = new WP_Query($args);
 			<div class="recent-posts-grid">
 				<?php while ($posts_query->have_posts()): $posts_query->the_post(); ?>
 					<a href="<?php the_permalink(); ?>" class="recent-post-card">
+						<div class="recent-post-card__thumbnail">
+							<?php if (has_post_thumbnail()): ?>
+								<?php the_post_thumbnail('medium_large', ['class' => 'recent-post-card__image no-animation', 'loading' => 'lazy']); ?>
+							<?php else: ?>
+								<div class="recent-post-card__thumbnail-placeholder"></div>
+							<?php endif; ?>
+						</div>
 						<h3 class="recent-post-card__title no-animation"><?php the_title(); ?></h3>
 						<div class="recent-post-card__excerpt no-animation">
 							<?php
