@@ -51,7 +51,7 @@ function mars_get_google_reviews($place_id, $api_key, $count = null, $min_rating
 		'key'                     => $api_key,
 	), 'https://maps.googleapis.com/maps/api/place/details/json');
 
-	$response = wp_remote_get($request_url);
+	$response = wp_remote_get($request_url, array('timeout' => 5));
 
 	if (is_wp_error($response)) {
 		return array('error' => true, 'message' => $response->get_error_message());
