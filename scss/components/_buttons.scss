@@ -178,8 +178,13 @@ input[type="submit"] {
     background: rgba($color-primary, 0.3);
   }
 
-  &:disabled {
+  &:disabled,
+  &.swiper-button-disabled {
+    background-color: $neutral-100;
     border: 1px solid $neutral-200;
+    color: $neutral-400;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .btn__overlay {
@@ -195,8 +200,13 @@ input[type="submit"] {
     background: rgba($color-primary, 0.3);
   }
 
-  &:disabled {
+  &:disabled,
+  &.swiper-button-disabled {
+    background-color: $neutral-100;
     border: 1px solid $neutral-200;
+    color: $neutral-400;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 }
 

@@ -9,7 +9,9 @@
   }
 
   .recent-posts-slider {
-    overflow: hidden;
+    overflow-x: hidden;
+    padding: 1.5rem 0.75rem;
+    margin: -1.5rem -0.75rem;
 
     .swiper-wrapper {
       align-items: stretch;

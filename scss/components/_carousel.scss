@@ -51,11 +51,8 @@
   margin-top: $spacing-lg;
 
   .btn {
-    transition: opacity 0.3s ease;
-
     &.disabled,
     &[disabled] {
-      opacity: 0.5;
       cursor: not-allowed;
       pointer-events: none;
     }

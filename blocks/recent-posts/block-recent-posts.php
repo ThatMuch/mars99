@@ -26,7 +26,7 @@ $is_preview = isset($is_preview) ? $is_preview : false;
 
 $eyebrow = get_field('eyebrow');
 $title = get_field('title');
-$posts_per_page = get_field('posts_per_page') ?: 8;
+$posts_per_page = 8;
 
 $args = array(
 	'post_type'      => 'post',
@@ -68,7 +68,7 @@ $posts_query = new WP_Query($args);
 							<a href="<?php the_permalink(); ?>" class="recent-post-card">
 								<div class="recent-post-card__thumbnail">
 									<?php if (has_post_thumbnail()): ?>
-										<?php the_post_thumbnail('medium_large', ['class' => 'recent-post-card__image', 'loading' => 'lazy']); ?>
+										<?php the_post_thumbnail('medium_large', ['class' => 'recent-post-card__image no-animation', 'loading' => 'lazy']); ?>
 									<?php else: ?>
 										<div class="recent-post-card__thumbnail-placeholder"></div>
 									<?php endif; ?>
