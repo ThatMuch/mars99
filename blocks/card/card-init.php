@@ -124,6 +124,15 @@ function register_card_block()
 					'type' => 'wysiwyg',
 					'required' => 0
 				),
+				array(
+					'key' => 'field_card_link',
+					'label' => 'Bouton',
+					'name' => 'link',
+					'type' => 'link',
+					'instructions' => 'Facultatif. Ajoute un bouton en bas de la carte.',
+					'required' => 0,
+					'return_format' => 'array',
+				),
 			),
 			'location' => array(
 				array(
