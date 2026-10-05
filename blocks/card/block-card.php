@@ -51,6 +51,13 @@ $button_theme = $style === 'primary' || $style === 'secondary' ? $style : 'outli
 
 			<h2 class="cta-title h1"><?php echo esc_html($title); ?></h2>
 			<p class="cta-description"><?php echo wp_kses_post($description); ?></p>
+
+			<?php if ($link_url): ?>
+				<a href="<?php echo esc_url($link_url); ?>" class="card-link btn btn--<?php echo esc_attr($button_theme); ?>" target="<?php echo esc_attr($link_target); ?>">
+					<span class="btn__content"><?php echo esc_html($link_title); ?></span>
+					<span class="btn__overlay"></span>
+				</a>
+			<?php endif; ?>
 		</div>
 	</div>
 <?php elseif (!empty($title) || !empty($description) || !empty($link_url)) : ?>
@@ -71,12 +78,12 @@ $button_theme = $style === 'primary' || $style === 'secondary' ? $style : 'outli
 				</div>
 			<?php endif; ?>
 
-			<?php if ($link_url): ?>
-				<a href="<?php echo esc_url($link_url); ?>" class="card-link btn btn--<?php echo esc_attr($button_theme); ?>" target="<?php echo esc_attr($link_target); ?>">
-					<span class="btn__content"><?php echo esc_html($link_title); ?></span>
-					<span class="btn__overlay"></span>
-				</a>
-			<?php endif; ?>
 		</div>
+		<?php if ($link_url): ?>
+			<a href="<?php echo esc_url($link_url); ?>" class="card-link btn btn--<?php echo esc_attr($button_theme); ?>" target="<?php echo esc_attr($link_target); ?>">
+				<span class="btn__content"><?php echo esc_html($link_title); ?></span>
+				<span class="btn__overlay"></span>
+			</a>
+		<?php endif; ?>
 	</div>
 <?php endif; ?>
