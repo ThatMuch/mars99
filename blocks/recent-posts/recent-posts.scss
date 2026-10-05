@@ -8,15 +8,22 @@
     margin-bottom: 2rem;
   }
 
-  .recent-posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+  .recent-posts-slider {
+    overflow: hidden;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
   }
 
   .recent-post-card {
     display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 1.5rem;
     border-radius: $border-radius-xl;
     background-color: #ffffff;
@@ -46,7 +53,6 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        margin: 0;
       }
     }
 

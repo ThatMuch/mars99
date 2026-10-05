@@ -19,11 +19,11 @@ function register_recent_posts_block()
 	acf_register_block_type(array(
 		'name'              => 'recent-posts',
 		'title'             => __('Derniers Articles', 'mars'),
-		'description'       => __('Affiche les derniers articles du blog dans des cartes.', 'mars'),
+		'description'       => __('Affiche les derniers articles du blog dans un carrousel de cartes.', 'mars'),
 		'render_template'   => 'blocks/recent-posts/block-recent-posts.php',
 		'category'          => 'mars-blocks',
 		'icon'              => 'admin-post',
-		'keywords'          => array('posts', 'articles', 'blog', 'recent'),
+		'keywords'          => array('posts', 'articles', 'blog', 'recent', 'carrousel', 'slider'),
 		'supports'          => array(
 			'align' => true,
 			'mode' => true,
@@ -36,7 +36,12 @@ function register_recent_posts_block()
 					'is_preview' => true
 				)
 			)
-		)
+		),
+		'enqueue_assets'    => function () {
+			wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
+			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
+			wp_enqueue_script('recent-posts-js', get_template_directory_uri() . '/blocks/recent-posts/recent-posts.js', array('swiper-js'), mars_get_file_version('/blocks/recent-posts/recent-posts.js'), true);
+		},
 	));
 
 	if (function_exists('acf_add_local_field_group')) {
@@ -63,7 +68,7 @@ function register_recent_posts_block()
 					'label' => 'Nombre d\'articles à afficher',
 					'name' => 'posts_per_page',
 					'type' => 'number',
-					'default_value' => 4,
+					'default_value' => 8,
 					'min' => 1,
 				)
 			),

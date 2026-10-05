@@ -2,7 +2,7 @@
 
 /**
  * Block Name: Derniers Articles
- * Description: Affiche les derniers articles du blog dans des cartes
+ * Description: Affiche les derniers articles du blog dans un carrousel de cartes
  */
 
 // Créer un id unique pour ce bloc
@@ -26,7 +26,7 @@ $is_preview = isset($is_preview) ? $is_preview : false;
 
 $eyebrow = get_field('eyebrow');
 $title = get_field('title');
-$posts_per_page = get_field('posts_per_page') ?: 4;
+$posts_per_page = get_field('posts_per_page') ?: 8;
 
 $args = array(
 	'post_type'      => 'post',
@@ -41,7 +41,7 @@ $posts_query = new WP_Query($args);
 <?php if ($is_preview): ?>
 	<div class="block-preview-message">
 		<h3><?php echo esc_html($title ?: __('Derniers articles', 'mars')); ?></h3>
-		<p><?php _e('Ceci est un bloc affichant les derniers articles du blog.', 'mars'); ?></p>
+		<p><?php _e('Ceci est un bloc affichant les derniers articles du blog dans un carrousel.', 'mars'); ?></p>
 		<?php if ($posts_query->have_posts()): ?>
 			<p><?php _e('Nombre d\'articles affichés : ', 'mars'); ?> <?php echo esc_attr($posts_query->post_count); ?></p>
 		<?php else: ?>
@@ -61,30 +61,38 @@ $posts_query = new WP_Query($args);
 			</div>
 		<?php endif; ?>
 		<?php if ($posts_query->have_posts()): ?>
-			<div class="recent-posts-grid">
-				<?php while ($posts_query->have_posts()): $posts_query->the_post(); ?>
-					<a href="<?php the_permalink(); ?>" class="recent-post-card">
-						<div class="recent-post-card__thumbnail">
-							<?php if (has_post_thumbnail()): ?>
-								<?php the_post_thumbnail('medium_large', ['class' => 'recent-post-card__image no-animation', 'loading' => 'lazy']); ?>
-							<?php else: ?>
-								<div class="recent-post-card__thumbnail-placeholder"></div>
-							<?php endif; ?>
+			<div class="recent-posts-slider swiper">
+				<div class="swiper-wrapper">
+					<?php while ($posts_query->have_posts()): $posts_query->the_post(); ?>
+						<div class="swiper-slide">
+							<a href="<?php the_permalink(); ?>" class="recent-post-card">
+								<div class="recent-post-card__thumbnail">
+									<?php if (has_post_thumbnail()): ?>
+										<?php the_post_thumbnail('medium_large', ['class' => 'recent-post-card__image', 'loading' => 'lazy']); ?>
+									<?php else: ?>
+										<div class="recent-post-card__thumbnail-placeholder"></div>
+									<?php endif; ?>
+								</div>
+								<h3 class="recent-post-card__title no-animation"><?php the_title(); ?></h3>
+								<div class="recent-post-card__excerpt no-animation">
+									<?php
+									if (has_excerpt()) {
+										echo wp_kses_post(wp_trim_words(get_the_excerpt(), 30));
+									} else {
+										echo wp_kses_post(wp_trim_words(get_the_content(), 30));
+									}
+									?>
+								</div>
+								<div class="recent-post-card__date"><?php echo esc_html(get_the_date()); ?></div>
+							</a>
 						</div>
-						<h3 class="recent-post-card__title no-animation"><?php the_title(); ?></h3>
-						<div class="recent-post-card__excerpt no-animation">
-							<?php
-							if (has_excerpt()) {
-								echo wp_kses_post(wp_trim_words(get_the_excerpt(), 30));
-							} else {
-								echo wp_kses_post(wp_trim_words(get_the_content(), 30));
-							}
-							?>
-						</div>
-						<div class="recent-post-card__date"><?php echo esc_html(get_the_date()); ?></div>
-					</a>
-				<?php endwhile;
-				wp_reset_postdata(); ?>
+					<?php endwhile;
+					wp_reset_postdata(); ?>
+				</div>
+			</div>
+			<div class="d-flex justify-content-center align-items-center mt-4 gap-3">
+				<div class="left btn btn--outline btn--icon"><i class="fa fa-chevron-left"></i></div>
+				<div class="right btn btn--outline btn--icon"><i class="fa fa-chevron-right"></i></div>
 			</div>
 		<?php else: ?>
 			<p class="recent-posts-block__empty"><?php _e('Aucun article à afficher.', 'mars'); ?></p>
