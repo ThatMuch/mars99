@@ -64,6 +64,29 @@ function mars_dom_add_class(DOMElement $element, $class)
 }
 
 /**
+ * Dérive un intitulé lisible depuis le nom de fichier d'une URL, pour servir
+ * de aria-label à un lien sans nom accessible (ex : "Certification-Qualianor-
+ * IDYT-2.pdf" -> "Certification Qualianor IDYT 2 (PDF)").
+ */
+function mars_label_from_url($url)
+{
+	$path = wp_parse_url((string) $url, PHP_URL_PATH);
+	if (!$path) {
+		return '';
+	}
+
+	$filename = pathinfo($path, PATHINFO_FILENAME);
+	$extension = strtoupper(pathinfo($path, PATHINFO_EXTENSION));
+
+	$label = trim(preg_replace('/[-_]+/', ' ', $filename));
+	if ('' === $label) {
+		return '';
+	}
+
+	return $extension ? $label . ' (' . $extension . ')' : $label;
+}
+
+/**
  * Sur la page d'accueil, le hero (premier bloc du contenu : H1, sous-titre,
  * boutons, image Frame-156, logo Qualiopi) ne doit ni être animé (les
  * animations CSS text-appear/image-appear partent de opacity:0, ce qui
@@ -118,6 +141,19 @@ function mars_optimize_front_page_hero($content)
 		$src = $img->getAttribute('src') . ' ' . $img->getAttribute('data-src');
 		if (false !== strpos($src, 'Frame-156')) {
 			$img->setAttribute('fetchpriority', 'high');
+		}
+	}
+
+	// Liens sans nom accessible (ex : un lien qui ne contient qu'une image
+	// avec alt="") : on en dérive un depuis l'URL de destination.
+	foreach ($xpath->query('.//a', $hero) as $a) {
+		if ($a->hasAttribute('aria-label') || $a->hasAttribute('title') || '' !== trim($a->textContent)) {
+			continue;
+		}
+
+		$label = mars_label_from_url($a->getAttribute('href'));
+		if ('' !== $label) {
+			$a->setAttribute('aria-label', $label);
 		}
 	}
 

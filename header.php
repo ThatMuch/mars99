@@ -64,7 +64,7 @@ $page_slug = get_post_field('post_name', get_post());
 
 			if ($btn_text && $btn_link) :
 			?>
-				<a class="btn <?php echo esc_attr($btn_style); ?> custom-btn-header" href="<?php echo esc_url($btn_link); ?>">
+				<a class="btn <?php echo esc_attr($btn_style); ?> custom-btn-header" href="<?php echo esc_url($btn_link); ?>" aria-label="<?php echo esc_attr($btn_text); ?>">
 					<div class="btn__content">
 						<?php if ($btn_icon) : ?>
 							<i class="fa <?php echo esc_attr($btn_icon); ?>"></i>
