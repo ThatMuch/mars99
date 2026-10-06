@@ -33,6 +33,37 @@ function mars_defer_accessibility_widget_script($tag, $handle)
 add_filter('script_loader_tag', 'mars_defer_accessibility_widget_script', 10, 2);
 
 /**
+ * Ce filtre ne suffit pas en pratique : le plugin imprime son <script>
+ * directement dans le HTML (il reproduit juste la convention de nommage
+ * id="{handle}-js" de WordPress) plutôt que de l'enregistrer via
+ * wp_enqueue_script(), donc script_loader_tag ne s'applique jamais à son
+ * tag. Filet de sécurité : on ajoute defer directement dans le buffer de
+ * sortie final, quelle que soit l'origine du tag.
+ */
+function mars_defer_accessibility_widget_buffer($html)
+{
+	if (false === strpos($html, 'accessibility-widget') || false === strpos($html, 'widget.min.js')) {
+		return $html;
+	}
+
+	return preg_replace(
+		'#<script\b(?![^>]*\bdefer\b)([^>]*\bsrc=["\'][^"\']*accessibility-widget[^"\']*widget\.min\.js[^"\']*["\'][^>]*)>#i',
+		'<script defer$1>',
+		$html
+	);
+}
+
+function mars_start_accessibility_widget_buffer()
+{
+	if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST)) {
+		return;
+	}
+
+	ob_start('mars_defer_accessibility_widget_buffer');
+}
+add_action('template_redirect', 'mars_start_accessibility_widget_buffer', 0);
+
+/**
  * Exclure le logo du header du lazy-load (EWWW respecte la classe skip-lazy).
  * Le logo est rendu via the_custom_logo() -> wp_get_attachment_image(), donc
  * on l'ajoute via ce filtre plutôt qu'en manipulant le HTML final.
