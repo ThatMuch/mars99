@@ -77,41 +77,46 @@ function mars_page_needs_font_awesome()
 }
 
 /**
- * Différer le widget d'accessibilité (plugin tiers) : son script de 363 Ko
- * est actuellement parser-blocking dans le <body> et retarde la découverte
- * des images (donc le LCP).
+ * Charger le widget d'accessibilité à la demande plutôt qu'au chargement de
+ * la page : son script (363 Ko) était parser-blocking dans le <body> et
+ * retardait la découverte des images (donc le LCP).
+ *
+ * Le bouton du widget n'existe pas dans le HTML servi par le serveur : il
+ * est créé par widget.min.js lui-même au runtime (vérifié sur le HTML rendu
+ * en production, aucune balise du widget n'est présente avant son script).
+ * Il n'y a donc rien sur quoi brancher un vrai "au premier clic sur CE
+ * bouton" sans reproduire l'UI du plugin nous-mêmes (fragile, risque de
+ * désynchronisation si le plugin change). À la place, le script n'est
+ * exécuté qu'à la première interaction utilisateur sur la page (clic,
+ * touche, scroll, tap), avec un filet de sécurité après 5 s d'inactivité
+ * pour ne jamais priver un visiteur qui n'interagit pas (ex. lecteur
+ * d'écran qui lit la page sans bouger) d'un outil d'accessibilité.
+ *
+ * Le plugin imprime son <script> directement dans le HTML plutôt que de
+ * l'enregistrer via wp_enqueue_script() (il ne fait que reproduire la
+ * convention de nommage id="{handle}-js" de WordPress), donc
+ * script_loader_tag ne s'applique jamais à son tag : on agit directement
+ * sur le buffer de sortie final.
  */
-function mars_defer_accessibility_widget_script($tag, $handle)
-{
-	if ('accessibility-widget-js' !== $handle) {
-		return $tag;
-	}
-
-	if (false !== strpos($tag, ' defer')) {
-		return $tag;
-	}
-
-	return str_replace(' src=', ' defer src=', $tag);
-}
-add_filter('script_loader_tag', 'mars_defer_accessibility_widget_script', 10, 2);
-
-/**
- * Ce filtre ne suffit pas en pratique : le plugin imprime son <script>
- * directement dans le HTML (il reproduit juste la convention de nommage
- * id="{handle}-js" de WordPress) plutôt que de l'enregistrer via
- * wp_enqueue_script(), donc script_loader_tag ne s'applique jamais à son
- * tag. Filet de sécurité : on ajoute defer directement dans le buffer de
- * sortie final, quelle que soit l'origine du tag.
- */
-function mars_defer_accessibility_widget_buffer($html)
+function mars_lazyload_accessibility_widget_buffer($html)
 {
 	if (false === strpos($html, 'accessibility-widget') || false === strpos($html, 'widget.min.js')) {
 		return $html;
 	}
 
-	return preg_replace(
-		'#<script\b(?![^>]*\bdefer\b)([^>]*\bsrc=["\'][^"\']*accessibility-widget[^"\']*widget\.min\.js[^"\']*["\'][^>]*)>#i',
-		'<script defer$1>',
+	return preg_replace_callback(
+		'#<script\b([^>]*)\bsrc=(["\'])([^"\']*accessibility-widget[^"\']*widget\.min\.js[^"\']*)\2([^>]*)>#i',
+		function ($matches) {
+			$before = trim(preg_replace('/\s+(defer|async)\b/i', '', $matches[1]));
+			$after  = trim(preg_replace('/\s+(defer|async)\b/i', '', $matches[4]));
+			$attrs  = trim($before . ' ' . $after);
+
+			return sprintf(
+				'<script type="text/plain" data-mars-lazy-src="%s"%s>',
+				esc_attr($matches[3]),
+				$attrs ? ' ' . $attrs : ''
+			);
+		},
 		$html
 	);
 }
@@ -122,9 +127,29 @@ function mars_start_accessibility_widget_buffer()
 		return;
 	}
 
-	ob_start('mars_defer_accessibility_widget_buffer');
+	ob_start('mars_lazyload_accessibility_widget_buffer');
 }
 add_action('template_redirect', 'mars_start_accessibility_widget_buffer', 0);
+
+/**
+ * Script qui charge réellement les <script type="text/plain" data-mars-lazy-src>
+ * à la première interaction (voir js/lazy-third-party.js).
+ */
+function mars_enqueue_lazy_third_party_loader()
+{
+	if (is_admin()) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'mars-lazy-third-party',
+		get_stylesheet_directory_uri() . '/js/lazy-third-party.js',
+		array(),
+		mars_get_file_version('/js/lazy-third-party.js'),
+		array('strategy' => 'defer')
+	);
+}
+add_action('wp_enqueue_scripts', 'mars_enqueue_lazy_third_party_loader');
 
 /**
  * Exclure le logo du header du lazy-load (EWWW respecte la classe skip-lazy)
