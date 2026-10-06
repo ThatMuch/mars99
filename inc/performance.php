@@ -14,6 +14,44 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Désactiver les emojis natifs de WordPress (script de détection + styles
+ * inline + DNS prefetch) : le site n'en a pas l'usage et ça ajoute une
+ * requête JS + un bloc de style inline sur chaque page.
+ */
+function mars_disable_wp_emojis()
+{
+	remove_action('wp_head', 'print_emoji_detection_script', 7);
+	remove_action('admin_print_scripts', 'print_emoji_detection_script');
+	remove_action('wp_print_styles', 'print_emoji_styles');
+	remove_action('admin_print_styles', 'print_emoji_styles');
+	remove_filter('the_content_feed', 'wp_staticize_emoji');
+	remove_filter('comment_text_rss', 'wp_staticize_emoji');
+	remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+
+	add_filter('tiny_mce_plugins', 'mars_disable_emojis_tinymce');
+	add_filter('wp_resource_hints', 'mars_disable_emojis_dns_prefetch', 10, 2);
+}
+add_action('init', 'mars_disable_wp_emojis');
+
+function mars_disable_emojis_tinymce($plugins)
+{
+	if (is_array($plugins)) {
+		return array_diff($plugins, array('wpemoji'));
+	}
+
+	return array();
+}
+
+function mars_disable_emojis_dns_prefetch($urls, $relation_type)
+{
+	if ('dns-prefetch' === $relation_type) {
+		$urls = array_diff($urls, array('//s.w.org'));
+	}
+
+	return $urls;
+}
+
+/**
  * Différer le widget d'accessibilité (plugin tiers) : son script de 363 Ko
  * est actuellement parser-blocking dans le <body> et retarde la découverte
  * des images (donc le LCP).
