@@ -58,7 +58,7 @@ function mars_enqueue_scripts()
 
 	// Script pour la gestion des optgroups (doit être chargé AVANT multiselect)
 	// Chargé uniquement sur les pages susceptibles de contenir un select
-	// multiple (Gravity Forms / .abyss-multiselect) : voir mars_page_needs_multiselect().
+	// multiple : voir mars_page_needs_multiselect().
 	if (mars_page_needs_multiselect() && file_exists(get_stylesheet_directory() . '/js/optgroup-handler.js')) {
 		wp_enqueue_script(
 			'mars-optgroup-handler',

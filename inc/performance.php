@@ -181,9 +181,10 @@ add_filter('script_loader_tag', 'mars_defer_card_block_script', 10, 2);
 
 /**
  * Le script multiselect.js (et son dépendant optgroup-handler.js) ne sert
- * qu'aux select multiples de Gravity Forms (voir les sélecteurs dans
- * js/multiselect.js : select[multiple], .ginput_container_multiselect,
- * .abyss-multiselect). On ne les charge donc que si la page en a besoin.
+ * qu'aux select multiples (voir les sélecteurs dans js/multiselect.js :
+ * select[multiple], .abyss-multiselect). Gravity Forms n'est pas utilisé
+ * sur ce site. On ne les charge donc que si la page contient réellement
+ * un tel select.
  */
 function mars_page_needs_multiselect()
 {
@@ -192,16 +193,10 @@ function mars_page_needs_multiselect()
 	}
 
 	global $post;
-	if (!$post instanceof WP_Post) {
-		return false;
-	}
 
-	if (function_exists('has_block') && has_block('gravityforms/form', $post)) {
-		return true;
-	}
-
-	return false !== strpos($post->post_content, 'gravityform')
-		|| false !== strpos($post->post_content, 'abyss-multiselect');
+	return $post instanceof WP_Post
+		&& (false !== strpos($post->post_content, 'abyss-multiselect')
+			|| preg_match('/<select[^>]*\bmultiple\b/i', $post->post_content));
 }
 
 /**
