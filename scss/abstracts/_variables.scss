@@ -77,8 +77,8 @@ $color-text-secondary: $color-secondary;
 $color-text-link: $color-primary;
 $color-text-link-hover: $primary-800;
 // Typographie
-$font-title: "Cal Sans", sans-serif;
-$font-main: "Cal Sans", sans-serif;
+$font-title: "Cal Sans", "Cal Sans Fallback", sans-serif;
+$font-main: "Cal Sans", "Cal Sans Fallback", sans-serif;
 $font-size-sm: 16px;
 $line-height-base: 1.5;
 $letterspacing-base: 1px;

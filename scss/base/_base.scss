@@ -5,6 +5,24 @@
 // Styles de base pour le thème enfant
 // Police Cal Sans chargée via wp_enqueue_style (voir inc/performance.php)
 // pour être découverte dès le <head> plutôt qu'après le parsing de ce CSS.
+// font-display:swap est déjà réglé côté Google Fonts (&display=swap dans
+// l'URL), ce qui garantit un texte visible immédiatement (dans la police de
+// repli) plutôt qu'invisible pendant le chargement.
+
+// Police de repli ajustée aux métriques de Cal Sans (ascent/descent/
+// line-gap/size-adjust calculés à partir du fichier woff2 réel via fontTools,
+// comparé aux métriques publiées d'Arial), pour que le texte garde la même
+// taille et position entre l'affichage en police de repli (pendant le swap)
+// et le rendu final en Cal Sans, et limiter ainsi le décalage de mise en
+// page (CLS) causé par font-display:swap.
+@font-face {
+  font-family: "Cal Sans Fallback";
+  src: local("Arial");
+  ascent-override: 80.615%;
+  descent-override: 24.1845%;
+  line-gap-override: 0%;
+  size-adjust: 124.0464%;
+}
 
 // Typographie de base
 body {
