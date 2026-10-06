@@ -167,6 +167,16 @@ function mars_skip_lazy_for_logo($attr)
 	if (isset($attr['class']) && false !== strpos($attr['class'], 'custom-logo')) {
 		$attr['class'] = trim($attr['class'] . ' skip-lazy no-animation');
 		unset($attr['loading']);
+
+		// Le logo est affiché à une largeur fixe (.header__logo a dans
+		// scss/layout/_header.scss : 200px, 150px sous 480px), jamais en
+		// 100vw comme le calcule WordPress par défaut pour un logo dont la
+		// source fait 1920px de large. Avec le "100vw" précédent, le
+		// navigateur allait chercher une source bien plus grande que les
+		// ~150-200px réellement affichés.
+		if (isset($attr['srcset'])) {
+			$attr['sizes'] = '(max-width: 479px) 150px, 200px';
+		}
 	}
 
 	return $attr;
@@ -268,6 +278,16 @@ function mars_optimize_front_page_hero($content)
 		$src = $img->getAttribute('src') . ' ' . $img->getAttribute('data-src');
 		if (false !== strpos($src, 'Frame-156')) {
 			$img->setAttribute('fetchpriority', 'high');
+		}
+
+		// Pour une image redimensionnée dans l'éditeur (largeur CSS fixe),
+		// WordPress calcule sizes="auto, (max-width: Npx) 100vw, Npx". Le
+		// préfixe "auto" n'est appliqué par le navigateur qu'avec
+		// loading="lazy" (qu'on retire ci-dessus) : sans lui, il retombe sur
+		// "100vw", bien plus large que le rendu réel (ex : Frame-156 affiché
+		// à 239px alors que la source fait 486px de large).
+		if ($img->hasAttribute('srcset') && preg_match('/width:\s*(\d+)px/', $img->getAttribute('style'), $width_match)) {
+			$img->setAttribute('sizes', $width_match[1] . 'px');
 		}
 	}
 
