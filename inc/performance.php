@@ -78,7 +78,7 @@ function mars_optimize_front_page_hero($content)
 	libxml_use_internal_errors(true);
 	$dom = new DOMDocument();
 	$loaded = $dom->loadHTML(
-		'<!DOCTYPE html><html><body><div id="mars-hero-root">' . $content . '</div></body></html>',
+		'<!DOCTYPE html><html><head><meta charset="utf-8"></head><body><div id="mars-hero-root">' . $content . '</div></body></html>',
 		LIBXML_NOERROR | LIBXML_NOWARNING
 	);
 	libxml_clear_errors();
