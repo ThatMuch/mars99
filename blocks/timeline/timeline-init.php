@@ -41,7 +41,7 @@ function register_timeline_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/timeline/timeline.css',
+		// Les styles du bloc sont déjà compilés dans style.min.css (voir scss/style.scss)
 		'enqueue_script'    => get_template_directory_uri() . '/blocks/timeline/timeline.js',
 	));
 

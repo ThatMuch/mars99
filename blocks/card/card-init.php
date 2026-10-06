@@ -41,7 +41,7 @@ function register_card_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/card/card.css',
+		// Les styles du bloc sont déjà compilés dans style.min.css (voir scss/style.scss)
 		'enqueue_script'    => get_template_directory_uri() . '/blocks/card/card.js',
 	));
 

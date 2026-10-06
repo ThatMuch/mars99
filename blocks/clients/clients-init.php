@@ -32,7 +32,7 @@ function register_clients_block()
 				)
 			)
 		),
-		'enqueue_style'     => get_template_directory_uri() . '/blocks/clients/clients.css',
+		// Les styles du bloc sont déjà compilés dans style.min.css (voir scss/style.scss)
 		'enqueue_script'    => get_template_directory_uri() . '/blocks/clients/clients.js',
 		'enqueue_assets'    => function () {
 			// Assurez-vous que Swiper est chargé

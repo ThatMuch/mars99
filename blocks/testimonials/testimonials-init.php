@@ -35,8 +35,8 @@ function register_testimonials_block()
 			),
 		),
 		'enqueue_assets'  => function () {
-			wp_enqueue_style('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.css', array(), time());
-			wp_enqueue_script('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.js', array('jquery', 'mars-carousel'), time(), true);
+			// Le style du bloc est déjà compilé dans style.min.css (voir scss/style.scss)
+			wp_enqueue_script('mars-testimonials', get_template_directory_uri() . '/blocks/testimonials/testimonials.js', array('jquery', 'mars-carousel'), mars_get_file_version('/blocks/testimonials/testimonials.js'), true);
 		},
 	));
 
