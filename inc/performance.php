@@ -129,3 +129,36 @@ function mars_optimize_front_page_hero($content)
 	return $html;
 }
 add_filter('the_content', 'mars_optimize_front_page_hero', 20);
+
+/**
+ * Charger la police Cal Sans via une balise <link> dédiée plutôt que via un
+ * @import dans style.min.css : un @import n'est découvert qu'après le
+ * téléchargement + parsing complet du CSS qui le contient (ici ~2,6 s).
+ */
+function mars_enqueue_google_fonts()
+{
+	wp_enqueue_style(
+		'mars-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap',
+		array(),
+		null
+	);
+}
+add_action('wp_enqueue_scripts', 'mars_enqueue_google_fonts');
+
+/**
+ * Preconnect vers Google Fonts pour accélérer la résolution DNS/TLS avant
+ * même que le navigateur ne découvre la feuille de style ci-dessus.
+ */
+function mars_google_fonts_preconnect($hints, $relation_type)
+{
+	if ('preconnect' !== $relation_type) {
+		return $hints;
+	}
+
+	$hints[] = array('href' => 'https://fonts.googleapis.com');
+	$hints[] = array('href' => 'https://fonts.gstatic.com', 'crossorigin' => 'anonymous');
+
+	return $hints;
+}
+add_filter('wp_resource_hints', 'mars_google_fonts_preconnect', 10, 2);

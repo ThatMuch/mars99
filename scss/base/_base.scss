@@ -3,7 +3,8 @@
 @use "../abstracts/mixins" as *;
 @use "sass:map";
 // Styles de base pour le thème enfant
-@import url("https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap");
+// Police Cal Sans chargée via wp_enqueue_style (voir inc/performance.php)
+// pour être découverte dès le <head> plutôt qu'après le parsing de ce CSS.
 
 // Typographie de base
 body {
