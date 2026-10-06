@@ -70,7 +70,7 @@ $button_theme = $style === 'primary' || $style === 'secondary' ? $style : 'outli
 		<?php endif; ?>
 		<div>
 			<?php if ($title): ?>
-				<h4 class="card-title"><?php echo wp_kses_post($title); ?></h4>
+				<h3 class="card-title h4"><?php echo wp_kses_post($title); ?></h3>
 			<?php endif; ?>
 			<?php if ($description): ?>
 				<div class="card-description">
