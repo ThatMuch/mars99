@@ -35,9 +35,10 @@ function register_testimonials_slider_block()
 			),
 		),
 		'enqueue_assets'  => function () {
-			wp_enqueue_script('testimonials-slider-js', get_template_directory_uri() . '/blocks/testimonials-slider/testimonials-slider.js', array(), time(), true);
 			wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
-			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
+			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', array('strategy' => 'defer'));
+			// Dépend de jquery et swiper-js (utilisés directement dans le script) pour préserver l'ordre d'exécution une fois différé.
+			wp_enqueue_script('testimonials-slider-js', get_template_directory_uri() . '/blocks/testimonials-slider/testimonials-slider.js', array('jquery', 'swiper-js'), mars_get_file_version('/blocks/testimonials-slider/testimonials-slider.js'), array('strategy' => 'defer'));
 		},
 	));
 

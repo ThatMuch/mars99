@@ -37,7 +37,7 @@ function register_clients_block()
 		'enqueue_assets'    => function () {
 			// Assurez-vous que Swiper est chargé
 			wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
-			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
+			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', array('strategy' => 'defer'));
 		}
 	));
 }

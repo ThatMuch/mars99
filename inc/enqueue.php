@@ -57,24 +57,26 @@ function mars_enqueue_scripts()
 	}
 
 	// Script pour la gestion des optgroups (doit être chargé AVANT multiselect)
-	if (file_exists(get_stylesheet_directory() . '/js/optgroup-handler.js')) {
+	// Chargé uniquement sur les pages susceptibles de contenir un select
+	// multiple (Gravity Forms / .abyss-multiselect) : voir mars_page_needs_multiselect().
+	if (mars_page_needs_multiselect() && file_exists(get_stylesheet_directory() . '/js/optgroup-handler.js')) {
 		wp_enqueue_script(
 			'mars-optgroup-handler',
 			get_stylesheet_directory_uri() . '/js/optgroup-handler.js',
 			array(),
 			mars_get_file_version('/js/optgroup-handler.js'),
-			true
+			array('strategy' => 'defer')
 		);
 	}
 
 	// Script pour les sélecteurs multiples personnalisés (dépend des optgroups)
-	if (file_exists(get_stylesheet_directory() . '/js/multiselect.js')) {
+	if (mars_page_needs_multiselect() && file_exists(get_stylesheet_directory() . '/js/multiselect.js')) {
 		wp_enqueue_script(
 			'mars-multiselect',
 			get_stylesheet_directory_uri() . '/js/multiselect.js',
 			array('jquery', 'mars-optgroup-handler'),
 			mars_get_file_version('/js/multiselect.js'),
-			true
+			array('strategy' => 'defer')
 		);
 	}
 
@@ -96,14 +98,15 @@ function mars_enqueue_scripts()
 			get_stylesheet_directory_uri() . '/js/mobile-menu.js',
 			array(),
 			mars_get_file_version('/js/mobile-menu.js'),
-			true
+			array('strategy' => 'defer')
 		);
 	}
 
 	// Script optgroups déplacé plus haut pour être chargé avant multiselect
 
-	// Script Lottie pour les animations (seulement sur la front-page)
-	if (is_front_page()) {
+	// Script Lottie pour les animations : uniquement si le contenu de la
+	// page contient réellement un élément <dotlottie-wc> (voir mars_page_needs_lottie()).
+	if (mars_page_needs_lottie()) {
 		wp_enqueue_script(
 			'dotlottie-wc',
 			'https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js',
@@ -112,7 +115,7 @@ function mars_enqueue_scripts()
 			true
 		);
 
-		// Ajouter l'attribut type="module" au script Lottie
+		// Ajouter l'attribut type="module" au script Lottie (déjà différé par nature)
 		add_filter('script_loader_tag', 'mars_add_module_to_lottie_script', 10, 2);
 	}
 
@@ -167,7 +170,7 @@ function mars_enqueue_scripts()
 			get_stylesheet_directory_uri() . '/js/footer-parallax.js',
 			array(),
 			mars_get_file_version('/js/footer-parallax.js'),
-			true
+			array('strategy' => 'defer')
 		);
 	}
 
@@ -182,7 +185,7 @@ function mars_enqueue_scripts()
 			get_stylesheet_directory_uri() . '/js/carousel.js',
 			array(),
 			mars_get_file_version('/js/carousel.js'),
-			true
+			array('strategy' => 'defer')
 		);
 	}
 }

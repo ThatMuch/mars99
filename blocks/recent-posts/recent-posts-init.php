@@ -39,8 +39,8 @@ function register_recent_posts_block()
 		),
 		'enqueue_assets'    => function () {
 			wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), '10.0.0');
-			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', true);
-			wp_enqueue_script('recent-posts-js', get_template_directory_uri() . '/blocks/recent-posts/recent-posts.js', array('swiper-js'), mars_get_file_version('/blocks/recent-posts/recent-posts.js'), true);
+			wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), '10.0.0', array('strategy' => 'defer'));
+			wp_enqueue_script('recent-posts-js', get_template_directory_uri() . '/blocks/recent-posts/recent-posts.js', array('swiper-js'), mars_get_file_version('/blocks/recent-posts/recent-posts.js'), array('strategy' => 'defer'));
 		},
 	));
 

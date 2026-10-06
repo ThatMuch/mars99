@@ -162,3 +162,60 @@ function mars_google_fonts_preconnect($hints, $relation_type)
 	return $hints;
 }
 add_filter('wp_resource_hints', 'mars_google_fonts_preconnect', 10, 2);
+
+/**
+ * Différer card.js (bloc ACF "Card"). Le handle est enregistré par ACF via
+ * la clé 'enqueue_script' (simple URL), ce qui ne permet pas de passer un
+ * tableau $args avec 'strategy' => 'defer' comme sur les scripts que le
+ * thème enregistre lui-même : on passe donc par script_loader_tag.
+ */
+function mars_defer_card_block_script($tag, $handle)
+{
+	if ('block-acf-card' !== $handle || false !== strpos($tag, ' defer')) {
+		return $tag;
+	}
+
+	return str_replace(' src=', ' defer src=', $tag);
+}
+add_filter('script_loader_tag', 'mars_defer_card_block_script', 10, 2);
+
+/**
+ * Le script multiselect.js (et son dépendant optgroup-handler.js) ne sert
+ * qu'aux select multiples de Gravity Forms (voir les sélecteurs dans
+ * js/multiselect.js : select[multiple], .ginput_container_multiselect,
+ * .abyss-multiselect). On ne les charge donc que si la page en a besoin.
+ */
+function mars_page_needs_multiselect()
+{
+	if (is_admin()) {
+		return true;
+	}
+
+	global $post;
+	if (!$post instanceof WP_Post) {
+		return false;
+	}
+
+	if (function_exists('has_block') && has_block('gravityforms/form', $post)) {
+		return true;
+	}
+
+	return false !== strpos($post->post_content, 'gravityform')
+		|| false !== strpos($post->post_content, 'abyss-multiselect');
+}
+
+/**
+ * dotlottie-wc (363 Ko depuis unpkg) n'est utile que si le contenu affiche
+ * réellement un élément <dotlottie-wc>. Sur la home actuelle, ce n'est pas
+ * le cas : le script était chargé pour rien sur chaque visite.
+ */
+function mars_page_needs_lottie()
+{
+	if (is_admin()) {
+		return true;
+	}
+
+	global $post;
+
+	return $post instanceof WP_Post && false !== strpos($post->post_content, 'dotlottie-wc');
+}
