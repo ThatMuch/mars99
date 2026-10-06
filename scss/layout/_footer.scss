@@ -11,6 +11,15 @@
   gap: map.get($spacings, "section-sm");
   width: 100vw;
 
+  // #footer-parallax-wrapper passe en position:fixed au-delà de $breakpoint-md
+  // (voir plus bas dans ce fichier) ; animation-timeline:view() n'a pas de
+  // comportement fiable sur un ancêtre fixed, ce qui pouvait bloquer son
+  // contenu à opacity:0. Le footer n'a de toute façon pas besoin de l'effet
+  // d'apparition au scroll.
+  :is(h2, h3, p, img) {
+    animation: none;
+  }
+
   @include respond-to(xs) {
     padding: 2rem map.get($spacings, "section-sm");
   }

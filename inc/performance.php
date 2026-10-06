@@ -64,14 +64,21 @@ function mars_start_accessibility_widget_buffer()
 add_action('template_redirect', 'mars_start_accessibility_widget_buffer', 0);
 
 /**
- * Exclure le logo du header du lazy-load (EWWW respecte la classe skip-lazy).
- * Le logo est rendu via the_custom_logo() -> wp_get_attachment_image(), donc
- * on l'ajoute via ce filtre plutôt qu'en manipulant le HTML final.
+ * Exclure le logo du header du lazy-load (EWWW respecte la classe skip-lazy)
+ * et de l'animation image-appear (qui le ferait partir d'opacity:0). Le logo
+ * est rendu via the_custom_logo() -> wp_get_attachment_image(), donc on
+ * l'ajoute via ce filtre plutôt qu'en manipulant le HTML final.
+ *
+ * Priorité 20 : passe après mars_add_lazy_loading_to_images() (functions.php,
+ * priorité par défaut 10), qui ajoute loading="lazy" car son exclusion ne
+ * reconnaît que la classe header__logo-image, pas custom-logo. On retire
+ * donc cet attribut ici plutôt que de modifier ce filtre plus ancien.
  */
 function mars_skip_lazy_for_logo($attr)
 {
 	if (isset($attr['class']) && false !== strpos($attr['class'], 'custom-logo')) {
-		$attr['class'] = trim($attr['class'] . ' skip-lazy');
+		$attr['class'] = trim($attr['class'] . ' skip-lazy no-animation');
+		unset($attr['loading']);
 	}
 
 	return $attr;
@@ -167,6 +174,7 @@ function mars_optimize_front_page_hero($content)
 
 	foreach ($xpath->query('.//img', $hero) as $img) {
 		mars_dom_add_class($img, 'skip-lazy');
+		mars_dom_add_class($img, 'no-animation');
 		$img->removeAttribute('loading');
 
 		$src = $img->getAttribute('src') . ' ' . $img->getAttribute('data-src');
