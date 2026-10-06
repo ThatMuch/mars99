@@ -18,6 +18,17 @@ body {
   letter-spacing: $letterspacing-base;
 }
 
+// Icônes SVG inline (voir inc/icons.php) remplaçant Font Awesome : taille
+// héritée du font-size ambiant, alignement cohérent avec le texte.
+.mars-icon {
+  display: inline-flex;
+  line-height: 1;
+
+  svg {
+    display: block;
+  }
+}
+
 div:not(.no-animation) p,
 p:not(.no-animation),
 h2:not(.no-animation),

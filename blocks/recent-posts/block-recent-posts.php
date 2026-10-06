@@ -91,8 +91,8 @@ $posts_query = new WP_Query($args);
 				</div>
 			</div>
 			<div class="d-flex justify-content-center align-items-center mt-4 gap-3">
-				<div class="left btn btn--outline btn--icon"><i class="fa fa-chevron-left"></i></div>
-				<div class="right btn btn--outline btn--icon"><i class="fa fa-chevron-right"></i></div>
+				<div class="left btn btn--outline btn--icon"><?php echo mars_icon('chevron-left'); ?></div>
+				<div class="right btn btn--outline btn--icon"><?php echo mars_icon('chevron-right'); ?></div>
 			</div>
 		<?php else: ?>
 			<p class="recent-posts-block__empty"><?php _e('Aucun article à afficher.', 'mars'); ?></p>

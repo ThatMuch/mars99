@@ -128,12 +128,13 @@ position: relative;
 		gap: 2px;
 		margin: 0.5rem 0;
 
-		.fas.fa-star {
+		.mars-icon-star {
 			color: #f4b400;
 			font-size: 0.85rem;
 		}
 
-		.far.fa-star {
+		.mars-icon-star-regular,
+		.mars-icon-star-half {
 			color: #ccc;
 			font-size: 0.85rem;
 		}

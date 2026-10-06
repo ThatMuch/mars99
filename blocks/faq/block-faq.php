@@ -42,7 +42,7 @@ $faq_items = get_field('faq_items');
 				<div class="faq-item">
 					<button class="faq-question" aria-expanded="false" aria-controls="faq-answer-<?php echo esc_attr($id . '-' . $index); ?>">
 						<span class="faq-question-text"><?php echo esc_html($item['question']); ?></span>
-						<span class="faq-icon"><i class="fa fa-plus"></i></span>
+						<span class="faq-icon"><?php echo mars_icon('plus'); ?></span>
 					</button>
 					<div id="faq-answer-<?php echo esc_attr($id . '-' . $index); ?>" class="faq-answer" aria-hidden="true">
 						<div class="faq-answer-inner no-animation">

@@ -28,6 +28,7 @@ function mars_load_theme_modules()
 		'acf-safe-helpers.php',        // Helpers sécurisés pour ACF
 		'inc/setup.php',               // Configuration principale du thème
 		'inc/utils.php',               // Fonctions utilitaires
+		'inc/icons.php',               // Icônes SVG inline (remplace les usages codés en dur de Font Awesome)
 		'inc/google-reviews-api.php',  // API Google Reviews (partagée par plusieurs blocs)
 		'inc/enqueue.php',             // Enregistrement des scripts et styles
 		'inc/performance.php',         // Optimisations de chargement (defer, polices, hero)

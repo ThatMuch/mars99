@@ -141,7 +141,7 @@ if ($source_type === 'google_reviews') {
 										</div>
 										<div class="review-rating">
 											<?php for ($i = 1; $i <= 5; $i++) : ?>
-												<i class="<?php echo $i <= $review['rating'] ? 'fas' : 'far'; ?> fa-star"></i>
+												<?php echo mars_icon($i <= $review['rating'] ? 'star' : 'star-regular'); ?>
 											<?php endfor; ?>
 										</div>
 										<div class="review-footer">
@@ -188,8 +188,8 @@ if ($source_type === 'google_reviews') {
 					</div>
 					<!-- Navigation -->
 					<div class="d-flex justify-content-center align-items-center mt-4 gap-3">
-						<div class="left btn btn--outline btn--icon"><i class="fa fa-chevron-left"></i></div>
-						<div class="right btn btn--outline btn--icon"><i class="fa fa-chevron-right"></i></div>
+						<div class="left btn btn--outline btn--icon"><?php echo mars_icon('chevron-left'); ?></div>
+						<div class="right btn btn--outline btn--icon"><?php echo mars_icon('chevron-right'); ?></div>
 					</div>
 				</div>
 			</div>

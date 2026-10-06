@@ -113,11 +113,11 @@ if ($source_type === 'google_reviews') {
 								$rating = $reviews_data['rating'];
 								for ($i = 1; $i <= 5; $i++) {
 									if ($i <= $rating) {
-										echo '<i class="fas fa-star"></i>';
+										echo mars_icon('star');
 									} elseif ($i - 0.5 <= $rating) {
-										echo '<i class="fas fa-star-half-alt"></i>';
+										echo mars_icon('star-half');
 									} else {
-										echo '<i class="far fa-star"></i>';
+										echo mars_icon('star-regular');
 									}
 								}
 								?>
@@ -170,7 +170,7 @@ if ($source_type === 'google_reviews') {
 												</div>
 												<div class="review-rating">
 													<?php for ($i = 1; $i <= 5; $i++) : ?>
-														<i class="<?php echo $i <= $review['rating'] ? 'fas' : 'far'; ?> fa-star"></i>
+														<?php echo mars_icon($i <= $review['rating'] ? 'star' : 'star-regular'); ?>
 													<?php endfor; ?>
 												</div>
 											</div>
@@ -243,8 +243,8 @@ if ($source_type === 'google_reviews') {
 						</div>
 						<!-- Navigation -->
 						<div class="mars-carousel-controls">
-							<button class="mars-carousel-prev btn btn--outline btn--icon" aria-label="<?php _e('Précédent', 'mars'); ?>"><i class="fa fa-chevron-left"></i></button>
-							<button class="mars-carousel-next btn btn--outline btn--icon" aria-label="<?php _e('Suivant', 'mars'); ?>"><i class="fa fa-chevron-right"></i></button>
+							<button class="mars-carousel-prev btn btn--outline btn--icon" aria-label="<?php _e('Précédent', 'mars'); ?>"><?php echo mars_icon('chevron-left'); ?></button>
+							<button class="mars-carousel-next btn btn--outline btn--icon" aria-label="<?php _e('Suivant', 'mars'); ?>"><?php echo mars_icon('chevron-right'); ?></button>
 						</div>
 					</div>
 				</div>

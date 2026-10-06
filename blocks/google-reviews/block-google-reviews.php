@@ -146,11 +146,11 @@ if ($is_preview && !empty($reviews_data) && !$reviews_data['error']) {
 								$rating = $reviews_data['rating'];
 								for ($i = 1; $i <= 5; $i++) {
 									if ($i <= $rating) {
-										echo '<i class="fas fa-star"></i>';
+										echo mars_icon('star');
 									} elseif ($i - 0.5 <= $rating) {
-										echo '<i class="fas fa-star-half-alt"></i>';
+										echo mars_icon('star-half');
 									} else {
-										echo '<i class="far fa-star"></i>';
+										echo mars_icon('star-regular');
 									}
 								}
 								?>
@@ -203,11 +203,7 @@ if ($is_preview && !empty($reviews_data) && !$reviews_data['error']) {
 										<div class="review-rating">
 											<div>
 												<?php for ($i = 1; $i <= 5; $i++) : ?>
-													<?php if ($i <= $review['rating']) : ?>
-														<i class="fas fa-star"></i>
-													<?php else : ?>
-														<i class="far fa-star"></i>
-													<?php endif; ?>
+													<?php echo mars_icon($i <= $review['rating'] ? 'star' : 'star-regular'); ?>
 												<?php endfor; ?>
 											</div>
 											<span class="icon-verified"></span>
@@ -225,8 +221,8 @@ if ($is_preview && !empty($reviews_data) && !$reviews_data['error']) {
 						</div>
 						<!-- Navigation -->
 						<div class="d-flex justify-content-center align-items-center mt-4 gap-3">
-							<div class="left btn btn--outline btn--icon"><i class="fa fa-chevron-left"></i></div>
-							<div class="right btn btn--outline btn--icon"><i class="fa fa-chevron-right"></i></div>
+							<div class="left btn btn--outline btn--icon"><?php echo mars_icon('chevron-left'); ?></div>
+							<div class="right btn btn--outline btn--icon"><?php echo mars_icon('chevron-right'); ?></div>
 						</div>
 					</div>
 				</div>

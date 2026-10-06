@@ -52,6 +52,31 @@ function mars_disable_emojis_dns_prefetch($urls, $relation_type)
 }
 
 /**
+ * Les icônes codées en dur dans les templates (chevrons, "+", étoiles) sont
+ * désormais des SVG inline (voir inc/icons.php). Il reste deux sources
+ * d'icônes au choix libre de l'éditeur, qui dépendent de Font Awesome et ne
+ * peuvent pas être couvertes par un jeu fixe de SVG : l'icône du bouton de
+ * header (Customizer, texte libre) et le champ ACF "icon" du bloc Card.
+ * On ne charge donc Font Awesome que si la page en a effectivement besoin.
+ */
+function mars_page_needs_font_awesome()
+{
+	$locations = get_nav_menu_locations();
+	$menu_id = isset($locations['main-menu']) ? $locations['main-menu'] : 0;
+
+	if ($menu_id && get_theme_mod('header_btn_icon_' . $menu_id, '')) {
+		return true;
+	}
+
+	global $post;
+	if (function_exists('has_block') && $post instanceof WP_Post && has_block('acf/card', $post)) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Différer le widget d'accessibilité (plugin tiers) : son script de 363 Ko
  * est actuellement parser-blocking dans le <body> et retarde la découverte
  * des images (donc le LCP).

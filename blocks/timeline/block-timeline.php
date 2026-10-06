@@ -81,7 +81,7 @@ $timeline_description = get_field('timeline_description');
 									<?php endif; ?>
 									<h3 class="timeline-step-title h4"><?php echo wp_kses_post($step['title']); ?></h3>
 									<?php if (!empty($step['description'])) : ?>
-										<button class="timeline-button" aria-label="Open content"><i class="fa fa-plus"></i></button>
+										<button class="timeline-button" aria-label="Open content"><?php echo mars_icon('plus'); ?></button>
 									<?php endif; ?>
 								</div>
 								<div class="timeline-step-content">

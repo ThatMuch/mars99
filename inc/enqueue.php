@@ -36,13 +36,18 @@ function mars_enqueue_scripts()
 		mars_get_file_version('/style.min.css')
 	);
 
-	// Ajouter Font Awesome pour les icônes
-	wp_enqueue_style(
-		'font-awesome',
-		'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css',
-		array(),
-		'6.7.2'
-	);
+	// Font Awesome n'est plus utilisé en dur dans les templates (remplacé par
+	// des SVG inline, voir inc/icons.php) : on ne le charge que si la page
+	// en a encore réellement besoin (icône du bouton header, bloc Card).
+	// Voir mars_page_needs_font_awesome() dans inc/performance.php.
+	if (mars_page_needs_font_awesome()) {
+		wp_enqueue_style(
+			'font-awesome',
+			'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css',
+			array(),
+			'6.7.2'
+		);
+	}
 
 	// Scripts
 	// Script pour la gestion des téléchargements de fichiers
