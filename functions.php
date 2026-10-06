@@ -30,6 +30,7 @@ function mars_load_theme_modules()
 		'inc/utils.php',               // Fonctions utilitaires
 		'inc/google-reviews-api.php',  // API Google Reviews (partagée par plusieurs blocs)
 		'inc/enqueue.php',             // Enregistrement des scripts et styles
+		'inc/performance.php',         // Optimisations de chargement (defer, polices, hero)
 		'inc/admin.php',               // Personnalisation de l'interface d'administration
 		'inc/blocks.php',              // Blocs Gutenberg personnalisés
 		'inc/acf.php',        // Intégration avec Advanced Custom Fields
