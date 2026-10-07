@@ -47,20 +47,16 @@ body {
   }
 }
 
-div:not(.no-animation) p,
-p:not(.no-animation),
-h2:not(.no-animation),
-h3:not(.no-animation),
-blockquote:not(.no-animation),
-hr:not(.no-animation) {
-  /* animation-name: text-appear; @keyframes defined below */
-  /* animation-timing-function: ease-in; standard should be linear */
-  /* animation-fill-mode: both; keeps animated values forwards and backwards */
-  animation: text-appear ease-in both;
-  animation-timeline: view();
-  /* applies animation state relative to viewport */
-  animation-range: 0vh 20vh;
-  /* set 0% and 100% positions */
+// Animations d'apparition au scroll : desktop uniquement (sur mobile elles
+// laissent des éléments à opacity:0, ce qui empêche la détection du LCP) et
+// jamais sur le header ni sur le premier bloc de la page (au-dessus de la
+// ligne de flottaison).
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  :is(div:not(.no-animation) p, p:not(.no-animation), h2:not(.no-animation), h3:not(.no-animation), blockquote:not(.no-animation), hr:not(.no-animation)):not(.header *, .site-main > :first-child, .site-main > :first-child *) {
+    animation: text-appear ease-in both;
+    animation-timeline: view();
+    animation-range: 0vh 20vh;
+  }
 }
 
 @prefers-reduced-motion {
@@ -193,10 +189,12 @@ img {
   height: auto;
 }
 
-img:not(.no-animation) {
-  animation: image-appear ease-in both;
-  animation-timeline: view();
-  animation-range: 0vh 20vh;
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  img:not(.no-animation):not(.header *, .site-main > :first-child *) {
+    animation: image-appear ease-in both;
+    animation-timeline: view();
+    animation-range: 0vh 20vh;
+  }
 }
 
 @keyframes image-appear {
