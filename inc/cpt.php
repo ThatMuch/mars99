@@ -30,7 +30,7 @@ function mars_register_cpt()
 		'labels'                => $labels,
 		'description'           => '',
 		'public'                => true,
-		'publicly_queryable'    => true,
+		'publicly_queryable'    => false,
 		'show_ui'               => true,
 		'show_in_rest'          => true,
 		'rest_base'             => '',
@@ -39,7 +39,7 @@ function mars_register_cpt()
 		'show_in_menu'          => true,
 		'show_in_nav_menus'     => true,
 		'delete_with_user'      => false,
-		'exclude_from_search'   => false,
+		'exclude_from_search'   => true,
 		'capability_type'       => 'post',
 		'map_meta_cap'          => true,
 		'hierarchical'          => false,
@@ -126,3 +126,21 @@ function mars_register_cpt()
 }
 
 add_action('init', 'mars_register_cpt');
+
+/**
+ * Témoignages et ouvrages n'ont pas de page individuelle : ils ne sont affichés
+ * que dans les blocs (slider, grille). Les anciennes URLs sont redirigées en 301.
+ */
+function mars_redirect_removed_cpt_urls()
+{
+	$path = trim(wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+	if (preg_match('#^ouvrage(/|$)#', $path)) {
+		wp_safe_redirect(home_url('/ouvrages/'), 301);
+		exit;
+	}
+	if (preg_match('#^temoignages(/|$)#', $path)) {
+		wp_safe_redirect(home_url('/'), 301);
+		exit;
+	}
+}
+add_action('template_redirect', 'mars_redirect_removed_cpt_urls', 1);
